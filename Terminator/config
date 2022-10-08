@@ -1,0 +1,38 @@
+[global_config]
+  focus = system
+  window_state = fullscreen
+  borderless = True
+  tab_position = hidden
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, MavenPluginURLHandler, TestPlugin
+  always_split_with_profile = True
+[keybindings]
+  go_up = <Alt>i
+  go_down = <Alt>k
+  go_left = <Alt>j
+  go_right = <Alt>l
+  split_horiz = <Primary>o
+  split_vert = <Primary>e
+  close_term = <Primary>w
+  copy = <Primary>c
+  paste = <Primary>v
+  close_window = <Primary><Shift>w
+  hide_window = <Primary>t
+  layout_launcher = <Alt>a
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    cursor_color = "#aaaaaa"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      command = ls -l; echo 'Welcome Naleuuuuuuh'; /bin/zsh
+[plugins]

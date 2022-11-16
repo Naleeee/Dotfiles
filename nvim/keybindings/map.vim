@@ -16,10 +16,10 @@ nnoremap <C-k> <C-w>j
 nnoremap <C-j> <C-w>h
 nnoremap <C-i> <C-w>k
 nnoremap <C-l> <C-w>l
+map h <Insert>
 map i <Up>
 map k <Down>
 map j <Left>
-map <leader>
 nmap <C-s> :x<CR>
 map <C-u> <leader>c<Space><CR>
 imap <C-s> <Esc>:x<CR>
@@ -132,3 +132,10 @@ nmap <leader>tn :call CocAction('toggleExtension', 'coc-tabnine')<CR>
 nnoremap <leader>k :bn<CR>
 nnoremap <leader>j :bp<CR>
 nnoremap <leader>bq :bp <BAR> bd #<CR>
+
+" Toggle file and infile search
+let g:ackprg = 'ag --vimgrep'
+nmap <silent> <leader>e :Ag <CR>
+
+" Open nmap
+nmap <leader>l :HopWord<CR>

@@ -1,5 +1,5 @@
 " Custom username
-let g:instant_username = "Corentin"
+let g:instant_username = "Nale"
 
 " Customize colors
 hi Instant1 ctermfg=97 guibg=#875FAF

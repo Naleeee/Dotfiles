@@ -113,7 +113,7 @@ Plug 'lilydjwg/colorizer'
 " Keyword and regex-based syntax highlighting for C and C++
 Plug 'bfrg/vim-cpp-modern'
 
-" file and infile search
+" File and infile search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 

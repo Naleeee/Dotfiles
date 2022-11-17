@@ -65,6 +65,8 @@ source $HOME/.config/nvim/plugs-set/clang-format.vim
 source $HOME/.config/nvim/plugs-set/cmake.vim
 source $HOME/.config/nvim/plugs-set/gitgutter.vim
 source $HOME/.config/nvim/plugs-set/gitmessenger.vim
+source $HOME/.config/nvim/plugs-set/hop.vim
+source $HOME/.config/nvim/plugs-set/image.vim
 source $HOME/.config/nvim/plugs-set/indentline.vim
 source $HOME/.config/nvim/plugs-set/instant.vim
 source $HOME/.config/nvim/plugs-set/mkdp.vim
@@ -81,9 +83,6 @@ source $HOME/.config/nvim/plugs-set/nightfox.vim
 
 source $HOME/.config/nvim/keybindings/map.vim
 
-" Image preview
-:lua require('image').setup { render = { min_padding = 5, show_label = true, use_dither = true, }, events = { update_on_nvim_resize = true, }, }
-
 " Separate c file as a new type
 augroup project
   autocmd!
@@ -92,7 +91,3 @@ augroup END
 
 " Automatically call clang-format when saving a cpp file
 autocmd FileType cpp autocmd BufWritePre <buffer> ClangFormat
-
-lua << EOF
-require('hop').setup()
-EOF

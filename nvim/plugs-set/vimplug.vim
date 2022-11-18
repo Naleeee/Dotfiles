@@ -1,123 +1,85 @@
 call plug#begin()
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Install Coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "-------------------------------- Install Coc
 
-" Insert or delete brackets, parens, quotes in pair
-Plug 'jiangmiao/auto-pairs'
-" With colors
-Plug 'luochen1990/rainbow'
+Plug 'jiangmiao/auto-pairs' "------------------------------------------------------ Insert or delete brackets, parens, quotes in pair
+Plug 'luochen1990/rainbow' "------------------------------------------------------- With colors
 
-" A snazzy nail_care buffer line
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+" Plug 'vim-airline/vim-airline' "--------------------------------------------------- Lean & mean status/tabline at the top and bottom for vim
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' } "-------------------------------- A snazzy nail_care buffer line
 
-" Lean & mean status/tabline at the bottom for vim
-Plug 'vim-airline/vim-airline'
+" Plug 'tpope/vim-surround' "------------------------------------------------------ Add/Delete surrounders
 
-" Add/Delete surrounders
-" Plug 'tpope/vim-surround'
+Plug 'psliwka/vim-smoothie' "------------------------------------------------------ Make scroll smooth
 
-" Make scroll smooth
-Plug 'psliwka/vim-smoothie'
+Plug 'AndrewRadev/tagalong.vim' "-------------------------------------------------- Automatically rename closing HTML/XML tags when editing opening ones
 
-" Automatically rename closing HTML/XML tags when editing opening ones
-Plug 'AndrewRadev/tagalong.vim'
+Plug 'pangloss/vim-javascript' "--------------------------------------------------- Syntax highlighting and improved indentation for javascript
 
-" Syntax highlighting and improved indentation for javascript
-Plug 'pangloss/vim-javascript'
+Plug 'andweeb/presence.nvim' "-------------------------------------------------------- Adds Discord support to show activity
 
-" Adds Discord support to show activity
-Plug 'vbe0201/vimdiscord'
+Plug 'rhysd/git-messenger.vim' "--------------------------------------------------- Shows the history of commits under the cursor in popup window
 
-" Shows the history of commits under the cursor in popup window
-Plug 'rhysd/git-messenger.vim'
+Plug 'preservim/nerdtree' "-------------------------------------------------------- A file system explorer for the Vim editor
 
-" A file system explorer for the Vim editor
-Plug 'preservim/nerdtree'
-" Plugin show git status flags
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin' "----------------------------------------------- Plugin show git status flags
 
-" Compiling, uploading, and debugging arduino sketches
-" Plug 'stevearc/vim-arduino'
+" Plug 'stevearc/vim-arduino' "---------------------------------------------------- Compiling, uploading, and debugging arduino sketches
 
-" Display thin vertical lines at each indentation level for code indented with spaces
-Plug 'yggdroot/indentline'
+Plug 'yggdroot/indentline' "------------------------------------------------------- Display thin vertical lines at each indentation level for code indented with spaces
 
-" Vim graphical debugger for multiple languages
-" Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector' "------------------------------------------------- Vim graphical debugger for multiple languages
 
-" Add better files icons
-Plug 'ryanoasis/vim-devicons'
+Plug 'nvim-tree/nvim-web-devicons' "----------------------------------------------- Add better files icons
+Plug 'chrisbra/unicode.vim' "------------------------------------------------------ Add unicode icon search
 
-" Highlight trailing spaces
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace' "-------------------------------------------- Highlight trailing spaces
 
-" Shows a git diff in the sign column
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter' "---------------------------------------------------- Shows a git diff in the sign column
 
-" Open markdown preview on browser
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } "--------- Open markdown preview on browser
 
-" Better TODO manager
-Plug 'wsdjeg/vim-todo'
+" Plug 'wsdjeg/vim-todo' "----------------------------------------------------------- Better todo manager
 
-" Building CMake projects inside
-Plug 'cdelledonne/vim-cmake'
+" Plug 'cdelledonne/vim-cmake' "----------------------------------------------------- Building CMake projects inside
 
-" Collaborative editor
-Plug 'jbyuki/instant.nvim'
+" Plug 'jbyuki/instant.nvim' "------------------------------------------------------- Collaborative editor
 
-" Better comment functions
-Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter' "--------------------------------------------------- Better comment functions
 
-" This plugin formats your code with specific coding style using clang-format
-Plug 'rhysd/vim-clang-format'
+Plug 'rhysd/vim-clang-format' "---------------------------------------------------- This plugin formats your code with specific coding style using clang-format
 
-" A color picker/selector directly from the editor
-Plug 'KabbAmine/vCoolor.vim'
+Plug 'KabbAmine/vCoolor.vim' "----------------------------------------------------- A color picker/selector directly from the editor
 
-" THEME
-" Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
+" Plug 'rmehri01/onenord.nvim', { 'branch': 'main' } "----------------------------- Theme
 " Plug 'catppuccin/nvim', { 'as': 'catppuccin'  }
 Plug 'EdenEast/nightfox.nvim'
 
-" HTML5 + inline SVG omnicomplete function, indent and syntax
-Plug 'othree/html5.vim'
+Plug 'othree/html5.vim' "---------------------------------------------------------- HTML5 + inline SVG omnicomplete function, indent and syntax
 
-" Makes your javascript files support React jsx correctly
-Plug 'neoclide/vim-jsx-improve'
+Plug 'neoclide/vim-jsx-improve' "-------------------------------------------------- Makes your javascript files support React jsx correctly
 
-" A powerful grammar checker
-Plug 'rhysd/vim-grammarous'
+" Plug 'rhysd/vim-grammarous' "------------------------------------------------------ A powerful grammar checker
 
-" Image Viewer as ASCII Art
-Plug 'samodostal/image.nvim'
+Plug 'nvim-lua/plenary.nvim' "----------------------------------------------------- Dependency plenary
 
-" Dependency plenary
-Plug 'nvim-lua/plenary.nvim'
+Plug 'samodostal/image.nvim' "----------------------------------------------------- Image Viewer as ASCII Art
 
-" Make quickfix window better
-Plug 'kevinhwang91/nvim-bqf'
+Plug 'kevinhwang91/nvim-bqf' "----------------------------------------------------- Make quickfix window better
 
-" A fancy, configurable, notification manager
-Plug 'rcarriga/nvim-notify'
+Plug 'rcarriga/nvim-notify' "------------------------------------------------------ A fancy, configurable, notification manager
 
-" Git plugin
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' "-------------------------------------------------------- Git plugin
 
-" The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "----------------------- The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter
 
-" Colorize all text in the form #rgb, #rgba, #rrggbb, #rrgbbaa, rgb(...), rgba(...)
-Plug 'lilydjwg/colorizer'
+Plug 'lilydjwg/colorizer' "-------------------------------------------------------- Colorize all text in the form #rgb, #rgba, #rrggbb, #rrgbbaa, rgb(...), rgba(...)
 
-" Keyword and regex-based syntax highlighting for C and C++
-Plug 'bfrg/vim-cpp-modern'
+Plug 'bfrg/vim-cpp-modern' "------------------------------------------------------- Keyword and regex-based syntax highlighting for C and C++
 
-" File and infile search
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "------------------------------ File and infile search
 Plug 'junegunn/fzf.vim'
 
-" Jump anywhere in a document with as few keystrokes as possible
-Plug 'phaazon/hop.nvim'
+Plug 'phaazon/hop.nvim' "---------------------------------------------------------- Jump anywhere in a document with as few keystrokes as possible
 
 call plug#end()

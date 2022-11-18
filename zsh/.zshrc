@@ -126,7 +126,7 @@ alias gps="git push --set-upstream origin"
 # function gi() { git branch $1 && git switch $1 && git push --set-upstream origin $1; }
 
 # Utils
-alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir="docs/doxygen" $1"
+alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen $1"
 alias l="clear && ls -l"
 
 # Other

@@ -57,21 +57,22 @@ syntax enable                                   " Enable syntax higllighing
 source $HOME/.config/nvim/plugs-set/coc.vim
 source $HOME/.config/nvim/plugs-set/coc-notify.vim
 
-source $HOME/.config/nvim/plugs-set/airline.vim
+" source $HOME/.config/nvim/plugs-set/airline.vim
 " source $HOME/.config/nvim/plugs-set/arduino.vim
 source $HOME/.config/nvim/plugs-set/better-whitespace.vim
 source $HOME/.config/nvim/plugs-set/bufferline.vim
 source $HOME/.config/nvim/plugs-set/clang-format.vim
-source $HOME/.config/nvim/plugs-set/cmake.vim
-source $HOME/.config/nvim/plugs-set/gitgutter.vim
+" source $HOME/.config/nvim/plugs-set/cmake.vim
+" source $HOME/.config/nvim/plugs-set/gitgutter.vim
 source $HOME/.config/nvim/plugs-set/gitmessenger.vim
 source $HOME/.config/nvim/plugs-set/hop.vim
 source $HOME/.config/nvim/plugs-set/image.vim
 source $HOME/.config/nvim/plugs-set/indentline.vim
-source $HOME/.config/nvim/plugs-set/instant.vim
+" source $HOME/.config/nvim/plugs-set/instant.vim
 source $HOME/.config/nvim/plugs-set/mkdp.vim
 source $HOME/.config/nvim/plugs-set/nerdcommenter.vim
 source $HOME/.config/nvim/plugs-set/nerdtree.vim
+source $HOME/.config/nvim/plugs-set/presence.vim
 source $HOME/.config/nvim/plugs-set/rainbow.vim
 source $HOME/.config/nvim/plugs-set/treesitter.vim
 " source $HOME/.config/nvim/plugs-set/vimspector.vim

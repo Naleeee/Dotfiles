@@ -123,7 +123,11 @@ alias gm="git merge"
 alias gl="git pull"
 alias fdp="git blame"
 alias gps="git push --set-upstream origin"
-# function gi() { git branch $1 && git switch $1 && git push --set-upstream origin $1; }
+gnb() {
+    git branch "$1"
+    git switch "$1"
+    git push --set-upstream origin "$1"
+}
 
 # Utils
 alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen $1"

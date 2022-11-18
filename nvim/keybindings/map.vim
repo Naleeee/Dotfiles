@@ -21,24 +21,16 @@ map i <Up>
 map k <Down>
 map j <Left>
 nmap <C-s> :x<CR>
-map <C-u> <leader>c<Space><CR>
+map <leader><Space>c <leader>c<Space><CR>
 imap <C-s> <Esc>:x<CR>
 nmap <ScrollWheelUp> i
 nmap <ScrollWheelDown> k
 
 
-" Git gutter
+" Git Messenger
 
-" Show preview popup
-:nmap <leader>gp :GitGutterPreviewHunk<CR>
-" HighLight modified lines
-:nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
-" Reduce unchanging lines
-:nmap <leader>gf :GitGutterFold<CR>
-" Go to next change
-:nmap <leader>gn :GitGutterNextHunk<CR>
-" Go to previous change
-:nmap <leader>gN :GitGutterPrevHunk<CR>
+" Open Git Messenger window
+map <leader>gm :GitMessenger
 
 
 " Markdown preview
@@ -51,22 +43,6 @@ nmap <C-p> :MarkdownPreviewToggle<CR>
 
 " Toggle NERDTree tab
 map <C-n> :NERDTreeToggle<CR>
-
-
-" Cmake
-
-" Generate
-nmap <leader>mg :CMakeGenerate<CR>
-" Build
-nmap <leader>mb :CMakeBuild<CR>
-" Install
-nmap <leader>mi :CMakeInstall<CR>
-" Clean
-nmap <leader>mc :CMakeClean<CR>
-" Open window
-nmap <leader>mo :CmakeOpen<CR>
-" Close window
-nmap <leader>mq :CMakeClose<CR>
 
 
 " CoC
@@ -133,9 +109,13 @@ nnoremap <leader>k :bn<CR>
 nnoremap <leader>j :bp<CR>
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 
+
+" Silver Searcher
 " Toggle file and infile search
 let g:ackprg = 'ag --vimgrep'
 nmap <silent> <leader>e :Ag <CR>
 
-" Open nmap
+
+" Hop
+" Open hop view
 nmap <leader>l :HopWord<CR>

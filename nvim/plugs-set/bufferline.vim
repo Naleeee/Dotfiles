@@ -5,9 +5,9 @@ require("bufferline").setup {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         -- numbers = "none" | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
         close_command = "bdelete! %d",       -- can be a string | function, see "Mouse actions"
-        right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
-        left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
-        middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
+        -- right_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+        -- left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
+        -- middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
         indicator = {
             -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
             -- style = 'icon' | 'underline' | 'none',
@@ -89,14 +89,16 @@ require("bufferline").setup {
     --     show_close_icon = true | false,
         show_close_icon = true,
     --     show_tab_indicators = true | false,
+        show_tab_indicators = true,
     --     show_duplicate_prefix = true | false, -- whether to show duplicate buffer prefix
         show_duplicate_prefix = true,
     --     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     --     -- can also be a table containing 2 custom separators
     --     -- [focused and unfocused]. eg: { '|', '|' }
     --     separator_style = "slant" | "thick" | "thin" | { 'any', 'any' },
-        separator_style = "slant",
+        separator_style = "thin",
     --     enforce_regular_tabs = false | true,
+        enforce_regular_tabs = true,
     --     always_show_bufferline = true | false,
         hover = {
             enabled = true,

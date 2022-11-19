@@ -21,7 +21,7 @@ map i <Up>
 map k <Down>
 map j <Left>
 nmap <C-s> :x<CR>
-map <leader><Space>c <leader>c<Space><CR>
+map <C-u> <leader>c<Space><CR>
 imap <C-s> <Esc>:x<CR>
 nmap <ScrollWheelUp> i
 nmap <ScrollWheelDown> k

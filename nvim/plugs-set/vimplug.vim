@@ -82,4 +82,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'phaazon/hop.nvim' "---------------------------------------------------------- Jump anywhere in a document with as few keystrokes as possible
 
+Plug 'goolord/alpha-nvim'
+
 call plug#end()

@@ -96,7 +96,7 @@ local deathNote = {
     [[                                                *ª~                                                         ]],
 }
 
-local MyHeaders= {deathNote}
+local MyHeaders= {naleuh, sombra, deathNote, codingTime, neovim}
 
 dashboard.section.header.val = MyHeaders[math.random(#MyHeaders)]
 

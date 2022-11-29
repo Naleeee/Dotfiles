@@ -98,6 +98,9 @@ systemd/
 systemmonitorrc
 systemsettingsrc
 teams/
+Unity Hub/
+unity3d/
+UnityHub/
 touchpadxlibinputrc
 trashrc
 user-dirs.dirs

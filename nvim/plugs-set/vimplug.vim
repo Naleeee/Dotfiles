@@ -51,8 +51,8 @@ Plug 'rhysd/vim-clang-format' "-------------------------------------------------
 
 Plug 'KabbAmine/vCoolor.vim' "----------------------------------------------------- A color picker/selector directly from the editor
 
-" Plug 'rmehri01/onenord.nvim', { 'branch': 'main' } "----------------------------- Theme
-" Plug 'catppuccin/nvim', { 'as': 'catppuccin'  }
+Plug 'rmehri01/onenord.nvim', { 'branch': 'main' } "----------------------------- Theme
+Plug 'catppuccin/nvim', { 'as': 'catppuccin'  }
 Plug 'EdenEast/nightfox.nvim'
 
 Plug 'othree/html5.vim' "---------------------------------------------------------- HTML5 + inline SVG omnicomplete function, indent and syntax
@@ -77,8 +77,9 @@ Plug 'lilydjwg/colorizer' "-----------------------------------------------------
 
 Plug 'bfrg/vim-cpp-modern' "------------------------------------------------------- Keyword and regex-based syntax highlighting for C and C++
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "------------------------------ File and infile search
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } "------------------------------ File and infile search
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' } "------------------------- File and infile search
 
 Plug 'phaazon/hop.nvim' "---------------------------------------------------------- Jump anywhere in a document with as few keystrokes as possible
 

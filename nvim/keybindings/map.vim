@@ -110,10 +110,10 @@ nnoremap <leader>j :bp<CR>
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 
-" Silver Searcher
+" Telescope
 " Toggle file and infile search
-let g:ackprg = 'ag --vimgrep'
-nmap <silent> <leader>e :Ag <CR>
+" let g:ackprg = 'ag --vimgrep'
+nmap <silent> <leader>e :Telescope find_files<CR>
 
 
 " Hop

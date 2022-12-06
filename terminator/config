@@ -1,6 +1,7 @@
 [global_config]
   window_state = fullscreen
   borderless = True
+  extra_styling = False
   tab_position = hidden
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, MavenPluginURLHandler, TestPlugin
   always_split_with_profile = True
@@ -20,12 +21,10 @@
 [profiles]
   [[default]]
     background_darkness = 0.7
-    cursor_color = "#aaaaaa"
     font = MesloLGS NF 10
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_infinite = True
-    use_system_font = False
     copy_on_selection = True
 [layouts]
   [[default]]

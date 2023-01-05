@@ -1,3 +1,11 @@
 {
-    "clangd.inlayHints.enable" : false
+    "languageserver": {
+    "csharp-ls": {
+        "command": "csharp-ls",
+        "filetypes": ["cs"],
+        "rootPatterns": ["*.csproj", ".vim/", ".git", ".hg/"]
+    }
+  },
+  "clangd.inlayHints.enable": false,
+  "snippets.ultisnips.pythonPrompt": false
 }

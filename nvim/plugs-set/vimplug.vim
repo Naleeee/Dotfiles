@@ -85,4 +85,6 @@ Plug 'phaazon/hop.nvim' "-------------------------------------------------------
 
 Plug 'goolord/alpha-nvim'
 
+Plug 'udalov/kotlin-vim'
+
 call plug#end()

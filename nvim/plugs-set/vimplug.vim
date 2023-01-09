@@ -87,4 +87,6 @@ Plug 'goolord/alpha-nvim'
 
 Plug 'udalov/kotlin-vim'
 
+Plug 'alec-gibson/nvim-tetris' "--------------------------------------------------- Simple tetris game for nvim
+
 call plug#end()

@@ -24,6 +24,8 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 augroup END
 
+autocmd FileType markdown :TSDisable highlight
+
 " Tab
 set ts=4 sw=4
 set expandtab
@@ -77,6 +79,7 @@ source $HOME/.config/nvim/plugs-set/presence.vim
 source $HOME/.config/nvim/plugs-set/rainbow.vim
 source $HOME/.config/nvim/plugs-set/treesitter.vim
 " source $HOME/.config/nvim/plugs-set/vimspector.vim
+source $HOME/.config/nvim/plugs-set/vim-markdown.vim
 
 " Theme
 " source $HOME/.config/nvim/plugs-set/onenord.vim
@@ -84,6 +87,9 @@ source $HOME/.config/nvim/plugs-set/nightfox.vim
 " source $HOME/.config/nvim/plugs-set/catppuccin.vim
 
 source $HOME/.config/nvim/keybindings/map.vim
+
+" Background
+hi Normal ctermbg=none guibg=none
 
 " Separate c file as a new type
 augroup project

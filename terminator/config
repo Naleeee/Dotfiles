@@ -1,9 +1,10 @@
 [global_config]
-  window_state = fullscreen
+  window_state = maximise
   borderless = True
+  extra_styling = False
   tab_position = hidden
+  sticky = True
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, MavenPluginURLHandler, TestPlugin
-  always_split_with_profile = True
 [keybindings]
   go_up = <Alt>i
   go_down = <Alt>k
@@ -19,13 +20,13 @@
   layout_launcher = <Alt>a
 [profiles]
   [[default]]
-    background_darkness = 0.7
-    cursor_color = "#aaaaaa"
+    background_darkness = 0.85
+    background_type = transparent
+    background_image = /home/nale/Pictures/Baniere.png
     font = MesloLGS NF 10
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_infinite = True
-    use_system_font = False
     copy_on_selection = True
 [layouts]
   [[default]]

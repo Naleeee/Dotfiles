@@ -89,4 +89,6 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'alec-gibson/nvim-tetris' "--------------------------------------------------- Simple tetris game for nvim
 
+Plug 'ixru/nvim-markdown'
+
 call plug#end()

@@ -85,6 +85,9 @@ source $HOME/.config/nvim/plugs-set/nightfox.vim
 
 source $HOME/.config/nvim/keybindings/map.vim
 
+" Background
+hi Normal ctermbg=none guibg=none
+
 " Separate c file as a new type
 augroup project
   autocmd!

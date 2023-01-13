@@ -39,3 +39,6 @@ let g:NERDTreeGitStatusShowIgnored = 1
 
 " Align NERDTree-git icons
 let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
+" Close nerdtree buffer on selection
+let g:NERDTreeQuitOnOpen = 1

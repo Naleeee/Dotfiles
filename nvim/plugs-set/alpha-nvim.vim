@@ -102,12 +102,11 @@ dashboard.section.header.val = MyHeaders[math.random(#MyHeaders)]
 
 -- Set menu
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "  > New file"        , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "🔍 > Find file"       , ":Telescope find_files <CR>"),
-    dashboard.button( "r", "📂 > Recent"          , ":Telescope oldfiles <CR>"),
-    dashboard.button( "n", "🌳 > Toggle Nerdtree" , ":NERDTreeToggle <CR>"),
-    dashboard.button( "s", "⛭  > Settings"        , ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd <CR>"),
-    dashboard.button( "q", "🚪 > Quit NVIM"       , ":qa <CR>"),
+    dashboard.button( "f", " 🔍 > Find file"       , ":Telescope find_files <CR>"),
+    dashboard.button( "r", " Ⳡ  > Recent files"    , ":Telescope oldfiles <CR>"),
+    dashboard.button( "n", " 𐇲  > Toggle Nerdtree" , ":NERDTreeToggle <CR>"),
+    dashboard.button( "s", " ⛭  > Settings"        , ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd <CR>"),
+    dashboard.button( "q", "🮲🮳  > Quit NVIM"       , ":qa <CR>"),
 }
 
 -- Set footer

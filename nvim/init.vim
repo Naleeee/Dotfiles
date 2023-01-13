@@ -80,6 +80,7 @@ source $HOME/.config/nvim/plugs-set/rainbow.vim
 source $HOME/.config/nvim/plugs-set/treesitter.vim
 " source $HOME/.config/nvim/plugs-set/vimspector.vim
 source $HOME/.config/nvim/plugs-set/vim-markdown.vim
+source $HOME/.config/nvim/plugs-set/closetag.vim
 
 " Theme
 " source $HOME/.config/nvim/plugs-set/onenord.vim

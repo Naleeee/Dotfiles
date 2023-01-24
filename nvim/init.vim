@@ -60,7 +60,7 @@ syntax enable                                   " Enable syntax higllighing
 source $HOME/.config/nvim/plugs-set/coc.vim
 source $HOME/.config/nvim/plugs-set/coc-notify.vim
 
-" source $HOME/.config/nvim/plugs-set/airline.vim
+source $HOME/.config/nvim/plugs-set/airline.vim
 source $HOME/.config/nvim/plugs-set/alpha-nvim.vim
 " source $HOME/.config/nvim/plugs-set/arduino.vim
 source $HOME/.config/nvim/plugs-set/better-whitespace.vim

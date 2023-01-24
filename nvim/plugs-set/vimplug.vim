@@ -11,7 +11,7 @@ Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' } "-----------------------------
 Plug 'yggdroot/indentline' "------------------------------------------------------- Display thin vertical lines at each indentation level for code indented with spaces
 Plug 'jiangmiao/auto-pairs' "------------------------------------------------------ Insert or delete brackets, parens, quotes in pair
 Plug 'luochen1990/rainbow' "------------------------------------------------------- With colors
-Plug 'AndrewRadev/tagalong.vim' "-------------------------------------------------- Automatically rename closing HTML/XML tags when editing opening ones
+" Plug 'AndrewRadev/tagalong.vim' "-------------------------------------------------- Automatically rename closing HTML/XML tags when editing opening ones
 Plug 'preservim/nerdcommenter' "--------------------------------------------------- Better comment functions
 Plug 'rhysd/vim-clang-format' "---------------------------------------------------- This plugin formats your code with specific coding style using clang-format
 Plug 'phaazon/hop.nvim' "---------------------------------------------------------- Jump anywhere in a document with as few keystrokes as possible

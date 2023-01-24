@@ -16,8 +16,8 @@ nnoremap <C-k> <C-w>j
 nnoremap <C-j> <C-w>h
 nnoremap <C-i> <C-w>k
 nnoremap <C-l> <C-w>l
-map h <Insert>
 map i <Up>
+map h <Insert>
 map k <Down>
 map j <Left>
 nmap <C-s> :x<CR>

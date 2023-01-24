@@ -25,11 +25,12 @@ augroup filetypedetect
 augroup END
 
 autocmd FileType markdown :TSDisable highlight
+autocmd FileType markdown :TableModeEnable
 
 " Tab
 set ts=4 sw=4
 set expandtab
-autocmd FileType javascript,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
+autocmd FileType javascript,typescriptreact,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
 
 " Fold with 'zc' and 'zo'
 set foldmethod=indent

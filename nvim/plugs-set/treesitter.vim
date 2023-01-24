@@ -2,7 +2,7 @@ lua << EOF
 
 require('nvim-treesitter.configs').setup({
   -- A list of parser names, or "all"
-  ensure_installed = { "bash", "c", "c_sharp", "cmake", "cpp", "css", "dockerfile", "html", "http", "javascript", "json", "json5", "lua", "make", "ninja", "perl", "php", "python", "scss", "typescript", "vim", "vue", "yaml" },
+  ensure_installed = { "bash", "c", "c_sharp", "cmake", "cpp", "css", "dockerfile", "html", "http", "javascript", "json", "json5", "lua", "make", "ninja", "perl", "php", "python", "scss", "vim", "vue", "yaml" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,

@@ -25,11 +25,12 @@ augroup filetypedetect
 augroup END
 
 autocmd FileType markdown :TSDisable highlight
+autocmd FileType markdown :TableModeEnable
 
 " Tab
 set ts=4 sw=4
 set expandtab
-autocmd FileType javascript,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
+autocmd FileType javascript,typescriptreact,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
 
 " Fold with 'zc' and 'zo'
 set foldmethod=indent
@@ -59,7 +60,7 @@ syntax enable                                   " Enable syntax higllighing
 source $HOME/.config/nvim/plugs-set/coc.vim
 source $HOME/.config/nvim/plugs-set/coc-notify.vim
 
-" source $HOME/.config/nvim/plugs-set/airline.vim
+source $HOME/.config/nvim/plugs-set/airline.vim
 source $HOME/.config/nvim/plugs-set/alpha-nvim.vim
 " source $HOME/.config/nvim/plugs-set/arduino.vim
 source $HOME/.config/nvim/plugs-set/better-whitespace.vim
@@ -80,6 +81,7 @@ source $HOME/.config/nvim/plugs-set/rainbow.vim
 source $HOME/.config/nvim/plugs-set/treesitter.vim
 " source $HOME/.config/nvim/plugs-set/vimspector.vim
 source $HOME/.config/nvim/plugs-set/vim-markdown.vim
+source $HOME/.config/nvim/plugs-set/closetag.vim
 
 " Theme
 " source $HOME/.config/nvim/plugs-set/onenord.vim

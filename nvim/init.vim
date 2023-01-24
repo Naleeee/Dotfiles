@@ -32,6 +32,9 @@ set ts=4 sw=4
 set expandtab
 autocmd FileType javascript,typescriptreact,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
 
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 " Fold with 'zc' and 'zo'
 set foldmethod=indent
 set foldnestmax=10

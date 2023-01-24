@@ -25,8 +25,11 @@ Plug 'tpope/vim-fugitive' "-----------------------------------------------------
 " Plug 'airblade/vim-gitgutter' "-------------------------------------------------- Shows a git diff in the sign column
 
 " JS
-Plug 'alvan/vim-closetag'
-Plug 'AndrewRadev/tagalong.vim' "-------------------------------------------------- Automatically rename closing HTML/XML tags when editing opening ones
+" Plug 'alvan/vim-closetag'
+" Plug 'AndrewRadev/tagalong.vim' "-------------------------------------------------- Automatically rename HTML/XML tags when editing opening ones
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
+" Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Styling
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} "---------------------- The goal of nvim-treesitter is both to provide a simple and easy way to use the interface for tree-sitter

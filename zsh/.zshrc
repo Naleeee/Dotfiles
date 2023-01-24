@@ -128,16 +128,24 @@ gnb() {
     git switch "$1"
     git push --set-upstream origin "$1"
 }
+alias glog="eval $(ssh-agent -s) ssh-add ~/.ssh/NaleLinuxKey"
 
 # Utils
-alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen $1"
+alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules$1"
 alias l="clear && ls -l"
 
 # Other
 alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
-alias discord="/home/nale/Desktop/discordln"
+alias rs="rm ~/.config/pulse/cookie && systemctl --user restart pulseaudio"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+source /opt/powerlevel10k/powerlevel10k.zsh-theme
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

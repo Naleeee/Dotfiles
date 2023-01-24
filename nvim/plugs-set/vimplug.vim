@@ -5,7 +5,9 @@ Plug 'nvim-lua/plenary.nvim' "--------------------------------------------------
 
 " Bufferline
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' } "-------------------------------- A snazzy nail_care buffer line
-" Plug 'vim-airline/vim-airline' "------------------------------------------------- Lean & mean status/tabline at the top and bottom for vim
+" Statusline
+Plug 'vim-airline/vim-airline' "-------------------------------------------------- Lean & mean status/tabline at the top and bottom for vim but only used for statusline here
+Plug 'vim-airline/vim-airline-themes'
 
 " Editing
 Plug 'yggdroot/indentline' "------------------------------------------------------- Display thin vertical lines at each indentation level for code indented with spaces

@@ -78,6 +78,7 @@ source $HOME/.config/nvim/plugs-set/nerdcommenter.vim
 source $HOME/.config/nvim/plugs-set/nerdtree.vim
 source $HOME/.config/nvim/plugs-set/presence.vim
 source $HOME/.config/nvim/plugs-set/rainbow.vim
+source $HOME/.config/nvim/plugs-set/tagalong.vim
 source $HOME/.config/nvim/plugs-set/treesitter.vim
 " source $HOME/.config/nvim/plugs-set/vimspector.vim
 source $HOME/.config/nvim/plugs-set/vim-markdown.vim

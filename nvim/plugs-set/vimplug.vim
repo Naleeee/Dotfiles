@@ -42,7 +42,7 @@ Plug 'kevinhwang91/nvim-bqf' "--------------------------------------------------
 Plug 'bfrg/vim-cpp-modern' "------------------------------------------------------- Keyword and regex-based syntax highlighting for C and C++
 
 " Theme
-Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
+" Plug 'rmehri01/onenord.nvim', { 'branch': 'main' }
 Plug 'catppuccin/nvim', { 'as': 'catppuccin'  }
 Plug 'EdenEast/nightfox.nvim'
 
@@ -61,7 +61,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } "------
 
 Plug 'andweeb/presence.nvim' "----------------------------------------------------- Adds Discord support to show activity
 
-Plug 'samodostal/image.nvim' "----------------------------------------------------- Image Viewer as ASCII Art
+" Plug 'samodostal/image.nvim' "----------------------------------------------------- Image Viewer as ASCII Art
 
 Plug 'rcarriga/nvim-notify' "------------------------------------------------------ A fancy, configurable, notification manager
 

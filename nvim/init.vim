@@ -73,7 +73,7 @@ source $HOME/.config/nvim/plugs-set/clang-format.vim
 " source $HOME/.config/nvim/plugs-set/gitgutter.vim
 source $HOME/.config/nvim/plugs-set/gitmessenger.vim
 source $HOME/.config/nvim/plugs-set/hop.vim
-source $HOME/.config/nvim/plugs-set/image.vim
+" source $HOME/.config/nvim/plugs-set/image.vim
 source $HOME/.config/nvim/plugs-set/indentline.vim
 " source $HOME/.config/nvim/plugs-set/instant.vim
 source $HOME/.config/nvim/plugs-set/mkdp.vim
@@ -88,10 +88,10 @@ source $HOME/.config/nvim/plugs-set/vim-markdown.vim
 source $HOME/.config/nvim/plugs-set/closetag.vim
 
 " Theme
-" source $HOME/.config/nvim/plugs-set/onenord.vim
 " source $HOME/.config/nvim/plugs-set/nightfox.vim
 source $HOME/.config/nvim/plugs-set/catppuccin.vim
-
+" source $HOME/.config/nvim/plugs-set/onenord.vim
+"
 source $HOME/.config/nvim/keybindings/map.vim
 
 " Background

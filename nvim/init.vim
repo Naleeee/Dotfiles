@@ -89,8 +89,8 @@ source $HOME/.config/nvim/plugs-set/closetag.vim
 
 " Theme
 " source $HOME/.config/nvim/plugs-set/onenord.vim
-source $HOME/.config/nvim/plugs-set/nightfox.vim
-" source $HOME/.config/nvim/plugs-set/catppuccin.vim
+" source $HOME/.config/nvim/plugs-set/nightfox.vim
+source $HOME/.config/nvim/plugs-set/catppuccin.vim
 
 source $HOME/.config/nvim/keybindings/map.vim
 

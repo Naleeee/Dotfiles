@@ -58,6 +58,7 @@ Plug 'psliwka/vim-smoothie' "---------------------------------------------------
 Plug 'ixru/nvim-markdown' "-------------------------------------------------------- Useful features for markdowns
 Plug 'dhruvasagar/vim-table-mode' "------------------------------------------------ Better table creation for markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } "--------- Open markdown preview on browser
+Plug 'mzlogin/vim-markdown-toc' "-------------------------------------------------- Create table of content
 
 Plug 'andweeb/presence.nvim' "----------------------------------------------------- Adds Discord support to show activity
 

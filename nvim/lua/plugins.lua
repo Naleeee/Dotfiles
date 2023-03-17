@@ -103,10 +103,24 @@ return require("packer").startup(function(use)
         config = require("plugin_config.alpha"),
     }
 
-    -- Autopairs
+    -- Editing
     use {
         "windwp/nvim-autopairs",
         config = require("plugin_config.nvim-autopairs"),
+    }
+    use {
+        "luochen1990/rainbow",
+    }
+    use {
+        "yggdroot/indentline",
+    }
+    use {
+        "rhysd/vim-grammarous",
+    }
+
+    -- Stylings
+    use {
+        "lilydjwg/colorizer",
     }
 
     -- Diagnostics menu
@@ -171,12 +185,36 @@ return require("packer").startup(function(use)
         config = require("plugin_config.todo-comments")
     }
 
-    -- Markdown preview
+    -- Markdown
+    use {
+        "ixru/nvim-markdown",
+    }
+    use {
+        "dhruvasagar/vim-table-mode",
+    }
+    use {
+        "mzlogin/vim-markdown-toc",
+    }
     use {
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
         setup = require("plugin_config.markdown-preview"),
         ft = { "markdown" },
+    }
+
+    -- Discord
+    use {
+        "andweeb/presence.nvim",
+    }
+
+    -- Image viewer
+    use {
+        "samodostal/image.nvim"
+    }
+
+    -- Notifier
+    use {
+        "rcarriga/nvim-notify"
     }
 
     if packer_bootstrap then

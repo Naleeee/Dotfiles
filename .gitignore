@@ -28,7 +28,8 @@ dconf/
 deezer-desktop/
 deezer-unofficial-player/
 discord/
-dolphinrc
+dolphinrc/
+eas-cli-nodejs/
 elisarc
 emaildefaults
 falkon/

@@ -62,7 +62,7 @@ map("v", "<leader>d", "\"_d")
 map("n", "<leader>ac", "<Cmd>CodeActionMenu<CR>")
 
 -- Comment line
-map("n", "<C-u>", "<leader>c<Space><CR>")
+-- map("n", "<C-u>", "<leader>c<Space><CR>")
 
 --  Better mouse scroll
 map("n", "<ScrollWheelUp>", "k")
@@ -79,7 +79,5 @@ map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 -- map("n", "<leader>n", "<Plug>(coc-diagnostic-next)")
 
 vim.api.nvim_create_user_command("W", "w", {})
-
--- map("i", ">", "<esc>yiwi<lt><esc>ea></><esc>hpF>i")
 
 -- map("n", "<Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", ":x<ENTER>")

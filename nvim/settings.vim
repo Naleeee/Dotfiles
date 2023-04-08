@@ -10,7 +10,9 @@ set t_Co=256
 
 set nocompatible
 
-filetype plugin indent on   " https://vi.stackexchange.com/a/10125
+filetype on
+filetype plugin on
+filetype indent on
 
 set autowriteall                                " Autowrite when replace in multiple buffers
 
@@ -35,11 +37,6 @@ set smartcase
 " autocmd FileType markdown :TSDisable highlight
 " autocmd FileType markdown :TableModeEnable
 
-" Tab
-set ts=4 sw=4
-set expandtab
-" autocmd FileType javascript,typescriptreact,groovy,yaml,vue,css,json,vim setlocal ts=2 sw=2 expandtab " Tab of 2 for js files
-
 " set filetypes as typescriptreact
 " autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
@@ -56,7 +53,6 @@ if (!isdirectory("/tmp/undodir"))
 endif
 set undodir=/tmp/undodir
 
-autocmd FileType c set cc=80                   " Show line for 80 columns
 
 " Clang-format
 " autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>

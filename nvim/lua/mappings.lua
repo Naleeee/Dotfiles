@@ -80,4 +80,6 @@ map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 
 vim.api.nvim_create_user_command("W", "w", {})
 
+-- map("i", ">", "<esc>yiwi<lt><esc>ea></><esc>hpF>i")
+
 -- map("n", "<Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", ":x<ENTER>")

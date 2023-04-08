@@ -6,9 +6,9 @@
   sticky = True
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, MavenPluginURLHandler, TestPlugin
 [keybindings]
-  go_up = <Alt>i
-  go_down = <Alt>k
-  go_left = <Alt>j
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
   go_right = <Alt>l
   split_horiz = <Primary>o
   split_vert = <Primary>e

@@ -11,6 +11,7 @@
 !nvim
 !nvim/*
 nvim/autoload/
+!nvim/ftplugin/*
 !nvim/lua/*
 !nvim/lua/plugin_config/*
 

@@ -105,7 +105,7 @@ return function()
     dashboard.section.buttons.val = {
         dashboard.button("f", " 🔍 > Find file", ":lua require(\"telescope.builtin\").find_files({hidden=true})<CR>"),
         dashboard.button("r", " Ⳡ  > Recent files", ":lua require(\"telescope.builtin\").oldfiles({hidden=true})<CR>"),
-        dashboard.button("n", " 𐇲  > Toggle Nerdtree", ":NERDTreeToggle <CR>"),
+        dashboard.button("n", " 𐇲  > Toggle Tree", "<Cmd>NvimTreeToggle<CR>"),
         dashboard.button("s", " ⛭  > Settings", ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd <CR>"),
         dashboard.button("q", "🮲🮳  > Quit NVIM", ":qa <CR>"),
     }

@@ -178,6 +178,11 @@ return require("packer").startup(function(use)
         config = require("plugin_config.nvim-tree")
     }
 
+    -- JavaScript
+    use {
+        'alvan/vim-closetag',
+    }
+
     -- Todo Comments
     use {
         "folke/todo-comments.nvim",

@@ -1,0 +1,100 @@
+{
+  "Create new component": {
+    "prefix": "cnc",
+    "body": [
+      "import React, {Component} from 'react';",
+      "",
+      "class $1 extends Component {",
+      "  render() {",
+      "    return (",
+      "      <div>",
+      "        $2",
+      "      </div>",
+      "    );",
+      "  }",
+      "}",
+      "",
+      "export default $1;"
+    ],
+    "description": "Create a new component template"
+  },
+  "Import component": {
+    "prefix": "ic",
+    "body": [
+      "import {$1} from '@/components';"
+    ],
+    "description": "Include a component"
+  },
+  "Standard import": {
+    "prefix": "si",
+    "body": [
+      "import $1 from '$2';"
+    ],
+    "description": "Include template"
+  },
+  "Create new main function": {
+    "prefix": "cnmf",
+    "body": [
+      "import {} from '@/components';",
+      "import {styles} from '@/styles/$1.module.scss';",
+      "import React from 'react';",
+      "",
+      "const $1 = ($2) => {",
+      "  return (",
+      "    <div>",
+      "      $3",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default $1;"
+    ],
+    "description": "Create a new main function template"
+  },
+  "Create new function": {
+    "prefix": "cnf",
+    "body": [
+      "${async }const $1 = ($2) => {",
+      "  $3",
+      "};"
+    ],
+    "description": "Create a new function template"
+  },
+  "Use State": {
+    "prefix": "us",
+    "body": [
+      "const [$1, $2] = useState($3);"
+    ],
+    "description": "Insert a new useState"
+  },
+  "Use Effect": {
+    "prefix": "ue",
+    "body": [
+      "useEffect(() => {",
+      "  $1",
+      "}, [$2]);"
+    ],
+    "description": "Insert a new useEffect"
+  },
+  "Fetch": {
+    "prefix": "fetsh",
+    "body": [
+      "fetch('$1', {",
+      "  method: '$2',",
+      "  headers: {",
+      "    $3",
+      "  },",
+      "  body: JSON.stringify({",
+      "    $4",
+      "  }),",
+      "})",
+      ".then((response: Response) => {",
+      "  console.log(reponse);",
+      "})",
+      ".catch(error => {",
+      "  res.status(400).json({message: 'Error:', error});",
+      "});"
+    ],
+    "description": "Fetch data from url"
+  }
+}

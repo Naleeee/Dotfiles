@@ -85,28 +85,29 @@ return require("packer").startup(function(use)
     cmd = "CodeActionMenu",
     config = require("plugin_config.neovim-code-action-menu"),
   }
-
-  -- Snippets
-  use {
-    "L3MON4D3/LuaSnip",
-  }
-
   -- Completion menu
   use {
-    "hrsh7th/nvim-cmp",
+    'hrsh7th/nvim-cmp',
     requires = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-cmdline',
     },
-    config = require("plugin_config.nvim-cmp"),
+    config = require('plugin_config.nvim-cmp'),
   }
-  use { "saadparwaiz1/cmp_luasnip" }
+
   use {
     "tzachar/cmp-tabnine",
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
+  }
+
+  -- Snippets
+  use {
+    'hrsh7th/vim-vsnip',
+    config = require('plugin_config.vsnip')
   }
 
   -- Greeter
@@ -196,9 +197,6 @@ return require("packer").startup(function(use)
   use {
     'windwp/nvim-ts-autotag',
     config = require("plugin_config.ts-autotag")
-  }
-  use {
-    'neoclide/vim-jsx-improve',
   }
 
   -- Todo Comments

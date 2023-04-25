@@ -226,6 +226,7 @@ return require("packer").startup(function(use)
   -- Discord
   use {
     "andweeb/presence.nvim",
+    config = require("plugin_config.presence"),
   }
 
   -- Image viewer

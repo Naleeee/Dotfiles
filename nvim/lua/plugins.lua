@@ -125,10 +125,26 @@ return require("packer").startup(function(use)
   use {
     "luochen1990/rainbow",
   }
-  use {
+  use { -- Indent marker
     "lukas-reineke/indent-blankline.nvim",
-    config = require("plugin_config.indent-blankline"),
   }
+  use { -- Active indent
+    event = { "BufReadPre", "BufNewFile" },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+    "echasnovski/mini.indentscope",
+    config = require("plugin_config.indentscope"),
+  }
+  -- use {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   config = require("plugin_config.indent-blankline"),
+  -- }
   use {
     "rhysd/vim-grammarous",
   }

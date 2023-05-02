@@ -68,9 +68,6 @@ map("n", "<leader>ac", "<Cmd>CodeActionMenu<CR>")
 map("n", "<ScrollWheelUp>", "k")
 map("n", "<ScrollWheelDown>", "j")
 
---  Open git messenger
-map("n", "<leader>gm", ":GitMessenger")
-
 --  Toggle markdown preview
 map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 

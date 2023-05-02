@@ -131,12 +131,13 @@ gnb() {
 alias glog="eval $(ssh-agent -s) ssh-add ~/.ssh/NaleLinuxKey"
 
 # Utils
-alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules$1"
+alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules $1"
 alias l="clear && ls -l"
 
 # Other
 alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 alias rs="rm ~/.config/pulse/cookie && systemctl --user restart pulseaudio"
+alias image="asciiview $1 -driver curses"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

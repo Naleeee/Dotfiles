@@ -105,7 +105,6 @@ return function()
   lsp["omnisharp"].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    cmd = { "dotnet", "/Users/rekwass/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll" },
     enable_editorconfig_support = true,
     enable_ms_build_load_projects_on_demand = false,
     enable_roslyn_analyzers = false,
@@ -149,6 +148,8 @@ return function()
         buf_set_keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
       end
     end,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" },
     capabilities = capabilities,
   }
 

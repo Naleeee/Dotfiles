@@ -132,7 +132,7 @@ return require("packer").startup(function(use)
     event = { "BufReadPre", "BufNewFile" },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "mason" },
         callback = function()
           vim.b.miniindentscope_disable = true
         end,
@@ -260,6 +260,22 @@ return require("packer").startup(function(use)
 
   use {
     "wakatime/vim-wakatime",
+  }
+
+  use {
+    "folke/noice.nvim",
+    config = function()
+      require("noice").setup({
+        -- add any options here
+      })
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
   }
 
   if packer_bootstrap then

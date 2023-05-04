@@ -14,7 +14,7 @@ map("v", "<leader>p", "\"+p")
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
 
 -- Remove search highlight with //
-map("n", "//", "<Cmd>nohlsearch<CR>")
+map("n", "<leader>noh", "<Cmd>nohlsearch<CR>")
 
 -- Splits
 map("n", "ss", "<Cmd>split<CR><C-W>j")

@@ -166,6 +166,11 @@ return require("packer").startup(function(use)
     "lewis6991/gitsigns.nvim",
     config = require("plugin_config.gitsigns"),
   }
+  use {
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = require("plugin_config.diff-view"),
+  }
 
   -- Navigation
   use {

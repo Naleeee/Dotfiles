@@ -4,7 +4,7 @@ return function()
   local alpha = require("alpha")
   local dashboard = require("alpha.themes.dashboard")
 
-  math.randomseed(os.time())   -- For random header
+  math.randomseed(os.time()) -- For random header
 
   local naleuh = {
     [[███╗   ██╗ █████╗ ██╗     ███████╗██╗   ██╗██╗  ██╗]],
@@ -160,10 +160,16 @@ return function()
 
   }
 
+  local sleepyRabbit = {
+    [[(\(\]],
+    [[( ~.~)    Approved by a sleepy rabbit.]],
+    [[O(")(")]],
+  }
+
   local helloThere = { "Hello There" }
 
   -- local MyFooters = require("alpha.fortune") -- Random set of sentences
-  local MyFooters = { hiddenCat, runningMan, musicalNotes, stfuTrain, failWhale, pacman, helloThere }   -- Personnal sentences
+  local MyFooters = { hiddenCat, runningMan, musicalNotes, stfuTrain, failWhale, pacman, helloThere, sleepyRabbit } -- Personnal sentences
   dashboard.section.footer.val = MyFooters[math.random(#MyFooters)]
 
   -- Send config to alpha

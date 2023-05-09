@@ -2,14 +2,6 @@ local map = require("utils").map
 
 vim.g.mapleader = ","
 
--- Copy to clipboard
-map("n", "<leader>y", "\"+yy")
-map("v", "<leader>y", "\"+y")
-
--- Paste from clipboard
-map("n", "<leader>p", "\"+p")
-map("v", "<leader>p", "\"+p")
-
 -- Buffer manipulation
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
 

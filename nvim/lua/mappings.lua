@@ -51,7 +51,7 @@ map("v", "<leader>d", "\"_d")
 -- map("x", "<leader>p", "\"_dP")
 
 -- CodeActionMenu
-map("n", "<leader>ac", "<Cmd>CodeActionMenu<CR>")
+map("n", "<leader>qf", "<Cmd>CodeActionMenu<CR>")
 
 -- Comment line
 -- map("n", "<C-u>", "<leader>c<Space><CR>")

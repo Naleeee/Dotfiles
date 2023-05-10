@@ -59,6 +59,11 @@ return require("packer").startup(function(use)
   }
   -- Coding summary
   use { "wakatime/vim-wakatime" }
+  -- Display the available key bindings
+  use {
+    "folke/which-key.nvim",
+    config = require("plugin_config.which-key"),
+  }
 
 
 
@@ -241,6 +246,11 @@ return require("packer").startup(function(use)
   use {
     "lewis6991/gitsigns.nvim",
     config = require("plugin_config.gitsigns"),
+  }
+  -- Highlight other uses of the current cursoe placement
+  use {
+    "RRethy/vim-illuminate",
+    config = require("plugin_config.vim-illuminate"),
   }
 
 

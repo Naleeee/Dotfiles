@@ -2,19 +2,11 @@ local map = require("utils").map
 
 vim.g.mapleader = ","
 
--- Copy to clipboard
-map("n", "<leader>y", "\"+yy")
-map("v", "<leader>y", "\"+y")
-
--- Paste from clipboard
-map("n", "<leader>p", "\"+p")
-map("v", "<leader>p", "\"+p")
-
 -- Buffer manipulation
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
 
 -- Remove search highlight with //
-map("n", "//", "<Cmd>nohlsearch<CR>")
+map("n", "<leader>noh", "<Cmd>nohlsearch<CR>")
 
 -- Splits
 map("n", "ss", "<Cmd>split<CR><C-W>j")
@@ -59,7 +51,7 @@ map("v", "<leader>d", "\"_d")
 -- map("x", "<leader>p", "\"_dP")
 
 -- CodeActionMenu
-map("n", "<leader>ac", "<Cmd>CodeActionMenu<CR>")
+map("n", "<leader>qf", "<Cmd>CodeActionMenu<CR>")
 
 -- Comment line
 -- map("n", "<C-u>", "<leader>c<Space><CR>")

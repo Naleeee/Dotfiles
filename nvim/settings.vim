@@ -23,7 +23,7 @@ syntax enable                                   " Enable syntax highlight
 set termguicolors                               " Set colorscheme
 set cursorline                                  " Highlight current line
 
-set clipboard=unnamedplus                       " Copy and paste between vim and others
+set clipboard+=unnamedplus                       " Copy and paste between vim and others
 set nocp
 
 set number                                      " Display lines number

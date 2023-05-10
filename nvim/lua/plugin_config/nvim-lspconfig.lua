@@ -36,10 +36,6 @@ return function()
       buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
     end
 
-    if client.supports_method "textDocument/codeAction" then
-      buf_set_keymap("n", "<leader>qf", "<Cmd>lua vim.lsp.buf.code_action({apply = true})<CR>")
-    end
-
     if client.supports_method "textDocument/rename" then
       buf_set_keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
     end
@@ -140,10 +136,6 @@ return function()
         buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
       end
 
-      if client.supports_method "textDocument/codeAction" then
-        buf_set_keymap("n", "<leader>qf", "<Cmd>lua vim.lsp.buf.code_action({apply = true})<CR>")
-      end
-
       if client.supports_method "textDocument/rename" then
         buf_set_keymap("n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>")
       end
@@ -177,10 +169,6 @@ return function()
 
       if client.supports_method "textDocument/hover" then
         buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-      end
-
-      if client.supports_method "textDocument/codeAction" then
-        buf_set_keymap("n", "<leader>qf", "<Cmd>lua vim.lsp.buf.code_action({apply = true})<CR>")
       end
 
       if client.supports_method "textDocument/rename" then

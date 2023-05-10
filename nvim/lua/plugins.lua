@@ -21,14 +21,51 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 return require("packer").startup(function(use)
-  -- Package manager
-  use { "wbthomason/packer.nvim" }
+  -- Utils
 
-  -- Color theme
-  -- use {
-  --   "EdenEast/nightfox.nvim",
-  --   config = require("plugin_config.nightfox"),
-  -- }
+  -- Plugin manager
+  use { "wbthomason/packer.nvim" }
+  -- Package manager
+  use {
+    "williamboman/mason.nvim",
+    config = require("plugin_config.mason"),
+  }
+  -- Link between Mason and LspConfig
+  use { "williamboman/mason-lspconfig.nvim" }
+  -- Lsp manager
+  use {
+    "neovim/nvim-lspconfig",
+    requires = { {
+      "RishabhRD/nvim-lsputils",
+      requires = { "RishabhRD/popfix" },
+    }, },
+    config = require("plugin_config.nvim-lspconfig"),
+  }
+  -- Snippets manager
+  use {
+    'hrsh7th/vim-vsnip',
+    config = require('plugin_config.vsnip')
+  }
+  -- Git diff viewer
+  use {
+    "sindrets/diffview.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = require("plugin_config.diff-view"),
+  }
+  -- Display discord activity
+  use {
+    "andweeb/presence.nvim",
+    config = require("plugin_config.presence"),
+  }
+  -- Coding summary
+  use { "wakatime/vim-wakatime" }
+
+
+
+
+  -- Colorscheme
+
+  -- Catppuccin theme
   use {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -38,54 +75,35 @@ return require("packer").startup(function(use)
     -- config = require("plugin_config.catppuccin"),
   }
 
-  -- Portable package manager (LSP, DAP, Linters, ...)
-  use {
-    "williamboman/mason.nvim",
-    config = require("plugin_config.mason"),
-  }
-  use { "williamboman/mason-lspconfig.nvim" }
 
-  -- Enhanced colors and highlighting
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = require("plugin_config.nvim-treesitter"),
-  }
 
-  -- Buffers on top of the screen
-  use {
-    "akinsho/bufferline.nvim",
-    tag = "v2.*",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("plugin_config.bufferline"),
-  }
 
-  -- Line on the bottom of the screen
-  use {
-    "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-    config = require("plugin_config.lualine"),
-  }
+  -- Coding
 
-  -- LSP
+  -- Auto pair brackets and parenthesis
   use {
-    "neovim/nvim-lspconfig",
-    requires = {
-      {
-        "RishabhRD/nvim-lsputils",
-        requires = { "RishabhRD/popfix" },
-      },
-    },
-    config = require("plugin_config.nvim-lspconfig"),
+    "windwp/nvim-autopairs",
+    config = require("plugin_config.nvim-autopairs"),
   }
-
-  -- Code action menu
+  -- Smooth infile shifting
   use {
-    "weilbith/nvim-code-action-menu",
-    cmd = "CodeActionMenu",
-    config = require("plugin_config.neovim-code-action-menu"),
+    "phaazon/hop.nvim",
+    branch = "v2",
+    config = require("plugin_config.hop"),
   }
-  -- Completion menu
+  -- Better comment handler
+  use {
+    "numToStr/Comment.nvim",
+    config = require("plugin_config.comment")
+  }
+  -- Spelling checker
+  use { "rhysd/vim-grammarous" }
+  -- Auto close html / javascript tags
+  use {
+    'windwp/nvim-ts-autotag',
+    config = require("plugin_config.ts-autotag")
+  }
+  -- Auto completion handler
   use {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -97,101 +115,38 @@ return require("packer").startup(function(use)
     },
     config = require('plugin_config.nvim-cmp'),
   }
-
+  -- More auto completion
   use {
     "tzachar/cmp-tabnine",
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
 
-  -- Snippets
-  use {
-    'hrsh7th/vim-vsnip',
-    config = require('plugin_config.vsnip')
-  }
 
-  -- Greeter
+
+
+  -- Editor
+
+  -- Custom buffer line on top
+  use {
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = require("plugin_config.bufferline"),
+  }
+  -- Custom status line on bottom
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    config = require("plugin_config.lualine"),
+  }
+  -- Custom startup page
   use {
     "goolord/alpha-nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
     config = require("plugin_config.alpha"),
   }
-
-  -- Editing
-  use {
-    "windwp/nvim-autopairs",
-    config = require("plugin_config.nvim-autopairs"),
-  }
-  use {
-    "luochen1990/rainbow",
-  }
-  use { -- Indent marker
-    "lukas-reineke/indent-blankline.nvim",
-  }
-  use { -- Active indent
-    event = { "BufReadPre", "BufNewFile" },
-    init = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "mason" },
-        callback = function()
-          vim.b.miniindentscope_disable = true
-        end,
-      })
-    end,
-    "echasnovski/mini.indentscope",
-    config = require("plugin_config.indentscope"),
-  }
-  -- use {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   config = require("plugin_config.indent-blankline"),
-  -- }
-  use {
-    "rhysd/vim-grammarous",
-  }
-
-  -- Stylings
-  use {
-    "lilydjwg/colorizer",
-  }
-
-  -- Diagnostics menu
-  use {
-    "folke/trouble.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("plugin_config.trouble"),
-  }
-
-  -- Git modification (on the left)
-  use {
-    "lewis6991/gitsigns.nvim",
-    config = require("plugin_config.gitsigns"),
-  }
-  use {
-    "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = require("plugin_config.diff-view"),
-  }
-
-  -- Navigation
-  use {
-    "phaazon/hop.nvim",
-    branch = "v2",
-    config = require("plugin_config.hop"),
-  }
-
-  -- Comments lines
-  use {
-    "numToStr/Comment.nvim",
-    config = require("plugin_config.comment")
-  }
-
-  -- Highlight trailing whitespace
-  use {
-    "ntpeters/vim-better-whitespace",
-    config = require("plugin_config.vim-better-whitespace"),
-  }
-
-  -- Search utilities
+  -- File navigator
   use {
     "nvim-telescope/telescope.nvim",
     requires = {
@@ -204,79 +159,116 @@ return require("packer").startup(function(use)
     },
     config = require("plugin_config.telescope"),
   }
-
+  -- File explorer
   use {
     'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
+    requires = { 'nvim-tree/nvim-web-devicons' },
     tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = require("plugin_config.nvim-tree")
   }
-
-  -- JavaScript
-  use {
-    'windwp/nvim-ts-autotag',
-    config = require("plugin_config.ts-autotag")
-  }
-
-  -- Todo Comments
-  use {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = require("plugin_config.todo-comments")
-  }
-
-  -- Markdown
-  use {
-    "ixru/nvim-markdown",
-  }
-  use {
-    "dhruvasagar/vim-table-mode",
-  }
-  use {
-    "mzlogin/vim-markdown-toc",
-  }
-  use {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = require("plugin_config.markdown-preview"),
-    ft = { "markdown" },
-  }
-
-  -- Discord
-  use {
-    "andweeb/presence.nvim",
-    config = require("plugin_config.presence"),
-  }
-
-  -- Image viewer
-  use {
-    "samodostal/image.nvim"
-  }
-
-  -- Notifier
+  -- Fancy notifications about events
   use {
     "rcarriga/nvim-notify",
     config = function()
       vim.notify = require("notify")
     end,
   }
+  -- Better command and infile searchbar
+  -- use {
+  --   "folke/noice.nvim",
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     -- OPTIONAL:
+  --     --   `nvim-notify` is only needed, if you want to use the notification view.
+  --     --   If not available, we use `mini` as the fallback
+  --     "rcarriga/nvim-notify",
+  --   },
+  --   config = require("plugin_config.noice")
+  -- }
 
+
+
+  -- UI
+
+  -- Indent marker
   use {
-    "wakatime/vim-wakatime",
+    "lukas-reineke/indent-blankline.nvim",
+  }
+  -- Active indent
+  use {
+    "echasnovski/mini.indentscope",
+    event = { "BufReadPre", "BufNewFile" },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "mason" },
+        callback = function()
+          vim.b.miniindentscope_disable = true
+        end,
+      })
+    end,
+    config = require("plugin_config.indentscope"),
+  }
+  -- Pretty list for diagnostics
+  use {
+    "folke/trouble.nvim",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = require("plugin_config.trouble"),
+  }
+  -- Enhanced colors and highlighting
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    config = require("plugin_config.nvim-treesitter"),
+  }
+  -- Display whitespaces at end of lines
+  use {
+    "ntpeters/vim-better-whitespace",
+    config = require("plugin_config.vim-better-whitespace"),
+  }
+  -- Display hexa, rgb color
+  use {
+    "lilydjwg/colorizer",
+  }
+  -- Better code action menu
+  use {
+    "weilbith/nvim-code-action-menu",
+    cmd = "CodeActionMenu",
+    config = require("plugin_config.neovim-code-action-menu"),
+  }
+  -- Add matching color for matching brackets, parenthesis...
+  use {
+    "p00f/nvim-ts-rainbow",
+    config = require("plugin_config.rainbow"),
+  }
+  -- Git decorations
+  use {
+    "lewis6991/gitsigns.nvim",
+    config = require("plugin_config.gitsigns"),
   }
 
+
+
+
+  -- Markdown
+
+  -- Markdown manager
   use {
-    "folke/noice.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-    config = require("plugin_config.noice")
+    "ixru/nvim-markdown",
+  }
+  -- Better table in Markdown
+  use {
+    "dhruvasagar/vim-table-mode",
+  }
+  -- Table of content creator in Markdown
+  use {
+    "mzlogin/vim-markdown-toc",
+  }
+  -- Preview a Markdown file
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    config = require("plugin_config.markdown-preview"),
+    ft = { "markdown" },
   }
 
   if packer_bootstrap then

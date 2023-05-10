@@ -69,10 +69,7 @@ return require("packer").startup(function(use)
   use {
     "catppuccin/nvim",
     name = "catppuccin",
-    config = function()
-      require('plugin_config.catppuccin').setup()
-    end,
-    -- config = require("plugin_config.catppuccin"),
+    config = require("plugin_config.catppuccin"),
   }
 
 

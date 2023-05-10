@@ -24,7 +24,7 @@ return function()
       messages = {
         -- NOTE: If you enable messages, then the cmdline is enabled automatically.
         -- This is a current Neovim limitation.
-        enabled = true,              -- enables the Noice messages UI
+        enabled = false,             -- enables the Noice messages UI
         view = "notify",             -- default view for messages
         view_error = "notify",       -- view for errors
         view_warn = "notify",        -- view for warnings
@@ -112,9 +112,9 @@ return function()
         },
         hover = {
           enabled = true,
-          silent = false, -- set to true to not show a message if hover is not available
-          view = nil,     -- when nil, use defaults from documentation
-          opts = {},      -- merged with defaults from documentation
+          silent = true, -- set to true to not show a message if hover is not available
+          view = nil,    -- when nil, use defaults from documentation
+          opts = {},     -- merged with defaults from documentation
         },
         signature = {
           enabled = true,

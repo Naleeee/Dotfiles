@@ -239,8 +239,8 @@ return require("packer").startup(function(use)
   }
   -- Add matching color for matching brackets, parenthesis...
   use {
-    "p00f/nvim-ts-rainbow",
-    config = require("plugin_config.rainbow"),
+    "HiPhish/nvim-ts-rainbow2",
+    config = require("plugin_config.nvim-ts-rainbow2"),
   }
   -- Git decorations
   use {

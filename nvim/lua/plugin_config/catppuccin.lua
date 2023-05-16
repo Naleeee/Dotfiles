@@ -1,24 +1,13 @@
-return function()
-  require("catppuccin").setup({
-    flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = {
-      -- :h background
-      light = "latte",
-      dark = "mocha",
-    },
-    transparent_background = false,
-    show_end_of_buffer = true, -- show the '~' characters after the end of buffers
-    term_colors = false,
-    dim_inactive = {
-      enabled = false,
-      shade = "dark",
-      percentage = 0.15,
-    },
-    no_italic = false, -- Force no italic
-    no_bold = false,   -- Force no bold
+local M = {}
+
+local catppuccin = require('catppuccin')
+
+function M.setup()
+  catppuccin.setup({
+    flavour = 'mocha',
     styles = {
-      comments = { "italic" },
-      conditionals = { "italic" },
+      comments = { 'italic' },
+      conditionals = { 'italic' },
       loops = {},
       functions = {},
       keywords = {},
@@ -30,26 +19,39 @@ return function()
       types = {},
       operators = {},
     },
-    color_overrides = {},
-    custom_highlights = {},
     integrations = {
+      aerial = true,
       cmp = true,
+      dap = {
+        enabled = true,
+        enable_ui = true,
+      },
+      fidget = true,
       gitsigns = true,
       illuminate = true,
       indent_blankline = {
         enabled = true,
         colored_indent_levels = false,
       },
+      leap = true,
+      lsp_trouble = true,
       markdown = true,
+      navic = {
+        enabled = true,
+        custom_bg = 'NONE',
+      },
+      native_lsp = {
+        enabled = true,
+      },
       notify = true,
       nvimtree = true,
       telescope = true,
       treesitter = true,
       which_key = true,
-      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
   })
 
-  -- setup must be called before loading
-  vim.cmd.colorscheme "catppuccin"
+  vim.cmd.colorscheme('catppuccin')
 end
+
+return M

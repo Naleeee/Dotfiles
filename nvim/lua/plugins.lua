@@ -59,6 +59,11 @@ return require("packer").startup(function(use)
   }
   -- Coding summary
   use { "wakatime/vim-wakatime" }
+  -- Display the available key bindings
+  use {
+    "folke/which-key.nvim",
+    config = require("plugin_config.which-key"),
+  }
 
 
 
@@ -69,10 +74,7 @@ return require("packer").startup(function(use)
   use {
     "catppuccin/nvim",
     name = "catppuccin",
-    config = function()
-      require('plugin_config.catppuccin').setup()
-    end,
-    -- config = require("plugin_config.catppuccin"),
+    config = require("plugin_config.catppuccin"),
   }
 
 
@@ -237,13 +239,18 @@ return require("packer").startup(function(use)
   }
   -- Add matching color for matching brackets, parenthesis...
   use {
-    "p00f/nvim-ts-rainbow",
-    config = require("plugin_config.rainbow"),
+    "HiPhish/nvim-ts-rainbow2",
+    config = require("plugin_config.nvim-ts-rainbow2"),
   }
   -- Git decorations
   use {
     "lewis6991/gitsigns.nvim",
     config = require("plugin_config.gitsigns"),
+  }
+  -- Highlight other uses of the current cursoe placement
+  use {
+    "RRethy/vim-illuminate",
+    config = require("plugin_config.vim-illuminate"),
   }
 
 

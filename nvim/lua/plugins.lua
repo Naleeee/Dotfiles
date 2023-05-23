@@ -52,6 +52,11 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = require("plugin_config.diff-view"),
   }
+  -- Git merge viewer
+  use {
+    'akinsho/git-conflict.nvim',
+    config = require("plugin_config.git-conflict"),
+  }
   -- Display discord activity
   use {
     "andweeb/presence.nvim",

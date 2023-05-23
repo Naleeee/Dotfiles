@@ -1,0 +1,21 @@
+{
+  "Plugin setup": {
+    "prefix": "plugset",
+    "body": [
+      "return function()",
+      "  require(\"$1\").setup(",
+      "    $2",
+      "  )",
+      "end"
+    ],
+    "description": "Default plugin setup in lua"
+  },
+  "Key mapper": {
+    "prefix": "kmap",
+    "body": [
+      "local map = require(\"utils\").map",
+      "map(\"$1\", \"$2\", \"$3\")"
+    ],
+    "description": "Insert mapping element for a plugin"
+  }
+}

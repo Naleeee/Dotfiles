@@ -54,7 +54,7 @@
   "Create new function": {
     "prefix": "cnf",
     "body": [
-      "${async }const $1 = ($2) => {",
+      "${async} const $1 = ($2) => {",
       "  $3",
       "};"
     ],
@@ -63,7 +63,7 @@
   "Use State": {
     "prefix": "us",
     "body": [
-      "const [$1, $2] = useState($3);"
+      "const [$1, $2] = useState<$3>($4);"
     ],
     "description": "Insert a new useState"
   },
@@ -97,8 +97,19 @@
     ],
     "description": "Fetch data from url"
   },
+  "Try Catch hook": {
+    "prefix": "tcatch",
+    "body": [
+      "try {",
+      "  $1",
+      "} catch ($2) {",
+      "  $3",
+      "}"
+    ],
+    "description": "Default try catch hook"
+  },
   "Console log": {
-    "prefix": "log",
+    "prefix": "lg",
     "body": [
       "console.log($1);"
     ],

@@ -109,7 +109,7 @@
     "description": "Default try catch hook"
   },
   "Console log": {
-    "prefix": "lg",
+    "prefix": "cl",
     "body": [
       "console.log($1);"
     ],

@@ -7,6 +7,7 @@ return function()
       "cmake",
       "dockerls",
       "eslint",
+      "graphql",
       "lua_ls",
       "tsserver",
       "vimls",

@@ -16,7 +16,7 @@
   "Create new function": {
     "prefix": "cnf",
     "body": [
-      "${async }const $1 = ($2) => {",
+      "const $1 = ${async} ($2) => {",
       "  $3",
       "};"
     ],

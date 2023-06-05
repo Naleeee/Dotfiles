@@ -196,6 +196,9 @@ return require("packer").startup(function(use)
     },
     config = require("plugin_config.noice")
   }
+  use {
+    "alec-gibson/nvim-tetris",
+  }
 
 
 

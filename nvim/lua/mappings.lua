@@ -69,4 +69,4 @@ map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 
 vim.api.nvim_create_user_command("W", "w", {})
 
--- map("n", "<Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", ":x<ENTER>")
+map("n", "<Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", "<Cmd>Tetris<CR>")

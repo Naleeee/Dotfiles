@@ -6,7 +6,7 @@ vim.g.mapleader = ","
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
 
 -- Remove search highlight with //
-map("n", "<leader>noh", "<Cmd>nohlsearch<CR>")
+map("n", "<leader><leader>", "<Cmd>nohlsearch<CR>")
 
 -- Splits
 map("n", "ss", "<Cmd>split<CR><C-W>j")
@@ -69,4 +69,4 @@ map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 
 vim.api.nvim_create_user_command("W", "w", {})
 
--- map("n", "<Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", ":x<ENTER>")
+map("n", "<leader><Up><Up><Down><Down><Left><Right><Left><Right>ba<space>", "<Cmd>Tetris<CR>")

@@ -8,8 +8,8 @@ return function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
   map("n", "<leader>of", "<Cmd>lua vim.diagnostic.open_float()<CR>")
-  map("n", "[d", "<Cmd>lua vim.diagnostic.goto_prev()<CR>")
-  map("n", "]d", "<Cmd>lua vim.diagnostic.goto_next()<CR>")
+  map("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>")
+  map("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>")
 
   local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) utils.buf_map(bufnr, ...) end

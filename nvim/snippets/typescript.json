@@ -16,7 +16,7 @@
   "Create new function": {
     "prefix": "cnf",
     "body": [
-      "${async }const $1 = ($2) => {",
+      "const $1 = ${async} ($2) => {",
       "  $3",
       "};"
     ],
@@ -44,7 +44,7 @@
     "description": "Fetch data from url"
   },
   "Console log": {
-    "prefix": "log",
+    "prefix": "cl",
     "body": [
       "console.log($1);";
     ],

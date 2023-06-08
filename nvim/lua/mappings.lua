@@ -3,7 +3,7 @@ local map = require("utils").map
 vim.g.mapleader = ","
 
 -- Buffer manipulation
-map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
+map("n", "<leader>bqr", "<Cmd>bp <BAR> bd #<CR>")
 
 -- Remove search highlight with //
 map("n", "<leader><leader>", "<Cmd>nohlsearch<CR>")

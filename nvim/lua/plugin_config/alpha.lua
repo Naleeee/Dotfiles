@@ -97,7 +97,17 @@ return function()
     [[                                                *ª~                                                         ]],
   }
 
-  local MyHeaders = { naleuh, sombra, deathNote, codingTime, neovim }
+  local error404 = {
+    [[        :::      :::::::      ::: ]],
+    [[      :+:      :+:   :+:    :+:   ]],
+    [[    +:+ +:+   +:+   +:+   +:+ +:+ ]],
+    [[  +#+  +:+   +#+   +:+  +#+  +:+  ]],
+    [[+#+#+#+#+#+ +#+   +#+ +#+#+#+#+#+ ]],
+    [[     #+#   #+#   #+#       #+#    ]],
+    [[    ###    #######        ###     ]],
+  }
+
+  local MyHeaders = { naleuh, sombra, deathNote, codingTime, neovim, error404 }
 
   dashboard.section.header.val = MyHeaders[math.random(#MyHeaders)]
 

@@ -52,6 +52,11 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = require("plugin_config.diff-view"),
   }
+  -- Git merge viewer
+  use {
+    'akinsho/git-conflict.nvim',
+    config = require("plugin_config.git-conflict"),
+  }
   -- Display discord activity
   use {
     "andweeb/presence.nvim",
@@ -123,6 +128,10 @@ return require("packer").startup(function(use)
     run = "./install.sh",
     requires = "hrsh7th/nvim-cmp",
   }
+  -- Prettier handler
+  use {
+    "prettier/vim-prettier",
+  }
 
 
 
@@ -186,6 +195,9 @@ return require("packer").startup(function(use)
       -- "rcarriga/nvim-notify",
     },
     config = require("plugin_config.noice")
+  }
+  use {
+    "alec-gibson/nvim-tetris",
   }
 
 

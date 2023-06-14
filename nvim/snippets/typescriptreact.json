@@ -81,7 +81,7 @@
     "body": [
       "useEffect(() => {",
       "  console.log($1);",
-      "}, [$2]);"
+      "}, [$1]);"
     ],
     "description": "Insert a new useEffect for log"
   },

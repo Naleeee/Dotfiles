@@ -264,6 +264,10 @@ return require("packer").startup(function(use)
     "RRethy/vim-illuminate",
     config = require("plugin_config.vim-illuminate"),
   }
+  use {
+    "tzachar/highlight-undo.nvim",
+    config = require("plugin_config.highlight-undo"),
+  }
 
 
 

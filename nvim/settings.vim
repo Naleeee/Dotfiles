@@ -26,6 +26,7 @@ set cursorline                                  " Highlight current line
 set clipboard+=unnamedplus                       " Copy and paste between vim and others
 set nocp
 
+set noswapfile
 set number                                      " Display lines number
 set nu rnu                                      " Make lines number display relative
 set scrolloff=15                                " Make the cursor see x lines above cursor

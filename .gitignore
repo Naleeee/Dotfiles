@@ -10,6 +10,8 @@
 # NeoVim config
 !nvim
 !nvim/*
+!nvim/docs/*
+!nvim/docs/assets/*
 !nvim/ftplugin/*
 !nvim/lua/*
 !nvim/lua/plugin_config/*

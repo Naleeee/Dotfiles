@@ -52,18 +52,11 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     config = require("plugin_config.diff-view"),
   }
-  -- Git merge viewer
-  use {
-    'akinsho/git-conflict.nvim',
-    config = require("plugin_config.git-conflict"),
-  }
   -- Display discord activity
   use {
     "andweeb/presence.nvim",
     config = require("plugin_config.presence"),
   }
-  -- Coding summary
-  use { "wakatime/vim-wakatime" }
   -- Display the available key bindings
   use {
     "folke/which-key.nvim",
@@ -181,7 +174,7 @@ return require("packer").startup(function(use)
   use {
     "rcarriga/nvim-notify",
     config = function()
-      vim.notify = require("notify")
+      vim.notify = require("plugin_config.notify")
     end,
   }
   -- Better command and infile searchbar
@@ -263,6 +256,10 @@ return require("packer").startup(function(use)
   use {
     "RRethy/vim-illuminate",
     config = require("plugin_config.vim-illuminate"),
+  }
+  use {
+    "tzachar/highlight-undo.nvim",
+    config = require("plugin_config.highlight-undo"),
   }
 
 

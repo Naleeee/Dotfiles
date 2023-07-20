@@ -176,10 +176,22 @@ return function()
     [[O(")(")]],
   }
 
+  local noToAny = {
+    [[  ________________]],
+    [[ |                |]],
+    [[ |      NO TO     |]],
+    [[ |      ANY       |]],
+    [[ |________________|]],
+    [[(\__/)  ||]],
+    [[(ᗒᗣᗕ)   ||]],
+    [[/    \っ||]],
+  }
+
   local helloThere = { "Hello There" }
 
   -- local MyFooters = require("alpha.fortune") -- Random set of sentences
-  local MyFooters = { hiddenCat, runningMan, musicalNotes, stfuTrain, failWhale, pacman, helloThere, sleepyRabbit } -- Personnal sentences
+  local MyFooters = { hiddenCat, runningMan, musicalNotes, stfuTrain, failWhale, pacman, helloThere, sleepyRabbit,
+    noToAny } -- Personnal sentences
   dashboard.section.footer.val = MyFooters[math.random(#MyFooters)]
 
   -- Send config to alpha

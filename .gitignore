@@ -18,6 +18,8 @@
 # Terminator config
 !terminator
 !terminator/*
+!terminator/docs/*
+!terminator/docs/assets/*
 
 # Zsh
 !zsh

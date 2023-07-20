@@ -1,9 +1,4 @@
 return function()
-  -- Bubbles config for lualine
-  -- Author: lokesh-krishna
-  -- MIT license, see LICENSE for more details.
-
-  -- stylua: ignore
   local colors = {
     cyan      = '#79dac8',
     black     = '#080808',

@@ -10,6 +10,28 @@
 
 ![Code Preview](./docs/assets/CodePreview.png)
 
+<br />
+
+## Table of content
+
+<!-- vim-markdown-toc Marked -->
+
+* [File Structure](#file-structure)
+  * [Ft Plugin](#ft-plugin)
+  * [Lua - Mappings](#lua---mappings)
+  * [Lua - Plugins](#lua---plugins)
+    * [Configuration](#configuration)
+  * [Snippets](#snippets)
+  * [Settings](#settings)
+* [Features](#features)
+  * [Buffer and Status Lines](#buffer-and-status-lines)
+  * [File Tree and Naviguation](#file-tree-and-naviguation)
+  * [Lsp and Auto Completion](#lsp-and-auto-completion)
+  * [Color Scheme](#color-scheme)
+  * [Start Up Page](#start-up-page)
+
+<!-- vim-markdown-toc -->
+
 ## File Structure
 
 My configuration is almost fully written in Lua.

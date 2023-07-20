@@ -16,7 +16,7 @@ It has many cool features and designs available, fully customizable.
 
 Feel free to use my personal theme or setup your own by following the installation steps on the repository.
 
-![Personal P10K Theme](../docs/assets/P10KPreview.png)
+![Personal P10K Theme](./assets/P10KPreview.png)
 
 ## Features
 

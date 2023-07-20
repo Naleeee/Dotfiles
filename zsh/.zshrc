@@ -130,8 +130,25 @@ gnb() {
 }
 alias glog="eval $(ssh-agent -s) ssh-add ~/.ssh/NaleLinuxKey"
 
+# Docker
+alias dps="docker ps -s"
+alias dpsa="docker ps -a -s"
+alias dkr="docker kill $(docker ps -q)"
+alias dks="docker rm $(docker ps -a -q)"
+alias drmi="docker rmi $(docker images -q)"
+alias de="docker exec -i -t /bin/bash $1"
+alias des="docker exec -i -t -u root /bin/bash $1"
+alias dh="echo \"Docker aliases usage:\"
+          echo \"   - dps: Display currently running containers with sizes\"
+          echo \"   - dpsa: Display every containers with sizes\"
+          echo \"   - dkr: Kill every currently running container\"
+          echo \"   - dks: Remove every stopped containers\"
+          echo \"   - drmi: Remove every images\"
+          echo \"   - de: Execute the provided container with /bin/bash\"
+          echo \"   - des: Same as de but with root privileges\""
+
 # Utils
-alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules $1"
+alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules --exclude-dir=.next $1"
 alias l="clear && ls -l"
 
 # Other
@@ -146,6 +163,8 @@ alias image="asciiview $1 -driver curses"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/powerlevel10k/powerlevel10k.zsh-theme
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+export PATH=$PATH:/bin/nvim/
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

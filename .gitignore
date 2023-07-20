@@ -10,6 +10,8 @@
 # NeoVim config
 !nvim
 !nvim/*
+!nvim/docs/*
+!nvim/docs/assets/*
 !nvim/ftplugin/*
 !nvim/lua/*
 !nvim/lua/plugin_config/*
@@ -18,10 +20,14 @@
 # Terminator config
 !terminator
 !terminator/*
+!terminator/docs/*
+!terminator/docs/assets/*
 
 # Zsh
 !zsh
 !zsh/*
+!zsh/docs/*
+!zsh/docs/assets/*
 
 !DiscordInstaller.sh
 

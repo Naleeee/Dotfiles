@@ -70,7 +70,7 @@ They are tilted by the plugin's name.
 
 ### Snippets
 
-I set all my snippets in the dedicated folder with vim-vnip plugin.
+I set all my snippets in the dedicated folder with [Vim VSnip](https://github.com/hrsh7th/vim-vsnip) plugin.
 
 Each file must be correctly named according file type in which they are used.
 
@@ -112,15 +112,15 @@ Here are a list of the main features of my configuration:
 
 ### Buffer and Status Lines
 
-**Buffer Line**
+**[Bufferline](https://github.com/akinsho/bufferline.nvim)**
 
 ![Buffer Line](./docs/assets/BufferLine.png)
 
 <br />
 
-**Status Line**
+**[Status Line](https://github.com/nvim-lualine/lualine.nvim)**
 
-I use lualine as status bar with a custom design similar to NvChad line.
+I use [Lualine](https://github.com/nvim-lualine/lualine.nvim) as status bar with a custom design similar to the [NvChad](https://nvchad.com/docs/features#statusline) line.
 
 ![Normal Line](./docs/assets/NormalLine.png)
 ![Insert Line](./docs/assets/InsertLine.png)
@@ -131,11 +131,11 @@ I use lualine as status bar with a custom design similar to NvChad line.
 
 ### File Tree and Naviguation
 
-**Nvim Tree example**
+**[Nvim Tree](https://github.com/nvim-tree/nvim-tree.lua) example**
 
 ![Nvim Tree](./docs/assets/Tree.png)
 
-**Telescope** for file naviguation and live grep
+**[Telescope](https://github.com/nvim-telescope/telescope.nvim)** for file naviguation and live grep
 
 ![Telescope](./docs/assets/Telescope.png)
 
@@ -143,23 +143,23 @@ I use lualine as status bar with a custom design similar to NvChad line.
 
 ### Lsp and Auto Completion
 
-I use Mason paired to nvim-lspconfig as a Lsp manager.
+I use [Mason](https://github.com/williamboman/mason.nvim) paired to [Nvim Lsp Config](https://github.com/neovim/nvim-lspconfig) as a Lsp manager.
 
-nvim-cmp and tabnine are here for auto completion.
+[Nvim Cmp](https://github.com/hrsh7th/nvim-cmp) and [Tabnine](https://github.com/tzachar/cmp-tabnine) are here for auto completion.
 
 <br />
 
 ### Color Scheme
 
-I currently use catpputccin as a color scheme, it match well with my transparent vim.
+I currently use [Catppuccin](https://github.com/catppuccin/nvim) as a color scheme, it match well with my transparent vim.
 
 <br />
 
 ### Start Up Page
 
-Alpha is a very cool plugin for a startup page.
+[Alpha Nvim](https://www.google.com/search?q=alpha+nvim&oq=alpha+nvim&aqs=chrome..69i57.2016j0j4&sourceid=chrome&ie=UTF-8) is a very cool plugin for a startup page.
 
-I've set many ascii arts displayed both on top and bottom of the page.
+I've set many ascii arts on the config file displayed both on top and bottom of the page.
 
 ![Alpha](./docs/assets/AlphaPreview.png)
 

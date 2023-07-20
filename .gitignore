@@ -22,6 +22,8 @@
 # Zsh
 !zsh
 !zsh/*
+!zsh/docs/*
+!zsh/docs/assets/*
 
 !DiscordInstaller.sh
 

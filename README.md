@@ -4,7 +4,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![NeoVim][NeoVim]][NeoVim-url]
 
@@ -47,7 +46,6 @@
 * [Usage](#usage)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
-* [License](#license)
 * [Contact](#contact)
 
 </details>
@@ -172,17 +170,6 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- LICENSE -->
-## License
-
-TBD
-
-<!-- Distributed under the MIT License. See `LICENSE.txt` for more information. -->
-
-<br />
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- CONTACT -->
 ## Contact
 
@@ -205,8 +192,6 @@ Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/D
 [stars-url]: https://github.com/Naleeee/Dotfiles/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Naleeee/Dotfiles.svg?style=for-the-badge
 [issues-url]: https://github.com/Naleeee/Dotfiles/issues
-[license-shield]: https://img.shields.io/github/license/Naleeee/Dotfiles.svg?style=for-the-badge
-[license-url]: https://github.com/Naleeee/Dotfiles/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathan-lemale
 [product-screenshot]: images/screenshot.png

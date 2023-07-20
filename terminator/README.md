@@ -2,13 +2,19 @@
 
 Terminator is the terminal tool I am using.
 
+<br />
+
 ## Visual
 
 ### Basic Visual:
-![Terminator exemple](./assets/Visual.png)
+
+![Terminator exemple](./docs/assets/Visual.png)
 
 ### Split example
-![Split exemple](./assets/Split.png)
+
+![Split exemple](./docs/assets/Split.png)
+
+<br />
 
 ## Features
 

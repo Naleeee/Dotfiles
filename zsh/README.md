@@ -6,6 +6,8 @@ As a shell, I'm using [Zsh](https://en.wikipedia.org/wiki/Z_shell).
 
 Paired with [Oh My Zsh](https://ohmyz.sh/), it become very powerful with strong plugins.
 
+<br />
+
 ## Theme
 
 As a better looking terminal, I am using [Power Level 10K](https://github.com/romkatv/powerlevel10k).
@@ -16,7 +18,9 @@ It has many cool features and designs available, fully customizable.
 
 Feel free to use my personal theme or setup your own by following the installation steps on the repository.
 
-![Personal P10K Theme](./assets/P10KPreview.png)
+![Personal P10K Theme](./docs/assets/P10KPreview.png)
+
+<br />
 
 ## Features
 

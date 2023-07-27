@@ -1,6 +1,9 @@
 return function()
   local map = require("utils").map
 
+  map("n", "<leader>e", "<Cmd>lua require(\"telescope.builtin\").find_files({hidden=true})<CR>")
+  map("n", "<leader>g", "<Cmd>lua require(\"telescope.builtin\").live_grep()<CR>")
+
   local telescope = require("telescope")
 
   local actions = require("telescope.actions")
@@ -125,7 +128,4 @@ return function()
   })
 
   telescope.load_extension("fzf")
-
-  map("n", "<leader>e", "<Cmd>lua require(\"telescope.builtin\").find_files({hidden=true})<CR>")
-  map("n", "<leader>g", "<Cmd>lua require(\"telescope.builtin\").live_grep()<CR>")
 end

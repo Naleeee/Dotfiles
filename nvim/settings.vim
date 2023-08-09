@@ -70,3 +70,4 @@ hi Normal ctermbg=none guibg=none
 
 " Automatically call clang-format when saving a cpp file
 " autocmd FileType cpp autocmd BufWritePre <buffer> ClangFormat
+autocmd BufWritePre * :PrettierAsync

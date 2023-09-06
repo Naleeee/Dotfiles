@@ -20,6 +20,7 @@ WHITE="\e[0;97m"
 NOCOLOR="\e[0m"
 
 BOLD_YELLOW="\e[1;93m"
+ITALIC_GRAY="\e[3;90m"
 PROMPT="\e[1;92m"
 
 PromptYesNo () {
@@ -38,18 +39,19 @@ echo -e "${BOLD_YELLOW}\nStarting auto setup script !\n\n${NOCOLOR}"
 
 # Pacman setup
 echo -e "${LIGHT_CYAN}Starting Pacman package databases update\n${NOCOLOR}"
-sudo pacman -Syyu
+# sudo pacman -Syyu
 
 
 # Snap setup
 echo -e "${LIGHT_CYAN}\nInitiating Snap\n${NOCOLOR}"
 sudo pacman --needed -S snapd
 sudo systemctl enable --now snapd.socket
-sudo ln -s /var/lib/snapd/snap /snap
+sudo ln -sv /var/lib/snapd/snap /snap
 
 
 # Neovim setup
 echo -e "${PROMPT}\nDo you want to install Neovim, the only true code editor ? [y/n]${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://snapcraft.io/install/nvim/manjaro${NOCOLOR}"
 PromptYesNo
 if [[ $? == 1 ]]; then
   echo -e "${LIGHT_CYAN}\nStarting Neovim installation\n${NOCOLOR}"
@@ -68,6 +70,7 @@ git config --global core.editor "nvim"
 
 # Ssh Key generation and login
 echo -e "${PROMPT}Do you want to generate a Ssh key ? [y/n]${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html${NOCOLOR}"
 PromptYesNo
 if [[ $? == 1 ]]; then
   echo -e "${LIGHT_CYAN}\nStarting Ssh key generation\n${NOCOLOR}"
@@ -97,6 +100,7 @@ fi
 
 # Paru AUR helper
 echo -e "${PROMPT}Do you want to install Paru AUR helper ? [y/n]${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://ostechnix.com/how-to-install-paru-aur-helper-in-arch-linux/${NOCOLOR}"
 PromptYesNo
 if [[ $? == 1 ]]; then
   echo -e "${LIGHT_CYAN}\nStarting Paru AUR helper install\n${NOCOLOR}"
@@ -177,7 +181,8 @@ fi
 
 
 # Zsh
-echo -e "${LIGHT_CYAN}\nStarting Docker install\n${NOCOLOR}"
+echo -e "${LIGHT_CYAN}\nStarting Zsh and Oh My Zsh install\n${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://gist.github.com/yovko/becf16eecd3a1f69a4e320a95689249e${NOCOLOR}"
 sudo pacman -Syu zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting

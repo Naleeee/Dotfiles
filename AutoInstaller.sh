@@ -38,7 +38,7 @@ echo -e "${BOLD_YELLOW}\nStarting auto setup script !\n\n${NOCOLOR}"
 
 # Pacman setup
 echo -e "${LIGHT_CYAN}Starting Pacman package databases update\n${NOCOLOR}"
-# sudo pacman -Syyu
+sudo pacman -Syyu
 
 
 # Snap setup

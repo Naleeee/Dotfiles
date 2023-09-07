@@ -53,10 +53,10 @@ return require("packer").startup(function(use)
     config = require("plugin_config.diff-view"),
   }
   -- Display discord activity
-  use {
-    "andweeb/presence.nvim",
-    config = require("plugin_config.presence"),
-  }
+  -- use {
+  --   "andweeb/presence.nvim",
+  -- config = require("plugin_config.presence"),
+  -- }
   -- Display the available key bindings
   use {
     "folke/which-key.nvim",
@@ -153,12 +153,12 @@ return require("packer").startup(function(use)
   -- File navigator
   use {
     "nvim-telescope/telescope.nvim",
+    tag = '0.1.2',
     requires = {
       { "nvim-lua/plenary.nvim" },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        run =
-        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+        run = "make"
       },
     },
     config = require("plugin_config.telescope"),
@@ -282,9 +282,9 @@ return require("packer").startup(function(use)
   -- Preview a Markdown file
   use {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    run = function() vim.fn["mkdp#util#install"]() end,
     config = require("plugin_config.markdown-preview"),
-    ft = { "markdown" },
+    --   ft = { "markdown" },
   }
 
   if packer_bootstrap then

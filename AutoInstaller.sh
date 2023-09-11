@@ -189,3 +189,27 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 chsh -s $(which zsh)
 zsh
+
+# Move to monitor handler
+echo -e "${LIGHT_CYAN}\nStarting move to monitor setup\n${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://github.com/AlexisBRENON/ewmh_m2m${NOCOLOR}"
+pip install ewmh-m2m
+echo -e "${PROMPT}Did the command failed with error ${LIGHT_RED}\"Error Externally Managed Environment\"${PROMPT} ? [y/n]${NOCOLOR}"
+PromptYesNo
+if [[ $? == 1 ]]; then
+  echo -e "${LIGHT_CYAN}Regarding the following documentation the command can still work by skipping warnings.${NOCOLOR}"
+  echo -e "${ITALIC_GRAY}Source: https://www.adamsdesk.com/posts/resolve-pip-externally-managed-environment/${NOCOLOR}"
+  echo -e "${PROMPT}Do you still want to install move to next monitor ? [y/n]${NOCOLOR}"
+  PromptYesNo
+  if [[ $? == 1 ]]; then
+    echo -e "${LIGHT_CYAN}\nStarting installing move to monitor package\n${NOCOLOR}"
+
+    pip install ewmh-m2m --break-system-packages
+    echo -e "${LIGHT_CYAN}\nYou still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:\n${NOCOLOR}"
+    echo -e "${LIGHT_YELLOW}\$ move-to-monitor --direction EAST${NOCOLOR}"
+  fi
+else
+  echo -e "${LIGHT_CYAN}\nNice ! No errors, no problems !\n${NOCOLOR}"
+  echo -e "${LIGHT_CYAN}\nYou still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:\n${NOCOLOR}"
+  echo -e "${LIGHT_YELLOW}\$ move-to-monitor --direction EAST${NOCOLOR}"
+fi

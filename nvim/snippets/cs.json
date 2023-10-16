@@ -1,0 +1,42 @@
+{
+  "Serialized Field": {
+    "prefix": "sf",
+    "body": ["[SerializeField] private $1 $2;"],
+    "description": "Create a basic serialized field."
+  },
+  "Private variable": {
+    "prefix": "var",
+    "body": ["private $1 _$2;"],
+    "description": "Create a basic serialized field."
+  },
+  "Default start function": {
+    "prefix": "start",
+    "body": ["void Start()", "{", "    $1", "}"],
+    "description": "Implement the basic Start function"
+  },
+  "Default update function": {
+    "prefix": "update",
+    "body": ["void Update()", "{", "    $1", "}"],
+    "description": "Implement the basic update function"
+  },
+  "Default public function setup": {
+    "prefix": "pufunc",
+    "body": ["public void $1()", "{", "    $2", "}"],
+    "description": "Implement the basic update function as public"
+  },
+  "Default private function setup": {
+    "prefix": "prfunc",
+    "body": ["private void $1()", "{", "    $2", "}"],
+    "description": "Implement the basic update function as private"
+  },
+  "Get component": {
+    "prefix": "gc",
+    "body": ["GetComponent<$1>()"],
+    "description": "Call the GetComponent method"
+  },
+  "Delta time": {
+    "prefix": "dt",
+    "body": ["Time.deltatime"],
+    "description": "Simple deltatime call"
+  }
+}

@@ -89,7 +89,7 @@ return function()
   lsp["csharp_ls"].setup {
     on_attach = on_attach,
     filetypes = { "cs" },
-    cmd = { "csharp-ls" },
+    cmd = { "/home/nale/.dotnet/tools/csharp-ls" },
     capabilities = capabilities,
   }
 

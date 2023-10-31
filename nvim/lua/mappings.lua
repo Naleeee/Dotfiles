@@ -60,6 +60,15 @@ map("n", "<leader>qf", "<Cmd>CodeActionMenu<CR>")
 map("n", "<ScrollWheelUp>", "k")
 map("n", "<ScrollWheelDown>", "j")
 
+--  Make basic editions tools work with hangul
+map("n", "ㅗ", "h")
+map("n", "ㅓ", "j")
+map("n", "ㅏ", "k")
+map("n", "ㅣ", "l")
+map("n", "ㅑ", "a")
+map("i", "ㅓㅏ", "<ESC>")
+map("i", "ㅏㅓ", "<ESC>")
+
 --  Toggle markdown preview
 map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
 

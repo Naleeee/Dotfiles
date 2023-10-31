@@ -1,6 +1,6 @@
 local map = require("utils").map
 
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- Buffer manipulation
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")
@@ -29,7 +29,7 @@ map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
 -- Folds
-map("n", "<Space>", "za")
+map("n", "<leader>f", "za")
 
 -- Replace selection
 map("v", "<C-r>", "\"hy:%s/<C-r>h//gc<left><left><left>")
@@ -60,12 +60,17 @@ map("n", "<leader>qf", "<Cmd>CodeActionMenu<CR>")
 map("n", "<ScrollWheelUp>", "k")
 map("n", "<ScrollWheelDown>", "j")
 
+--  Make basic editions tools work with hangul
+map("n", "ㅗ", "h")
+map("n", "ㅓ", "j")
+map("n", "ㅏ", "k")
+map("n", "ㅣ", "l")
+map("n", "ㅑ", "a")
+map("i", "ㅓㅏ", "<ESC>")
+map("i", "ㅏㅓ", "<ESC>")
+
 --  Toggle markdown preview
 map("n", "<C-p>", ":MarkdownPreviewToggle<CR>")
-
---  Navigate from erros / warnings
--- map("n", "<leader>N", "<Plug>(coc-diagnostic-prev)")
--- map("n", "<leader>n", "<Plug>(coc-diagnostic-next)")
 
 vim.api.nvim_create_user_command("W", "w", {})
 

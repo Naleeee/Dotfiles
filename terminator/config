@@ -12,10 +12,10 @@
   go_right = <Alt>l
   split_horiz = <Primary>o
   split_vert = <Primary>e
-  close_term = <Primary>w
+  close_term = <Alt>w
   copy = <Primary>c
   paste = <Primary>v
-  close_window = <Primary><Shift>w
+  close_window = <Super>w
   hide_window = <Primary><Shift><Alt>t
   layout_launcher = <Alt>a
 [profiles]

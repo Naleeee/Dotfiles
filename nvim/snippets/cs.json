@@ -1,42 +1,100 @@
 {
-  "Serialized Field": {
-    "prefix": "sf",
-    "body": ["[SerializeField] private $1 $2;"],
-    "description": "Create a basic serialized field."
+  "Variables": {
+    "Serialized Field": {
+      "prefix": "sf",
+      "body": ["[SerializeField] private $1 $2;"],
+      "description": "Create a basic serialized field."
+    },
+    "Private variable": {
+      "prefix": "var",
+      "body": ["private $1 _$2;"],
+      "description": "Create a basic serialized field."
+    }
   },
-  "Private variable": {
-    "prefix": "var",
-    "body": ["private $1 _$2;"],
-    "description": "Create a basic serialized field."
+  "Functions": {
+    "Default start function": {
+      "prefix": "start",
+      "body": ["void Start()", "{", "    $1", "}"],
+      "description": "Implement the basic Start function"
+    },
+    "Default update function": {
+      "prefix": "update",
+      "body": ["void Update()", "{", "    $1", "}"],
+      "description": "Implement the basic update function"
+    },
+    "Default public function setup": {
+      "prefix": "pufunc",
+      "body": ["public void $1()", "{", "    $2", "}"],
+      "description": "Implement the basic update function as public"
+    },
+    "Default private function setup": {
+      "prefix": "prfunc",
+      "body": ["private void $1()", "{", "    $2", "}"],
+      "description": "Implement the basic update function as private"
+    }
   },
-  "Default start function": {
-    "prefix": "start",
-    "body": ["void Start()", "{", "    $1", "}"],
-    "description": "Implement the basic Start function"
+  "Gizmos": {
+    "Default function gizmos": {
+      "prefix": "Gizmos",
+      "body": ["private void OnDrawGizmos()", "{", "    $1", "}"],
+      "description": "Create the default OnDrawGizmos function"
+    },
+    "Draw line": {
+      "prefix": "gLine",
+      "body": ["Gizmos.DrawLine(${1:Vector3 from}, ${2:Vector3 to});"],
+      "description": "Default Gizmos.DrawLine declaration"
+    },
+    "Draw ray": {
+      "prefix": "gRay",
+      "body": ["Gizmos.DrawRay(${1:Vector3 from}, ${2:Vector3 direction});"],
+      "description": "Default Gizmos.DrawRay declaration"
+    },
+    "Draw sphere": {
+      "prefix": "gSphere",
+      "body": [
+        "Gizmos.DrawWireSphere(${1:Vector3 origin}, ${2:float radius});"
+      ],
+      "description": "Default Gizmos.DrawSphere declaration"
+    },
+    "Draw cube": {
+      "prefix": "gCube",
+      "body": ["Gizmos.DrawWireCube(${1:Vector3 center}, ${2:Vector3 size});"],
+      "description": "Default Gizmos.DrawCube declaration"
+    }
   },
-  "Default update function": {
-    "prefix": "update",
-    "body": ["void Update()", "{", "    $1", "}"],
-    "description": "Implement the basic update function"
+  "Physics2D": {
+    "RayCast": {
+      "prefix": "rCast",
+      "body": [
+        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:Vector2 direction}, ${3:float distance = Mathf.Infinity}, ${4:Vector2 direction}, ${5:int layerMask = Physics2D.AllLayers}, ${6:float minDepth = -Mathf.Infinity}, ${7float maxDepth = Mathf.Infinity});"
+      ],
+      "description": "Default Physics2D.RayCast declaration"
+    },
+    "BoxCast": {
+      "prefix": "bCast",
+      "body": [
+        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:Vector2 size}, ${3:float angle}, ${4:Vector2 direction}, ${5:float distance = Mathf.Infinity}, ${6:int layerMask = Physics2D.AllLayers}, ${7:float minDepth = -Mathf.Infinity}, ${8float maxDepth = Mathf.Infinity});"
+      ],
+      "description": "Default Physics2D.BoxCast declaration"
+    },
+    "CircleCast": {
+      "prefix": "cCast",
+      "body": [
+        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:float radius}, ${3:Vector2 direction}, ${4:Vector2 direction}, ${5:float distance = Mathf.Infinity}, ${6:int layerMask = Physics2D.AllLayers}, ${7:float minDepth = -Mathf.Infinity}, ${8float maxDepth = Mathf.Infinity});"
+      ],
+      "description": "Default Physics2D.CircleCast declaration"
+    }
   },
-  "Default public function setup": {
-    "prefix": "pufunc",
-    "body": ["public void $1()", "{", "    $2", "}"],
-    "description": "Implement the basic update function as public"
-  },
-  "Default private function setup": {
-    "prefix": "prfunc",
-    "body": ["private void $1()", "{", "    $2", "}"],
-    "description": "Implement the basic update function as private"
-  },
-  "Get component": {
-    "prefix": "gc",
-    "body": ["GetComponent<$1>()"],
-    "description": "Call the GetComponent method"
-  },
-  "Delta time": {
-    "prefix": "dt",
-    "body": ["Time.deltatime"],
-    "description": "Simple deltatime call"
+  "Tools": {
+    "Get component": {
+      "prefix": "gc",
+      "body": ["GetComponent<$1>()"],
+      "description": "Call the GetComponent method"
+    },
+    "Delta time": {
+      "prefix": "dt",
+      "body": ["Time.deltatime"],
+      "description": "Simple deltatime call"
+    }
   }
 }

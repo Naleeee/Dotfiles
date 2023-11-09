@@ -1,98 +1,383 @@
 {
   "Variables": {
     "Serialized Field": {
-      "prefix": "sf",
+      "prefix": "SerializeField",
       "body": ["[SerializeField] private $1 $2;"],
       "description": "Create a basic serialized field."
     },
     "Private variable": {
-      "prefix": "var",
+      "prefix": "privateVariable",
       "body": ["private $1 _$2;"],
       "description": "Create a basic serialized field."
     }
   },
   "Functions": {
     "Default start function": {
-      "prefix": "start",
+      "prefix": "Start",
       "body": ["void Start()", "{", "    $1", "}"],
       "description": "Implement the basic Start function"
     },
     "Default update function": {
-      "prefix": "update",
+      "prefix": "Update",
       "body": ["void Update()", "{", "    $1", "}"],
       "description": "Implement the basic update function"
     },
     "Default public function setup": {
-      "prefix": "pufunc",
+      "prefix": "publicFunction",
       "body": ["public void $1()", "{", "    $2", "}"],
       "description": "Implement the basic update function as public"
     },
     "Default private function setup": {
-      "prefix": "prfunc",
+      "prefix": "privateFunction",
       "body": ["private void $1()", "{", "    $2", "}"],
       "description": "Implement the basic update function as private"
     }
   },
   "Gizmos": {
+    "GizmosDrawWireSphere": {
+      "prefix": "GizmosWireSphere",
+      "body": [
+        "Gizmos.DrawWireSphere(${1:Vector3 position}, ${2:float radius});"
+      ],
+      "description": "Draws a wireframe sphere in the scene."
+    },
+    "GizmosDrawWireCube": {
+      "prefix": "GizmosWireCube",
+      "body": ["Gizmos.DrawWireCube(${1:Vector3 center}, ${2:Vector3 size});"],
+      "description": "Draws a wireframe cube in the scene."
+    },
+    "GizmosDrawRay": {
+      "prefix": "GizmosRay",
+      "body": ["Gizmos.DrawRay(${1:Vector3 origin}, ${2:Vector3 direction});"],
+      "description": "Draws a ray in the scene for debugging purposes."
+    },
+    "GizmosDrawLine": {
+      "prefix": "GizmosLine",
+      "body": ["Gizmos.DrawLine(${1:Vector3 start}, ${2:Vector3 end});"],
+      "description": "Draws a line between two points in the scene."
+    },
+    "GizmosDrawMesh": {
+      "prefix": "GizmosMesh",
+      "body": [
+        "Gizmos.DrawMesh(${1:Mesh mesh}, ${2:Vector3 position}, ${3:Quaternion rotation}, ${4:Vector3 scale});"
+      ],
+      "description": "Draws a wireframe representation of a mesh in the scene."
+    },
+    "GizmosDrawWireMesh": {
+      "prefix": "GizmosWireMesh",
+      "body": [
+        "Gizmos.DrawWireMesh(${1:Mesh mesh}, ${2:Vector3 position}, ${3:Quaternion rotation}, ${4:Vector3 scale});"
+      ],
+      "description": "Draws a wireframe representation of a mesh as a box in the scene."
+    },
+    "GizmosDrawWireRect": {
+      "prefix": "GizmosWireRect",
+      "body": [
+        "Gizmos.DrawWireCube(${1:Vector3 center}, new Vector3(${2:float width}, ${3:float height}, 0));"
+      ],
+      "description": "Draws a wireframe 2D rectangle in the scene."
+    },
     "Default function gizmos": {
       "prefix": "Gizmos",
       "body": ["private void OnDrawGizmos()", "{", "    $1", "}"],
       "description": "Create the default OnDrawGizmos function"
-    },
-    "Draw line": {
-      "prefix": "gLine",
-      "body": ["Gizmos.DrawLine(${1:Vector3 from}, ${2:Vector3 to});"],
-      "description": "Default Gizmos.DrawLine declaration"
-    },
-    "Draw ray": {
-      "prefix": "gRay",
-      "body": ["Gizmos.DrawRay(${1:Vector3 from}, ${2:Vector3 direction});"],
-      "description": "Default Gizmos.DrawRay declaration"
-    },
-    "Draw sphere": {
-      "prefix": "gSphere",
-      "body": [
-        "Gizmos.DrawWireSphere(${1:Vector3 origin}, ${2:float radius});"
-      ],
-      "description": "Default Gizmos.DrawSphere declaration"
-    },
-    "Draw cube": {
-      "prefix": "gCube",
-      "body": ["Gizmos.DrawWireCube(${1:Vector3 center}, ${2:Vector3 size});"],
-      "description": "Default Gizmos.DrawCube declaration"
     }
   },
   "Physics2D": {
-    "RayCast": {
-      "prefix": "rCast",
-      "body": [
-        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:Vector2 direction}, ${3:float distance = Mathf.Infinity}, ${4:Vector2 direction}, ${5:int layerMask = Physics2D.AllLayers}, ${6:float minDepth = -Mathf.Infinity}, ${7float maxDepth = Mathf.Infinity});"
-      ],
-      "description": "Default Physics2D.RayCast declaration"
+    "ShapeCasts": {
+      "Physics2DBoxCast": {
+        "prefix": "Physics2DBoxCast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.BoxCast(${1:origin}, ${2:size}, ${3:angle}, ${4:direction}, ${5:distance});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D box-shaped ray and retrieves the first hit result."
+      },
+      "Physics2DCapsuleCastAll": {
+        "prefix": "Physics2DCapsuleCastAll",
+        "body": [
+          "RaycastHit2D[] hits = Physics2D.CapsuleCastAll(${1:point1}, ${2:point2}, ${3:size}, ${4:direction}, ${5:distance});",
+          "foreach (RaycastHit2D hit in hits) {",
+          "    // Handle each hit result",
+          "}"
+        ],
+        "description": "Casts a 2D capsule-shaped ray and retrieves all hit results."
+      },
+      "Physics2DCircleCast": {
+        "prefix": "Physics2DCircleCast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.CircleCast(${1:origin}, ${2:radius}, ${3:direction}, ${4:distance});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D circle-shaped ray and retrieves the first hit result."
+      },
+      "Physics2DCapsuleCast": {
+        "prefix": "Physics2DCapsuleCast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.CapsuleCast(${1:point1}, ${2:point2}, ${3:size}, ${4:direction}, ${5:distance});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D capsule-shaped ray and retrieves the first hit result."
+      },
+      "Physics2DPolygonCast": {
+        "prefix": "Physics2DPolygonCast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.PolygonCast(${1:vertices}, ${2:direction}, ${3:distance});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D ray in the shape of a polygon and retrieves the first hit result."
+      },
+      "Physics2DLinecastAll": {
+        "prefix": "Physics2DLinecastAll",
+        "body": [
+          "RaycastHit2D[] hits = Physics2D.LinecastAll(${1:start}, ${2:end});",
+          "foreach (RaycastHit2D hit in hits) {",
+          "    // Handle each hit result",
+          "}"
+        ],
+        "description": "Casts a 2D ray between two points and retrieves all hit results."
+      },
+      "Physics2DRaycast": {
+        "prefix": "Physics2DRaycast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.Raycast(${1:origin}, ${2:direction}, ${3:distance});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D ray and retrieves the first hit result."
+      },
+      "Physics2DLinecast": {
+        "prefix": "Physics2DLinecast",
+        "body": [
+          "RaycastHit2D hit = Physics2D.Linecast(${1:start}, ${2:end});",
+          "if (hit.collider != null) {",
+          "    // Handle the hit result",
+          "}"
+        ],
+        "description": "Casts a 2D ray between two points and retrieves the first hit result."
+      }
     },
-    "BoxCast": {
-      "prefix": "bCast",
+    "Physics2DOverlap": {
+      "prefix": "Physics2DOverlap",
       "body": [
-        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:Vector2 size}, ${3:float angle}, ${4:Vector2 direction}, ${5:float distance = Mathf.Infinity}, ${6:int layerMask = Physics2D.AllLayers}, ${7:float minDepth = -Mathf.Infinity}, ${8float maxDepth = Mathf.Infinity});"
+        "Collider2D collider1 = ${1:Collider1};",
+        "Collider2D collider2 = ${2:Collider2};",
+        "bool isColliding = Physics2D.OverlapCollider(collider1, collider2);"
       ],
-      "description": "Default Physics2D.BoxCast declaration"
+      "description": "Checks if two Collider2D objects are colliding."
     },
-    "CircleCast": {
-      "prefix": "cCast",
+    "Physics2DApplyForce": {
+      "prefix": "Physics2DApplyForce",
       "body": [
-        "Physics2D.BoxCast(${1:Vector2 origin}, ${2:float radius}, ${3:Vector2 direction}, ${4:Vector2 direction}, ${5:float distance = Mathf.Infinity}, ${6:int layerMask = Physics2D.AllLayers}, ${7:float minDepth = -Mathf.Infinity}, ${8float maxDepth = Mathf.Infinity});"
+        "Rigidbody2D rb2d = GetComponent<Rigidbody2D>();",
+        "Vector2 force = new Vector2(${1:forceX}, ${2:forceY});",
+        "rb2d.AddForce(force, ForceMode2D.${3:ForceMode});"
       ],
-      "description": "Default Physics2D.CircleCast declaration"
+      "description": "Applies a force to a Rigidbody2D component."
+    },
+    "Physics2DGetVelocity": {
+      "prefix": "Physics2DGetVelocity",
+      "body": [
+        "Rigidbody2D rb2d = GetComponent<Rigidbody2D>();",
+        "Vector2 velocity = rb2d.velocity;"
+      ],
+      "description": "Gets the velocity of a Rigidbody2D component."
     }
   },
+  "Animator": {
+    "AnimatorPlay": {
+      "prefix": "AnimatorPlay",
+      "body": [
+        "Animator animator = GetComponent<Animator>();",
+        "animator.Play(\"${1:AnimationName}\");"
+      ],
+      "description": "Plays the specified animation in the Animator component."
+    },
+    "AnimatorSetTrigger": {
+      "prefix": "AnimatorSetTrigger",
+      "body": [
+        "Animator animator = GetComponent<Animator>();",
+        "animator.SetTrigger(\"${1:TriggerName}\");"
+      ],
+      "description": "Sets a trigger parameter in the Animator component to transition to a specified state."
+    },
+    "AnimatorSetBool": {
+      "prefix": "AnimatorSetBool",
+      "body": [
+        "Animator animator = GetComponent<Animator>();",
+        "animator.SetBool(\"${1:BoolName}\", ${2:Value});"
+      ],
+      "description": "Sets a bool parameter in the Animator component to control animation states."
+    },
+    "AnimatorGetFloat": {
+      "prefix": "AnimatorGetFloat",
+      "body": [
+        "Animator animator = GetComponent<Animator>();",
+        "float floatValue = animator.GetFloat(\"${1:FloatName}\");"
+      ],
+      "description": "Gets the value of a float parameter in the Animator component."
+    },
+    "AnimatorSetFloat": {
+      "prefix": "AnimatorSetFloat",
+      "body": [
+        "Animator animator = GetComponent<Animator>();",
+        "animator.SetFloat(\"${1:FloatName}\", ${2:Value});"
+      ],
+      "description": "Sets the value of a float parameter in the Animator component."
+    }
+  },
+  "Debug": {
+    "DebugLog": {
+      "prefix": "DebugLog",
+      "body": ["Debug.Log(\"${1:Message}\");"],
+      "description": "Logs a message to the console for debugging purposes."
+    },
+    "DebugLogWarning": {
+      "prefix": "DebugLogWarning",
+      "body": ["Debug.LogWarning(\"${1:Message}\");"],
+      "description": "Logs a warning message to the console for debugging purposes."
+    },
+    "DebugLogError": {
+      "prefix": "DebugLogError",
+      "body": ["Debug.LogError(\"${1:Message}\");"],
+      "description": "Logs an error message to the console for debugging purposes."
+    },
+    "DebugAssert": {
+      "prefix": "DebugAssert",
+      "body": ["Debug.Assert(${1:condition}, \"${2:Message}\");"],
+      "description": "Asserts that a condition is true; otherwise, logs an error message."
+    },
+    "DebugDrawLine": {
+      "prefix": "DebugDrawLine",
+      "body": [
+        "Debug.DrawLine(${1:start}, ${2:end}, ${3:color}, ${4:duration});"
+      ],
+      "description": "Draws a line in the scene view for debugging purposes."
+    },
+    "DebugDrawRay": {
+      "prefix": "DebugDrawRay",
+      "body": [
+        "Debug.DrawRay(${1:origin}, ${2:direction}, ${3:color}, ${4:duration});"
+      ],
+      "description": "Draws a ray in the scene view for debugging purposes."
+    }
+  },
+  "Vector": {
+    "Vector2": {
+      "Vector2Initialization": {
+        "prefix": "Vector2Init",
+        "body": ["Vector2 vector = new Vector2(${1:x}, ${2:y});"],
+        "description": "Initialize a Vector2 with the specified x and y components."
+      },
+      "Vector2Magnitude": {
+        "prefix": "Vector2Magnitude",
+        "body": ["float magnitude = vector.magnitude;"],
+        "description": "Get the magnitude (length) of a Vector2."
+      },
+      "Vector2Normalize": {
+        "prefix": "Vector2Normalize",
+        "body": ["vector.Normalize();"],
+        "description": "Normalize a Vector2, making its magnitude 1."
+      },
+      "Vector2Add": {
+        "prefix": "Vector2Add",
+        "body": ["Vector2 result = vector1 + vector2;"],
+        "description": "Add two Vector2 objects together."
+      },
+      "Vector2Subtract": {
+        "prefix": "Vector2Subtract",
+        "body": ["Vector2 result = vector1 - vector2;"],
+        "description": "Subtract one Vector2 from another."
+      },
+      "Vector2Scale": {
+        "prefix": "Vector2Scale",
+        "body": ["Vector2 result = vector * ${1:scalar};"],
+        "description": "Scale a Vector2 by a scalar value."
+      }
+    },
+    "Vector3": {
+      "Vector3Initialization": {
+        "prefix": "Vector3Init",
+        "body": ["Vector3 vector = new Vector3(${1:x}, ${2:y}, ${3:z});"],
+        "description": "Initialize a Vector3 with the specified x, y, and z components."
+      },
+      "Vector3Magnitude": {
+        "prefix": "Vector3Magnitude",
+        "body": ["float magnitude = vector.magnitude;"],
+        "description": "Get the magnitude (length) of a Vector3."
+      },
+      "Vector3Normalize": {
+        "prefix": "Vector3Normalize",
+        "body": ["vector.Normalize();"],
+        "description": "Normalize a Vector3, making its magnitude 1."
+      },
+      "Vector3Add": {
+        "prefix": "Vector3Add",
+        "body": ["Vector3 result = vector1 + vector2;"],
+        "description": "Add two Vector3 objects together."
+      },
+      "Vector3Subtract": {
+        "prefix": "Vector3Subtract",
+        "body": ["Vector3 result = vector1 - vector2;"],
+        "description": "Subtract one Vector3 from another."
+      },
+      "Vector3Scale": {
+        "prefix": "Vector3Scale",
+        "body": ["Vector3 result = vector * ${1:scalar};"],
+        "description": "Scale a Vector3 by a scalar value."
+      }
+    }
+  },
+  "BoxCollider2D": {
+    "BoxCollider2DInitialization": {
+      "prefix": "BoxCollider2DInit",
+      "body": ["BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();"],
+      "description": "Initialize a BoxCollider2D component."
+    },
+    "BoxCollider2DSize": {
+      "prefix": "BoxCollider2DSize",
+      "body": ["Vector2 size = boxCollider.size;"],
+      "description": "Get the size of the BoxCollider2D."
+    },
+    "BoxCollider2DEnable": {
+      "prefix": "BoxCollider2DEnable",
+      "body": ["boxCollider.enabled = ${1:true};"],
+      "description": "Enable or disable the BoxCollider2D component."
+    },
+    "BoxCollider2DIsTrigger": {
+      "prefix": "BoxCollider2DIsTrigger",
+      "body": ["boxCollider.isTrigger = ${1:true};"],
+      "description": "Set the BoxCollider2D as a trigger or not."
+    },
+    "BoxCollider2DCenter": {
+      "prefix": "BoxCollider2DCenter",
+      "body": ["Vector2 center = boxCollider.offset;"],
+      "description": "Get the center of the BoxCollider2D."
+    },
+    "BoxCollider2DRotate": {
+      "prefix": "BoxCollider2DRotate",
+      "body": ["boxCollider.transform.Rotate(0, 0, ${1:angle});"],
+      "description": "Rotate the BoxCollider2D component."
+    }
+  },
+
   "Tools": {
     "Get component": {
-      "prefix": "gc",
+      "prefix": "GetComponent",
       "body": ["GetComponent<$1>()"],
       "description": "Call the GetComponent method"
     },
     "Delta time": {
-      "prefix": "dt",
+      "prefix": "TimeDeltaTime",
       "body": ["Time.deltatime"],
       "description": "Simple deltatime call"
     }

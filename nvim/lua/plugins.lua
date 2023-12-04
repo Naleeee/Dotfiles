@@ -55,13 +55,19 @@ return require("packer").startup(function(use)
   -- Display discord activity
   -- use {
   --   "andweeb/presence.nvim",
-  -- config = require("plugin_config.presence"),
+  --   config = require("plugin_config.presence"),
   -- }
   -- Display the available key bindings
   use {
     "folke/which-key.nvim",
     config = require("plugin_config.which-key"),
   }
+  -- Arduino manager plugin
+  use { 'stevearc/vim-arduino' }
+
+  -- use {
+  --   "stevearc/vim-arduino",
+  -- }
 
 
 

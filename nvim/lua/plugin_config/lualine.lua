@@ -75,17 +75,23 @@ return function()
         },
       },
 
-      lualine_y = { {
-        icon = {
-          '󰉢 ',
-          color = { fg = colors.black, bg = colors.green }
+      lualine_y = {
+        {
+          icon = {
+            '󰉢 ',
+            color = { fg = colors.black, bg = colors.green }
+          },
+          'progress',
+          separator = { left = '' },
         },
-        'progress',
-        separator = { left = '' },
-      }, },
+        {
+          'searchcount'
+        }
+      },
 
       lualine_z = { {
         'filetype',
+        'fileformat',
         colored = false, -- Displays filetype icon without colors
         separator = { left = '' },
       } },

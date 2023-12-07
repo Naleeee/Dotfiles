@@ -16,19 +16,19 @@
 
 <!-- vim-markdown-toc Marked -->
 
-* [File Structure](#file-structure)
-  * [Ft Plugin](#ft-plugin)
-  * [Lua - Mappings](#lua---mappings)
-  * [Lua - Plugins](#lua---plugins)
-    * [Configuration](#configuration)
-  * [Snippets](#snippets)
-  * [Settings](#settings)
-* [Features](#features)
-  * [Buffer and Status Lines](#buffer-and-status-lines)
-  * [File Tree and Naviguation](#file-tree-and-naviguation)
-  * [Lsp and Auto Completion](#lsp-and-auto-completion)
-  * [Color Scheme](#color-scheme)
-  * [Start Up Page](#start-up-page)
+- [File Structure](#file-structure)
+  - [Ft Plugin](#ft-plugin)
+  - [Lua - Mappings](#lua---mappings)
+  - [Lua - Plugins](#lua---plugins)
+    - [Configuration](#configuration)
+  - [Snippets](#snippets)
+  - [Settings](#settings)
+- [Features](#features)
+  - [Buffer and Status Lines](#buffer-and-status-lines)
+  - [File Tree and Naviguation](#file-tree-and-naviguation)
+  - [Lsp and Auto Completion](#lsp-and-auto-completion)
+  - [Color Scheme](#color-scheme)
+  - [Start Up Page](#start-up-page)
 
 <!-- vim-markdown-toc -->
 
@@ -60,20 +60,20 @@ In the Lua folder you can find the `mapping.lua` file.
 
 It create and setup every global mappings, the plugins dedicated mappings are in the configuration file of each plugin.
 
-My current leader is "`,`".
+My current leader is "`space`".
 
 <br />
 
 ### Lua - Plugins
 
-The loaded plugins are located in `plugins.lua`. 
+The loaded plugins are located in `plugins.lua`.
 
 I am using [Packer](https://github.com/wbthomason/packer.nvim) as plugin manager.
 
 I have split the plugins in 6 parts:
 
 | Section      | Description                                                        |
-|--------------|--------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------ |
 | Utils        | Features of the editor                                             |
 | Color Scheme | Current color scheme                                               |
 | Coding       | Plugins usefull while coding (auto pair brackets, auto completion) |
@@ -86,7 +86,6 @@ I have split the plugins in 6 parts:
 Almost every plugins come with an optional custom configuration. They all are located in the `/lua/plugin_config/` folder.
 
 They are tilted by the plugin's name.
-
 
 <br />
 

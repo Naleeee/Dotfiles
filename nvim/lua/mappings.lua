@@ -1,6 +1,6 @@
 local map = require("utils").map
 
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- Buffer manipulation
 map("n", "<leader>bq", "<Cmd>bp <BAR> bd #<CR>")

@@ -243,6 +243,7 @@ return function()
   local servers = {
     { name = "bashls" },
     { name = "clangd" },
+    { name = "cssls" },
     { name = "cmake" },
     { name = "dockerls" },
     { name = "vimls" },

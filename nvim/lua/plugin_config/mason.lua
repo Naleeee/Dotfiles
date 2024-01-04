@@ -5,6 +5,7 @@ return function()
       "bashls",
       "clangd",
       "cmake",
+      "cssls",
       "dockerls",
       "eslint",
       "graphql",

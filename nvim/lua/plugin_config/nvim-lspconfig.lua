@@ -86,12 +86,19 @@ return function()
     }
   }
 
-  lsp["csharp_ls"].setup {
+  lsp["vls"].setup {
     on_attach = on_attach,
-    filetypes = { "cs" },
-    cmd = { "/home/nale/.dotnet/tools/csharp-ls" },
+    filetypes = { "vue" },
+    cmd = { "vls", "--stdio" },
     capabilities = capabilities,
   }
+
+  -- lsp["csharp_ls"].setup {
+  --   on_attach = on_attach,
+  --   filetypes = { "cs" },
+  --   cmd = { "/home/nale/.dotnet/tools/csharp-ls" },
+  --   capabilities = capabilities,
+  -- }
 
   -- lsp["omnisharp"].setup {
   --   on_attach = function(client, bufnr)

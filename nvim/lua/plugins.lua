@@ -123,10 +123,11 @@ return require("packer").startup(function(use)
   }
   -- More auto completion
   use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
+    'codota/tabnine-nvim',
+    run = "./dl_binaries.sh",
+    config = require('plugin_config.tabnine'),
   }
+
   -- Prettier handler
   use {
     "prettier/vim-prettier",

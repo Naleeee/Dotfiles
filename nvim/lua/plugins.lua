@@ -122,11 +122,6 @@ return require("packer").startup(function(use)
     config = require('plugin_config.tabnine'),
   }
 
-  -- use {
-  --   "tzachar/cmp-tabnine",
-  --   run = "./install.sh",
-  --   requires = "hrsh7th/nvim-cmp",
-  -- }
   -- Prettier handler
   use {
     "prettier/vim-prettier",

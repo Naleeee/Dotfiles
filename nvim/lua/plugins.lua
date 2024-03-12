@@ -63,11 +63,9 @@ return require("packer").startup(function(use)
     config = require("plugin_config.which-key"),
   }
   -- Arduino manager plugin
-  use { 'stevearc/vim-arduino' }
-
-  -- use {
-  --   "stevearc/vim-arduino",
-  -- }
+  use {
+    'stevearc/vim-arduino'
+  }
 
 
 
@@ -192,7 +190,7 @@ return require("packer").startup(function(use)
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify",
     },
     config = require("plugin_config.noice")
   }

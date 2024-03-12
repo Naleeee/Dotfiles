@@ -4,14 +4,11 @@ return function()
     ensure_installed = {
       "bashls",
       "clangd",
-      "cmake",
-      "dockerls",
+      "cssls",
       "eslint",
-      "graphql",
       "lua_ls",
       "tsserver",
       "vimls",
-      "yamlls"
     },
     automatic_installation = true,
   })

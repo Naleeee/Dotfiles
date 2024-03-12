@@ -47,12 +47,12 @@ return function()
 
       lualine_a = { {
         'mode',
-        separator = { right = '' },
+        separator = { right = '🭛' },
       } },
 
       lualine_b = { {
         'filename',
-        separator = { left = '', right = '' },
+        separator = { left = '🭋', right = '🭛' },
       } },
 
       lualine_c = {
@@ -82,7 +82,7 @@ return function()
             color = { fg = colors.black, bg = colors.green }
           },
           'progress',
-          separator = { left = '' },
+          separator = { left = '🭮' },
         },
         {
           'searchcount'
@@ -93,7 +93,7 @@ return function()
         'filetype',
         'fileformat',
         colored = false, -- Displays filetype icon without colors
-        separator = { left = '' },
+        separator = { left = '🭋' },
       } },
     },
     inactive_sections = {

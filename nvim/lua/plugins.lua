@@ -53,14 +53,18 @@ return require("packer").startup(function(use)
     config = require("plugin_config.diff-view"),
   }
   -- Display discord activity
-  use {
-    "andweeb/presence.nvim",
-    config = require("plugin_config.presence"),
-  }
+  -- use {
+  --   "andweeb/presence.nvim",
+  --   config = require("plugin_config.presence"),
+  -- }
   -- Display the available key bindings
   use {
     "folke/which-key.nvim",
     config = require("plugin_config.which-key"),
+  }
+  -- Arduino manager plugin
+  use {
+    'stevearc/vim-arduino'
   }
 
 
@@ -117,10 +121,11 @@ return require("packer").startup(function(use)
   }
   -- More auto completion
   use {
-    "tzachar/cmp-tabnine",
-    run = "./install.sh",
-    requires = "hrsh7th/nvim-cmp",
+    'codota/tabnine-nvim',
+    run = "./dl_binaries.sh",
+    config = require('plugin_config.tabnine'),
   }
+
   -- Prettier handler
   use {
     "prettier/vim-prettier",
@@ -153,12 +158,12 @@ return require("packer").startup(function(use)
   -- File navigator
   use {
     "nvim-telescope/telescope.nvim",
+    tag = '0.1.2',
     requires = {
       { "nvim-lua/plenary.nvim" },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        run =
-        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+        run = "make"
       },
     },
     config = require("plugin_config.telescope"),
@@ -167,7 +172,7 @@ return require("packer").startup(function(use)
   use {
     'nvim-tree/nvim-tree.lua',
     requires = { 'nvim-tree/nvim-web-devicons' },
-    tag = 'nightly', -- optional, updated every week. (see issue #1193)
+    -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = require("plugin_config.nvim-tree")
   }
   -- Fancy notifications about events
@@ -185,7 +190,7 @@ return require("packer").startup(function(use)
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      -- "rcarriga/nvim-notify",
+      "rcarriga/nvim-notify",
     },
     config = require("plugin_config.noice")
   }
@@ -282,9 +287,9 @@ return require("packer").startup(function(use)
   -- Preview a Markdown file
   use {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    run = function() vim.fn["mkdp#util#install"]() end,
     config = require("plugin_config.markdown-preview"),
-    ft = { "markdown" },
+    --   ft = { "markdown" },
   }
 
   if packer_bootstrap then

@@ -2,7 +2,7 @@ return function()
   vim.g.strip_whitespace_on_save = 1
 
   -- Go to browser when opening a .md
-  vim.g.mkdp_auto_start = 1
+  vim.g.mkdp_auto_start = 0
 
   -- Close browser when leaving a .md
   vim.g.mkdp_auto_close = 1

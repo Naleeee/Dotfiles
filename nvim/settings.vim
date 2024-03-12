@@ -47,6 +47,8 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 
+verbose imap <space>
+
 " Keep undo history across sessions, by storing in file.
 set undofile
 if (!isdirectory("/tmp/undodir"))
@@ -70,3 +72,4 @@ hi Normal ctermbg=none guibg=none
 
 " Automatically call clang-format when saving a cpp file
 " autocmd FileType cpp autocmd BufWritePre <buffer> ClangFormat
+autocmd BufWritePre * :PrettierAsync

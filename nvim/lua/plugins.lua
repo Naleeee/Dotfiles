@@ -282,7 +282,7 @@ return require("packer").startup(function(use)
 
 
 
-  -- Markdown
+  -- Notes taking
 
   -- Markdown manager
   use {
@@ -302,6 +302,11 @@ return require("packer").startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
     config = require("plugin_config.markdown-preview"),
     --   ft = { "markdown" },
+  }
+  use {
+    "epwalsh/obsidian.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = require("plugin_config.obsidian"),
   }
 
   if packer_bootstrap then

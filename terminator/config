@@ -21,6 +21,7 @@
 [profiles]
   [[default]]
     background_darkness = 0.75
+    background_type = transparent
     background_image = /home/nale/Pictures/Baniere.png
     font = MesloLGS NF 10
     show_titlebar = False

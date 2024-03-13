@@ -52,8 +52,6 @@ return function()
       globalstatus = false,
       refresh = {
         statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
       }
     },
     sections = {
@@ -127,11 +125,6 @@ return function()
         separator = { left = '🭋' },
       } },
     },
-    inactive_sections = {},
-    tabline = {},
-    inactive_tabline = {},
-    winbar = {},
-    inactive_winbar = {},
     extensions = { 'man', 'mason', 'nvim-tree', 'trouble' },
   }
 end

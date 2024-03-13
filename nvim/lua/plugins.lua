@@ -46,6 +46,10 @@ return require("packer").startup(function(use)
     'hrsh7th/vim-vsnip',
     config = require('plugin_config.vsnip')
   }
+  -- Git manager
+  use {
+    "tpope/vim-fugitive",
+  }
   -- Git diff viewer
   use {
     "sindrets/diffview.nvim",

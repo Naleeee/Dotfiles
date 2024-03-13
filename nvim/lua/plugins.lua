@@ -194,6 +194,20 @@ return require("packer").startup(function(use)
     },
     config = require("plugin_config.noice")
   }
+  -- Auto adjust window size
+  use {
+    "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
+    end
+  }
   use {
     "alec-gibson/nvim-tetris",
   }

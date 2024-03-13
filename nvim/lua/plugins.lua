@@ -50,12 +50,6 @@ return require("packer").startup(function(use)
   use {
     "tpope/vim-fugitive",
   }
-  -- Git diff viewer
-  use {
-    "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = require("plugin_config.diff-view"),
-  }
   -- Display discord activity
   -- use {
   --   "andweeb/presence.nvim",

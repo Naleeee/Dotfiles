@@ -23,6 +23,12 @@
 !terminator/docs/*
 !terminator/docs/assets/*
 
+# Kitty config
+!kitty
+!kitty/*
+!kitty/docs/*
+!kitty/docs/assets/*
+
 # Zsh
 !zsh
 !zsh/*

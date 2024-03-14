@@ -82,7 +82,6 @@ return function()
         'branch',
         'diff'
       },
-
       lualine_x = {
         {
           'diagnostics',
@@ -98,9 +97,10 @@ return function()
             info  = { bg = colors.main_grey, fg = colors.cyan },   -- Changes diagnostics' info color.
             hint  = { bg = colors.main_grey, fg = colors.green },  -- Changes diagnostics' hint color.
           },
-          colored = true,                                          -- Displays diagnostics status in color if set to true.
-          update_in_insert = false,                                -- Update diagnostics in insert mode.
-          always_visible = false,                                  -- Show diagnostics even if there are none.
+          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          colored = true,           -- Displays diagnostics status in color if set to true.
+          update_in_insert = false, -- Update diagnostics in insert mode.
+          always_visible = false,   -- Show diagnostics even if there are none.
         },
       },
 

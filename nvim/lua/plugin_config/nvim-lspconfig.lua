@@ -1,11 +1,6 @@
 return function()
   local lsp = require("lspconfig")
 
-  local nvim_lsp = require 'lspconfig'
-
-  local pid = vim.fn.getpid()
-  local omnisharp_bin = "/usr/local/bin/omnisharp-roslyn/OmniSharp"
-
   local utils = require("utils")
 
   local map = utils.map
@@ -66,8 +61,6 @@ return function()
       },
     }
   )
-
-  -- vim.lsp.handlers["textDocument/codeAction"] = require"lsputil.codeAction".code_action_handler
 
   vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
   vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })

@@ -184,4 +184,5 @@ return function()
       format = {},
     }
   )
+  map("n", "<leader>nd", "<Cmd>NoiceDismiss<CR>")
 end

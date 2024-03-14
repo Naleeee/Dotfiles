@@ -46,20 +46,20 @@ echo -e "${BOLD_YELLOW}\nStarting auto setup script for Manjaro !\n${NOCOLOR}"
 
 # Pacman setup
 echo -e "${CATEGORY}\nStarting pacman databases sync\n${NOCOLOR}"
-# sudo pacman -Syyu
+sudo pacman -Syyu
 
 
 # Basic dependencies
 echo -e "${CATEGORY}\nInstalling basic tools and dependencies\n${NOCOLOR}"
 echo -e "${LIGHT_CYAN}Installing curl${NOCOLOR}"
-# sudo pacman -S curl
+sudo pacman -S curl
 echo -e "${LIGHT_CYAN}Installing tree command${NOCOLOR}"
-# sudo pacman -S tree
+sudo pacman -S tree
 echo -e "${LIGHT_CYAN}Installing npm${NOCOLOR}"
-# pamac install nvm
-# nvm install node
+pamac install nvm
+nvm install node
 echo -e "${LIGHT_CYAN}Installing GNU compilers${NOCOLOR}"
-# sudo pacman -S gcc
+sudo pacman -S gcc
 
 
 # Neovim setup
@@ -69,15 +69,15 @@ PromptYesNo "Do you want to install Neovim ?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting NeoVim installation via app image${NOCOLOR}"
   # Downloading app image
-  # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   # Setting permissions and correct name, location
-  # chmod u+x nvim.appimage
-  # sudo mv nvim.appimage /usr/local/bin/nvim
+  chmod u+x nvim.appimage
+  sudo mv nvim.appimage /usr/local/bin/nvim
 
   echo -e "${LIGHT_CYAN}Installing fzf${NOCOLOR}"
-  # sudo pacman -S fzf
+  sudo pacman -S fzf
   echo -e "${LIGHT_CYAN}Installing ripgrep${NOCOLOR}"
-  # sudo pacman -S ripgrep
+  sudo pacman -S ripgrep
 else
   echo -e "${LIGHT_RED}Skipping Neovim installation${NOCOLOR}"
 fi
@@ -87,19 +87,19 @@ fi
 echo -e "${CATEGORY}\nSetting up Git${NOCOLOR}"
 echo -e "${ITALIC_GRAY}Source: https://docs.oracle.com/en/cloud/cloud-at-customer/occ-get-started/generate-ssh-key-pair.html\n${NOCOLOR}"
 echo -e "${LIGHT_CYAN}Setting user info${NOCOLOR}"
-# git config --global user.email "nthn.lemale@gmail.com"
-# git config --global user.name "Nale"
+git config --global user.email "nthn.lemale@gmail.com"
+git config --global user.name "Nale"
 echo -e "${LIGHT_CYAN}Setting default editor to nvim${NOCOLOR}"
-# git config --global core.editor "nvim"
+git config --global core.editor "nvim"
 PromptYesNo "Do you want to generate a new ssh key ?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Generating ssh key${NOCOLOR}"
-  # ssh-keygen -t rsa
+  ssh-keygen -t rsa
   echo -e "${LIGHT_BLUE}Please enter your ssh key filename${NOCOLOR}"
-  # read -p "> " sshKeyName
-  # mv ${sshKeyName} ~/.ssh/
-  # mv ${sshKeyName}.pub ~/.ssh/
-  # eval $(ssh-agent -s) ssh-add ~/.ssh/${sshKeyName}
+  read -p "> " sshKeyName
+  mv ${sshKeyName} ~/.ssh/
+  mv ${sshKeyName}.pub ~/.ssh/
+  eval $(ssh-agent -s) ssh-add ~/.ssh/${sshKeyName}
 else
   echo -e "${LIGHT_RED}Skipping ssh key generation${NOCOLOR}"
 fi
@@ -110,7 +110,7 @@ echo -e "${CATEGORY}\nInstalling Brave Browser\n${NOCOLOR}"
 PromptYesNo "Do you want to install Brave Browser ?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Brave Browser installation${NOCOLOR}"
-  # sudo pacman --needed -S brave-browser
+  sudo pacman --needed -S brave-browser
 else
   echo -e "${LIGHT_RED}Skipping Brave Browser generation${NOCOLOR}"
 fi
@@ -121,7 +121,7 @@ echo -e "${CATEGORY}\nInstalling Kitty terminal\n${NOCOLOR}"
 PromptYesNo "Do you want to install Kitty ?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Kitty installation${NOCOLOR}"
-  # sudo pacman -S kitty
+  sudo pacman -S kitty
 else
   echo -e "${LIGHT_RED}Skipping Kitty generation${NOCOLOR}"
 fi
@@ -143,7 +143,7 @@ echo -e "${CATEGORY}\nInstalling Docker\n${NOCOLOR}"
 PromptYesNo "Do you want to install Docker?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Docker installation${NOCOLOR}"
-  # sudo pacman --needed -S docker
+  sudo pacman --needed -S docker
 else
   echo -e "${LIGHT_RED}Skipping Docker generation${NOCOLOR}"
 fi
@@ -154,7 +154,7 @@ echo -e "${CATEGORY}\nInstalling Discord\n${NOCOLOR}"
 PromptYesNo "Do you want to install Discord?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Discord installation${NOCOLOR}"
-  # sudo pacman -S discord
+  sudo pacman -S discord
 else
   echo -e "${LIGHT_RED}Skipping Discord generation${NOCOLOR}"
 fi
@@ -166,12 +166,12 @@ echo -e "${ITALIC_GRAY}Source: https://gist.github.com/yovko/becf16eecd3a1f69a4e
 PromptYesNo "Do you want to install Zsh?"
 if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Zsh installation${NOCOLOR}"
-  # sudo pacman -S zsh
-  # sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  # chsh -s $(which zsh)
-  # zsh
+  sudo pacman -S zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  chsh -s $(which zsh)
+  zsh
 else
   echo -e "${LIGHT_RED}Skipping Zsh generation${NOCOLOR}"
 fi

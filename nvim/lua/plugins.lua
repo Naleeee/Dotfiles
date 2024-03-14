@@ -46,11 +46,9 @@ return require("packer").startup(function(use)
     'hrsh7th/vim-vsnip',
     config = require('plugin_config.vsnip')
   }
-  -- Git diff viewer
+  -- Git manager
   use {
-    "sindrets/diffview.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = require("plugin_config.diff-view"),
+    "tpope/vim-fugitive",
   }
   -- Display discord activity
   -- use {
@@ -175,13 +173,6 @@ return require("packer").startup(function(use)
     -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = require("plugin_config.nvim-tree")
   }
-  -- Fancy notifications about events
-  use {
-    "rcarriga/nvim-notify",
-    config = function()
-      vim.notify = require("plugin_config.notify")
-    end,
-  }
   -- Better command and infile searchbar
   use {
     "folke/noice.nvim",
@@ -193,6 +184,20 @@ return require("packer").startup(function(use)
       "rcarriga/nvim-notify",
     },
     config = require("plugin_config.noice")
+  }
+  -- Auto adjust window size
+  use {
+    "anuvyklack/windows.nvim",
+    requires = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
+    end
   }
   use {
     "alec-gibson/nvim-tetris",

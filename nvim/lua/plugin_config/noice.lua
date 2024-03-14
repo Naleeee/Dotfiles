@@ -1,4 +1,6 @@
 return function()
+  local map = require("utils").map
+
   require("noice").setup(
     {
       cmdline = {
@@ -184,4 +186,5 @@ return function()
       format = {},
     }
   )
+  map("n", "<leader>nd", "<Cmd>NoiceDismiss<CR>")
 end

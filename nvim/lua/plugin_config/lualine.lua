@@ -57,7 +57,7 @@ return function()
     sections = {
       lualine_a = { {
         'mode',
-        separator = { right = '🭛' },
+        separator = { right = '' },
       } },
 
       lualine_b = {
@@ -74,7 +74,7 @@ return function()
             unnamed = '[No Name]', -- Text to show for unnamed buffers.
             newfile = '[New]',     -- Text to show for newly created file before first write
           },
-          separator = { left = '🭋', right = '🭛' },
+          separator = { left = '', right = '' },
         }
       },
 
@@ -111,7 +111,7 @@ return function()
             color = { fg = colors.black, bg = colors.green }
           },
           'progress',
-          separator = { left = '🭮' },
+          separator = { left = '' },
         },
         {
           'searchcount'
@@ -122,7 +122,7 @@ return function()
         'filetype',
         'fileformat',
         colored = false, -- Displays filetype icon without colors
-        separator = { left = '🭋' },
+        separator = { left = '' },
       } },
     },
     extensions = { 'man', 'mason', 'nvim-tree', 'trouble' },

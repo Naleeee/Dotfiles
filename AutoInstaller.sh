@@ -57,6 +57,8 @@ echo -e "${LIGHT_CYAN}Installing tree command${NOCOLOR}"
 sudo pacman -S tree
 echo -e "${LIGHT_CYAN}Installing npm${NOCOLOR}"
 pamac install nvm
+echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.bashrc
+source ~/.bashrc
 nvm install node
 echo -e "${LIGHT_CYAN}Installing GNU compilers${NOCOLOR}"
 sudo pacman -S gcc
@@ -97,7 +99,7 @@ if [[ $? == 0 ]]; then
   ssh-keygen -t rsa
   echo -e "${LIGHT_BLUE}Please enter your ssh key filename${NOCOLOR}"
   read -p "> " sshKeyName
-  mv ${sshKeyName} ~/.ssh/
+  mkdir --parents ~/.ssh/; mv ${sshKeyName} $_
   mv ${sshKeyName}.pub ~/.ssh/
   eval $(ssh-agent -s) ssh-add ~/.ssh/${sshKeyName}
 else
@@ -112,7 +114,7 @@ if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Brave Browser installation${NOCOLOR}"
   sudo pacman --needed -S brave-browser
 else
-  echo -e "${LIGHT_RED}Skipping Brave Browser generation${NOCOLOR}"
+  echo -e "${LIGHT_RED}Skipping Brave Browser installation${NOCOLOR}"
 fi
 
 
@@ -123,19 +125,20 @@ if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Kitty installation${NOCOLOR}"
   sudo pacman -S kitty
 else
-  echo -e "${LIGHT_RED}Skipping Kitty generation${NOCOLOR}"
+  echo -e "${LIGHT_RED}Skipping Kitty installation${NOCOLOR}"
 fi
 
 
-# TODO Tmux
-# echo -e "${CATEGORY}\nInstalling Kitty terminal\n${NOCOLOR}"
-# PromptYesNo "Do you want to install Kitty ?"
-# if [[ $? == 0 ]]; then
-#   echo -e "${LIGHT_CYAN}Starting Kitty installation${NOCOLOR}"
-#   sudo pacman --needed -S brave-browser
-# else
-#   echo -e "${LIGHT_RED}Skipping Kitty generation${NOCOLOR}"
-# fi
+# Tmux
+echo -e "${CATEGORY}\nInstalling tmux\n${NOCOLOR}"
+PromptYesNo "Do you want to install tmux ?"
+if [[ $? == 0 ]]; then
+  echo -e "${LIGHT_CYAN}Starting tmux installation${NOCOLOR}"
+  sudo pacman -S tmux
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo -e "${LIGHT_RED}Skipping tmux installation${NOCOLOR}"
+fi
 
 
 # Docker
@@ -145,7 +148,7 @@ if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Docker installation${NOCOLOR}"
   sudo pacman --needed -S docker
 else
-  echo -e "${LIGHT_RED}Skipping Docker generation${NOCOLOR}"
+  echo -e "${LIGHT_RED}Skipping Docker installation${NOCOLOR}"
 fi
 
 
@@ -156,7 +159,7 @@ if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Discord installation${NOCOLOR}"
   sudo pacman -S discord
 else
-  echo -e "${LIGHT_RED}Skipping Discord generation${NOCOLOR}"
+  echo -e "${LIGHT_RED}Skipping Discord installation${NOCOLOR}"
 fi
 
 
@@ -168,36 +171,37 @@ if [[ $? == 0 ]]; then
   echo -e "${LIGHT_CYAN}Starting Zsh installation${NOCOLOR}"
   sudo pacman -S zsh
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  echo -e "${LIGHT_CYAN}Setting Zsh as default shell${NOCOLOR}"
   chsh -s $(which zsh)
   zsh
+  echo -e "${LIGHT_CYAN}Cloning plugins for zsh${NOCOLOR}"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  echo -e "${LIGHT_CYAN}Cloning p10k for more personalization${NOCOLOR}"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  source ~/.zshrc
 else
-  echo -e "${LIGHT_RED}Skipping Zsh generation${NOCOLOR}"
+  echo -e "${LIGHT_RED}Skipping Zsh setup${NOCOLOR}"
 fi
 
 
-# # Move to monitor handler
-# echo -e "${LIGHT_CYAN}\nStarting move to monitor setup\n${NOCOLOR}"
-# echo -e "${ITALIC_GRAY}Source: https://github.com/AlexisBRENON/ewmh_m2m${NOCOLOR}"
-# pip install ewmh-m2m
-# echo -e "${PROMPT}Did the command failed with error ${LIGHT_RED}\"Error Externally Managed Environment\"${PROMPT} ? [y/n]${NOCOLOR}"
-# PromptYesNo
-# if [[ $? == 1 ]]; then
-#   echo -e "${LIGHT_CYAN}Regarding the following documentation the command can still work by skipping warnings.${NOCOLOR}"
-#   echo -e "${ITALIC_GRAY}Source: https://www.adamsdesk.com/posts/resolve-pip-externally-managed-environment/${NOCOLOR}"
-#   echo -e "${PROMPT}Do you still want to install move to next monitor ? [y/n]${NOCOLOR}"
-#   PromptYesNo
-#   if [[ $? == 1 ]]; then
-#     echo -e "${LIGHT_CYAN}\nStarting installing move to monitor package\n${NOCOLOR}"
-#
-#     pip install ewmh-m2m --break-system-packages
-#     echo -e "${LIGHT_CYAN}\nYou still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:\n${NOCOLOR}"
-#     echo -e "${LIGHT_YELLOW}\$ move-to-monitor --direction EAST${NOCOLOR}"
-#   fi
-# else
-#   echo -e "${LIGHT_CYAN}\nNice ! No errors, no problems !\n${NOCOLOR}"
-#   echo -e "${LIGHT_CYAN}\nYou still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:\n${NOCOLOR}"
-#   echo -e "${LIGHT_YELLOW}\$ move-to-monitor --direction EAST${NOCOLOR}"
-# fi
 
+# Move to next monitor
+echo -e "${CATEGORY}\nInstalling a move to next monitor handler${NOCOLOR}"
+echo -e "${ITALIC_GRAY}Source: https://github.com/AlexisBRENON/ewmh_m2m\n${NOCOLOR}"
+PromptYesNo "Is pip installed ?"
+if [[ $? == 0 ]]; then
+  echo -e "${LIGHT_CYAN}Starting pip installation${NOCOLOR}"
+  sudo pacman -S python-pip
+else
+  echo -e "${LIGHT_RED}Skipping pip installation${NOCOLOR}"
+fi
+PromptYesNo "Do you want to install ewmh_m2m ?"
+if [[ $? == 0 ]]; then
+  echo -e "${LIGHT_CYAN}Starting ewmh_m2m installation${NOCOLOR}"
+  pip install ewmh-m2m --break-system-packages
+  echo -e "${LIGHT_CYAN}You still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:${NOCOLOR}"
+  echo -e "${LIGHT_CYAN}\$ move-to-monitor --direction EAST${NOCOLOR}"
+else
+  echo -e "${LIGHT_RED}Skipping move to next monitor setup${NOCOLOR}"
+fi

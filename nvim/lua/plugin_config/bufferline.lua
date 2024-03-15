@@ -1,25 +1,8 @@
 return function()
   local map = require("utils").map
 
-  local colors = {
-    cyan      = '#79dac8',
-    black     = '#080808',
-    white     = '#c6c6c6',
-    red       = '#E06C75',
-    grey      = '#7893AD',
-    orange    = '#fe8019',
-    green     = '#98C379',
-    main_grey = '#22262E',
-    side_grey = '#2D3139',
-  }
-
   require("bufferline").setup({
-    highlights = {
-      -- fill = { bg = colors.main_grey },
-      -- buffer_selected = { bold = true, bg = colors.grey },
-      -- tab_separator_selected = { fg = '', bg = colors.grey },
-      -- separator = { fg = '', bg = colors.side_grey },
-    },
+    highlights = {},
 
     options = {
       mode = "buffers",                    -- set to "tabs" to only show tabpages instead
@@ -35,7 +18,7 @@ return function()
       tab_size = 18,
       diagnostics = "nvim_lsp",
       diagnostics_update_in_insert = false,
-      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      diagnostics_indicator = function(_, level, _, context)
         if context.buffer:current() then
           return ''
         end
@@ -46,7 +29,7 @@ return function()
         end
         return ''
       end,
-      custom_filter = function(buf_number, buf_numbers)
+      custom_filter = function(buf_number)
         if vim.bo[buf_number].filetype ~= 'oil' then
           return true
         end
@@ -66,7 +49,7 @@ return function()
       show_duplicate_prefix = true, -- whether to show duplicate buffer prefix
       persist_buffer_sort = true,   -- whether or not custom sorted buffers should persist
       separator_style = 'thin',
-      enforce_regular_tabs = true,
+      enforce_regular_tabs = false,
       always_show_bufferline = false,
       sort_by = 'insert_at_end',
     }

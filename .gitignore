@@ -29,7 +29,13 @@
 !kitty/docs/*
 !kitty/docs/assets/*
 
-# Zsh
+# Tmux config
+!tmux
+!tmux/*
+!tmux/docs/*
+!tmux/docs/assets/*
+
+# Zsh config
 !zsh
 !zsh/*
 !zsh/docs/*

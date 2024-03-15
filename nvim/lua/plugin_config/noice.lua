@@ -1,4 +1,6 @@
 return function()
+  local map = require("utils").map
+
   require("noice").setup(
     {
       cmdline = {
@@ -16,7 +18,7 @@ return function()
           search_up = { kind = "search", pattern = "^%?", icon = "🔍", lang = "regex" },
           filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
           lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-          help = { pattern = "^:%s*he?l?p?%s+", icon = "❔" },
+          help = { pattern = "^:%s*he?l?p?%s+", icon = "❓" },
           input = {}, -- Used by input()
           -- lua = false, -- to disable a format, set to `false`
         },
@@ -184,4 +186,5 @@ return function()
       format = {},
     }
   )
+  map("n", "<leader>nd", "<Cmd>NoiceDismiss<CR>")
 end

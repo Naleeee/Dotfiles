@@ -173,13 +173,6 @@ return require("packer").startup(function(use)
     -- tag = 'nightly', -- optional, updated every week. (see issue #1193)
     config = require("plugin_config.nvim-tree")
   }
-  -- Fancy notifications about events
-  use {
-    "rcarriga/nvim-notify",
-    config = function()
-      vim.notify = require("plugin_config.notify")
-    end,
-  }
   -- Better command and infile searchbar
   use {
     "folke/noice.nvim",

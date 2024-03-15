@@ -57,7 +57,7 @@ return function()
     sections = {
       lualine_a = { {
         'mode',
-        separator = { right = '🭛' },
+        separator = { right = '' },
       } },
 
       lualine_b = {
@@ -74,7 +74,7 @@ return function()
             unnamed = '[No Name]', -- Text to show for unnamed buffers.
             newfile = '[New]',     -- Text to show for newly created file before first write
           },
-          separator = { left = '🭋', right = '🭛' },
+          separator = { left = '', right = '' },
         }
       },
 
@@ -82,7 +82,6 @@ return function()
         'branch',
         'diff'
       },
-
       lualine_x = {
         {
           'diagnostics',
@@ -98,9 +97,10 @@ return function()
             info  = { bg = colors.main_grey, fg = colors.cyan },   -- Changes diagnostics' info color.
             hint  = { bg = colors.main_grey, fg = colors.green },  -- Changes diagnostics' hint color.
           },
-          colored = true,                                          -- Displays diagnostics status in color if set to true.
-          update_in_insert = false,                                -- Update diagnostics in insert mode.
-          always_visible = false,                                  -- Show diagnostics even if there are none.
+          symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+          colored = true,           -- Displays diagnostics status in color if set to true.
+          update_in_insert = false, -- Update diagnostics in insert mode.
+          always_visible = false,   -- Show diagnostics even if there are none.
         },
       },
 
@@ -111,7 +111,7 @@ return function()
             color = { fg = colors.black, bg = colors.green }
           },
           'progress',
-          separator = { left = '🭮' },
+          separator = { left = '' },
         },
         {
           'searchcount'
@@ -122,7 +122,7 @@ return function()
         'filetype',
         'fileformat',
         colored = false, -- Displays filetype icon without colors
-        separator = { left = '🭋' },
+        separator = { left = '' },
       } },
     },
     extensions = { 'man', 'mason', 'nvim-tree', 'trouble' },

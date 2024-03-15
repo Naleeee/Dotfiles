@@ -23,7 +23,19 @@
 !terminator/docs/*
 !terminator/docs/assets/*
 
-# Zsh
+# Kitty config
+!kitty
+!kitty/*
+!kitty/docs/*
+!kitty/docs/assets/*
+
+# Tmux config
+!tmux
+!tmux/*
+!tmux/docs/*
+!tmux/docs/assets/*
+
+# Zsh config
 !zsh
 !zsh/*
 !zsh/docs/*

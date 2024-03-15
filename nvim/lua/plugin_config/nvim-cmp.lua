@@ -27,6 +27,26 @@ return function()
     },
   }
 
+  -- Enable auto complete on / and : commands
+  -- cmp.setup.cmdline('/', {
+  --   mappings = cmp.mapping.preset.cmdline(),
+  --   sources = { name = 'buffer' }
+  -- })
+  --
+  -- cmp.setup.cmdline(':', {
+  --   mappings = cmp.mapping.preset.cmdline(),
+  --   sources = cmp.config.sources({
+  --     { name = 'path' }
+  --   }, {
+  --     {
+  --       name = 'cmdline',
+  --       option = {
+  --         ignore_cmds = { 'Man', '!' }
+  --       }
+  --     }
+  --   })
+  -- })
+
   vim.opt.completeopt = { 'menuone', 'noselect' }
   -- Remove cmp status display
   vim.opt.shortmess:append('c')

@@ -198,8 +198,9 @@ else
 fi
 PromptYesNo "Do you want to install ewmh_m2m ?"
 if [[ $? == 0 ]]; then
-  echo -e "${LIGHT_CYAN}Starting ewmh_m2m installation${NOCOLOR}"
+  echo -e "${LIGHT_CYAN}Starting ewmh_m2m and dependencies installation${NOCOLOR}"
   pip install ewmh-m2m --break-system-packages
+  pip install setuptools --break-system-packages
   echo -e "${LIGHT_CYAN}You still need to add the shortcuts to Shortcuts settings with the new move-to-monitor command, for exemple for left direction:${NOCOLOR}"
   echo -e "${LIGHT_CYAN}\$ move-to-monitor --direction EAST${NOCOLOR}"
 else

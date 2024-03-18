@@ -62,6 +62,8 @@ source ~/.bashrc
 nvm install node
 echo -e "${LIGHT_CYAN}Installing GNU compilers${NOCOLOR}"
 sudo pacman -S gcc
+echo -e "${LIGHT_CYAN}Installing make command${NOCOLOR}"
+sudo pacman -S make
 
 
 # Neovim setup

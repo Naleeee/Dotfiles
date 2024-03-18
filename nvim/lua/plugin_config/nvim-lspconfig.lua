@@ -175,7 +175,9 @@ return function()
     { name = "cssls" },
     -- { name = "cmake" },
     { name = "dockerls" },
+    { name = "eslint" },
     { name = "vimls" },
+    { name = "volar" },
     { name = "yamlls" },
   }
 

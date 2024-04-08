@@ -101,33 +101,37 @@ return function()
     }
   }
 
-  lsp["tsserver"].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    -- Vue specific config
-    -- init_options = {
-    --   plugins = {
-    --     {
-    --       name = "@vue/typescript-plugin",
-    --       location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-    --       languages = { "javascript", "typescript", "vue" },
-    --     },
-    --   },
-    -- },
-    -- filetypes = {
-    --   "javascript",
-    --   "typescript",
-    --   "vue",
-    -- },
+  -- lsp["tsserver"].setup {
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   -- Vue specific config
+  --   -- init_options = {
+  --   --   plugins = {
+  --   --     {
+  --   --       name = "@vue/typescript-plugin",
+  --   --       location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+  --   --       languages = { "javascript", "typescript", "vue" },
+  --   --     },
+  --   --   },
+  --   -- },
+  --   -- filetypes = {
+  --   --   "javascript",
+  --   --   "typescript",
+  --   --   "vue",
+  --   -- },
+  -- }
+
+  lsp['volar'].setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
   }
 
   local servers = {
     { name = "bashls" },
     { name = "clangd" },
+    { name = "cmake" },
     { name = "cssls" },
-    -- { name = "cmake" },
-    { name = "dockerls" },
     { name = "eslint" },
+    { name = "tsserver" },
     { name = "vimls" },
     { name = "volar" },
     { name = "yamlls" },

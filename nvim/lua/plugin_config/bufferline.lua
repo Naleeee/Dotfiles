@@ -18,17 +18,6 @@ return function()
       tab_size = 18,
       diagnostics = "nvim_lsp",
       diagnostics_update_in_insert = false,
-      diagnostics_indicator = function(_, level, _, context)
-        if context.buffer:current() then
-          return ''
-        end
-        if level:match('error') then
-          return ' ' .. vim.g.diagnostic_icons.Error
-        elseif level:match('warning') then
-          return ' ' .. vim.g.diagnostic_icons.Warning
-        end
-        return ''
-      end,
       custom_filter = function(buf_number)
         if vim.bo[buf_number].filetype ~= 'oil' then
           return true

@@ -126,7 +126,13 @@ return require("packer").startup(function(use)
 
   -- Prettier handler
   use {
-    "prettier/vim-prettier",
+    'jose-elias-alvarez/null-ls.nvim',
+    config = require('plugin_config.null_ls'),
+  }
+
+  use {
+    'MunifTanjim/prettier.nvim',
+    config = require('plugin_config.prettier'),
   }
 
 

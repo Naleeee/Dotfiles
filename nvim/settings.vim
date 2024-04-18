@@ -58,8 +58,8 @@ set undodir=/tmp/undodir
 
 
 " Clang-format
-" autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-" autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" Automatically call clang-format when saving a cpp file
+" autocmd FileType cpp autocmd BufWritePre <buffer> ClangFormat
 
 " Background
 hi Normal ctermbg=none guibg=none
@@ -70,6 +70,4 @@ hi Normal ctermbg=none guibg=none
   " autocmd BufRead,BufNewFile *.h,*.c set filetype=c
 " augroup END
 
-" Automatically call clang-format when saving a cpp file
-" autocmd FileType cpp autocmd BufWritePre <buffer> ClangFormat
-autocmd BufWritePre * :PrettierAsync
+" autocmd FileType vue,js,ts,tsx autocmd BufWritePre <buffer> :Prettier

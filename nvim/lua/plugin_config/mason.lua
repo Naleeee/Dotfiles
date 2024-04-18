@@ -4,11 +4,13 @@ return function()
     ensure_installed = {
       "bashls",
       "clangd",
+      "cmake",
       "cssls",
       "eslint",
       "lua_ls",
       "tsserver",
       "vimls",
+      "volar",
     },
     automatic_installation = true,
   })

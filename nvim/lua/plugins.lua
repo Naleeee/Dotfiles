@@ -126,7 +126,13 @@ return require("packer").startup(function(use)
 
   -- Prettier handler
   use {
-    "prettier/vim-prettier",
+    'jose-elias-alvarez/null-ls.nvim',
+    config = require('plugin_config.null_ls'),
+  }
+
+  use {
+    'MunifTanjim/prettier.nvim',
+    config = require('plugin_config.prettier'),
   }
 
 
@@ -156,12 +162,11 @@ return require("packer").startup(function(use)
   -- File navigator
   use {
     "nvim-telescope/telescope.nvim",
-    tag = '0.1.2',
     requires = {
       { "nvim-lua/plenary.nvim" },
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        run = "make"
+        run = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
       },
     },
     config = require("plugin_config.telescope"),

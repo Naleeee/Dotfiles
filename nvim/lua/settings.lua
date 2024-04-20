@@ -1,53 +1,82 @@
--- General settings
-vim.o.compatible = false                -- Disable compatibility with Vi
-vim.opt.termguicolors = true
-vim.opt.clipboard:append("unnamedplus") -- Copy and paste between Vim and others
-vim.opt.autowriteall = true             -- Autowrite when replace in multiple buffers
+-- Set nocompatible
+vim.opt.compatible = false
 
--- Text rendering options
-vim.cmd('filetype plugin indent on')
-vim.cmd('syntax enable')           -- Enable syntax highlighting
-vim.opt.display:append("lastline") -- Always try to show a paragraph's last line
-vim.opt.encoding = 'utf-8'         -- Use an encoding that supports unicode
-vim.opt.linebreak = true           -- Split too long line
-vim.opt.scrolloff = 10             -- Make the cursor see x lines above cursor
-vim.opt.pumheight = 10             -- Maximum number of items to show in the popup menu
-vim.opt.wrap = true
-vim.opt.fixendofline = false       -- Disable adding new line and end of opened files
+-- Disable adding new line and end of opened files
+vim.opt.fixendofline = false
 
--- Indentation options
-vim.opt.autoindent = true -- New lines inherit the indentation of previous lines
-vim.opt.expandtab = true  -- Convert tabs to spaces
-vim.opt.shiftround = true -- When shifting lines, round the indentation to the nearest multiple of "shiftwidth"
-vim.opt.shiftwidth = 2    -- When shifting, indent using two spaces
-vim.opt.smarttab = true   -- Insert "tabstop" number of spaces when the "tab" key is pressed.
-vim.opt.tabstop = 2       -- Indent using two spaces
-vim.opt.softtabstop = 2
-vim.opt.smartindent = true
+-- Split too long lines smart
+vim.opt.linebreak = true
 
--- Seatch options
-vim.opt.hlsearch = true                                         -- Enable search highlighting
-vim.opt.ignorecase = true                                       -- Make search case insensitive
-vim.opt.incsearch = true                                        -- Incremental search that shows partial matches
-vim.opt.smartcase = true                                        -- Automatically switch search to case-sensitive when search query contains an uppercase letter
+-- Auto-completion settings
 vim.opt.wildignorecase = true                                   -- Make filenames autocompletion case-insensitive
 vim.opt.wildignore:append({ "*.a", "*.o", "*.gcno", "*.gcda" }) -- Exclude tmp files from autocompletion
+vim.opt.termguicolors = true
 
--- User interface options
-vim.opt.wildmenu = true -- Display command line's tab complete options as a menu
-vim.opt.cursorline = true -- Highlight current line
-vim.opt.relativenumber = true -- Set line numbers relatives
-vim.opt.number = true -- Display line numbers
-vim.opt.showbreak = "↪" -- Show line wrapping character
+-- Enable filetype detection, plugins, and indent
+vim.cmd('filetype on')
+vim.cmd('filetype plugin on')
+vim.cmd('filetype indent on')
+
+-- Autowrite when replace in multiple buffers
+vim.opt.autowriteall = true
+
+-- Make search case insensitive
+vim.opt.ignorecase = true
+
+-- Enable syntax highlighting
+vim.cmd('syntax enable')
+
+-- Set colorscheme with termguicolors
+vim.opt.termguicolors = true
+
+-- Highlight current line
+vim.opt.cursorline = true
+
+-- Copy and paste between Vim and others
+vim.opt.clipboard:append("unnamedplus")
+
+-- Disable compatibility mode
+vim.opt.compatible = false
+
+-- Disable swap files
+vim.opt.swapfile = false
+
+-- Display line numbers
+vim.opt.number = true
+
+-- Make line numbers relative
+vim.opt.relativenumber = true
+
+-- Make the cursor see x lines above cursor
+vim.opt.scrolloff = 15
+
+-- Show line wrapping character
+vim.opt.showbreak = "↪"
+
+-- Maximum number of items to show in the popup menu
+vim.opt.pumheight = 15
+
+-- Make search case insensitive, but smart if mixed case is used
+vim.opt.smartcase = true
 
 -- Keep undo history across sessions, by storing in file
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+if vim.fn.isdirectory("/tmp/undodir") == 0 then
+  vim.fn.mkdir("/tmp/undodir")
+end
+vim.opt.undodir = "/tmp/undodir"
 
 -- Set fold options
 vim.opt.foldmethod = "indent"
 vim.opt.foldnestmax = 10
 vim.opt.foldenable = false
 vim.opt.foldlevel = 2
+
+-- Verbosity level for imap <Space>
+-- vim.opt.verbose:append("imap <Space>")
+
+-- Background
+vim.cmd('hi Normal ctermbg=none guibg=none')
+
+-- Automatically call PrettierAsync when saving a buffer
+-- vim.cmd('autocmd BufWritePre * :PrettierAsync')

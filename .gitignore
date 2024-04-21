@@ -14,7 +14,9 @@
 !nvim/docs/assets/*
 !nvim/ftplugin/*
 !nvim/lua/*
-!nvim/lua/plugin_config/*
+!nvim/lua/nale/*
+!nvim/lua/nale/core/*
+!nvim/lua/nale/plugins/*
 !nvim/snippets/*
 
 # Terminator config

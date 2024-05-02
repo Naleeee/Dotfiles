@@ -44,6 +44,5 @@
 !zsh/docs/assets/*
 
 # Scripts
-!DiscordInstaller.sh
-!move-to-next-monitor.sh
-!AutoInstaller.sh
+!script
+!script/*

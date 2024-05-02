@@ -44,5 +44,5 @@
 !zsh/docs/assets/*
 
 # Scripts
-!script
-!script/*
+!scripts
+!scripts/*

@@ -116,6 +116,25 @@ return {
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 				})
 			end,
+			["tsserver"] = function()
+				-- configure typescript language server
+				lspconfig["tsserver"].setup({
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/home/nale/.nvm/versions/node/v21.7.1/lib/node_modules/@vue/typescript-plugin",
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = {
+						"javascript",
+						"typescript",
+						"vue",
+					},
+				})
+			end,
 		})
 	end,
 }

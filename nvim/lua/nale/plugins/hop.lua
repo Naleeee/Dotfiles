@@ -9,6 +9,6 @@ return {
 		-- set keymaps
 		local keymap = vim.keymap
 
-		keymap.set("n", "<leader>l", "<cmd>HopWord<cr>", { desc = "Trigger hop moving view" })
+		keymap.set("n", "<leader><leader>", "<cmd>HopWord<cr>", { desc = "Trigger hop moving view" })
 	end,
 }

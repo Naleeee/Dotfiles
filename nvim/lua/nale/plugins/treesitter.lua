@@ -18,7 +18,6 @@ return {
 			ignore_install = {}, -- List of parsers to ignore installing
 			highlight = { enable = true }, -- enable syntax highlighting
 			indent = { enable = true }, -- enable indentation
-			autotag = { enable = true }, -- enable autotagging
 			-- ensure these language parsers are installed
 			textobjects = {
 				select = {

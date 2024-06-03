@@ -7,8 +7,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![NeoVim][NeoVim]][NeoVim-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -32,7 +30,6 @@
   </p>
 </div>
 
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -50,8 +47,6 @@
 
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -63,14 +58,6 @@
 
 ![Terminal Preview](./zsh/docs/assets/P10KPreview.png)
 
-### Built With
-
-* [![Lua][Lua]][Lua-url]
-* [![Vim Script][Vim-Script]][Vim-Script-url]
-
-
-<br />
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -81,21 +68,14 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-**Nvim:**
+#### Version
 
-Version 0.9
-
-Otherwise some plugins might be broken.
-
-**Zsh:**
-
-Version 5.9
-
-**Terminator:**
-
-Version 2.1
+| Nvim | Zsh | Kitty  | Tmux |
+| ---- | --- | -----  | ---- |
+| 0.9  | 5.9 | 0.31.0 | 3.4  |
 
 * npm
+
   ```sh
   npm install npm@latest -g
   ```
@@ -131,9 +111,9 @@ Use the `v` alias to start NeoVim.
 
 _For more examples, please refer to the related documentation:_
 
-- [Zsh](./zsh/README.md)
-- [Terminator](./terminator/README.md)
-- [NeoVim](./nvim/README.md)
+* [Zsh](./zsh/README.md)
+* [Terminator](./terminator/README.md)
+* [NeoVim](./nvim/README.md)
 
 <br />
 
@@ -142,9 +122,9 @@ _For more examples, please refer to the related documentation:_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Create Documentation for the repository
-- [ ] Only use Lua
-- [ ] Create installer script
+* [x] Create Documentation for the repository
+* [ ] Only use Lua
+* [ ] Create installer script
 
 See the [open issues](https://github.com/Naleeee/Dotfiles/issues) for a full list of proposed features (and known issues).
 
@@ -173,14 +153,13 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Nathan Lemale - nthn.lemale@gmail.com
+Nathan Lemale - <nthn.lemale@gmail.com>
 
 Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/Dotfiles)
 
 <br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -194,10 +173,5 @@ Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/D
 [issues-url]: https://github.com/Naleeee/Dotfiles/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathan-lemale
-[product-screenshot]: images/screenshot.png
-[Lua]: https://img.shields.io/static/v1?style=for-the-badge&message=Lua&color=2C2D72&logo=Lua&logoColor=FFFFFF&label
-[Lua-url]: https://nextjs.org/
 [Neovim]: https://img.shields.io/static/v1?style=for-the-badge&message=Neovim&color=57A143&logo=Neovim&logoColor=FFFFFF&label
 [NeoVim-url]: https://neovim.io/
-[Vim-Script]: https://img.shields.io/static/v1?style=for-the-badge&message=Vim&color=019733&logo=Vim&logoColor=FFFFFF&label
-[Vim-Script-url]: https://devhints.io/vimscript

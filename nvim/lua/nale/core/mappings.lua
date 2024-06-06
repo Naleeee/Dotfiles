@@ -62,10 +62,14 @@ keymap.set("i", "ㅏㅓ", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
 keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
 
+-- Display mappings in telescope
+keymap.set("n", "<leader>mt", "<Cmd>Telescope keymaps<CR>", { desc = "Open mappins in telescope" })
+keymap.set("n", "<leader>f", "<cmd><cr>", { desc = "Fuzzy find files in cwd" })
+
 -- Konami code
 keymap.set(
 	"n",
 	"<leader><Up><Up><Down><Down><Left><Right><Left><Right>ba<space>",
-	"<Cmd>Tetris<CR>",
+	"<Cmd>SnakeStart<CR>",
 	{ desc = "Special event..." }
 )

@@ -21,7 +21,7 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
-				-- Buffer local mappings.
+				-- Buffer local mappings.lsp
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf, silent = true }
 
@@ -116,21 +116,23 @@ return {
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
 				})
 			end,
-			["tsserver"] = function()
+			["ts_ls"] = function()
 				-- configure typescript language server
-				lspconfig["tsserver"].setup({
+				lspconfig["ts_ls"].setup({
 					init_options = {
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
 								location = "/home/nale/.nvm/versions/node/v21.7.1/lib/node_modules/@vue/typescript-plugin",
-								languages = { "javascript", "typescript", "vue" },
+								languages = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
 							},
 						},
 					},
 					filetypes = {
 						"javascript",
 						"typescript",
+						"javascriptreact",
+						"typescriptreact",
 						"vue",
 					},
 				})

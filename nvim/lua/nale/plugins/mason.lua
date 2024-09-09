@@ -35,7 +35,7 @@ return {
 				"graphql",
 				"html",
 				"lua_ls",
-				"tsserver",
+				"ts_ls",
 				"vimls",
 				"volar",
 			},

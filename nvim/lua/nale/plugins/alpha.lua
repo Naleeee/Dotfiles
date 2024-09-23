@@ -162,6 +162,8 @@ return {
 
 		local helloThere = { "Hello There" }
 
+		local top = { "Ψ F̶P̶E̶ ✺ ⊬ |-/ ||-//" }
+
 		local myFooters = {
 			hiddenCat,
 			runningMan,
@@ -172,6 +174,7 @@ return {
 			helloThere,
 			sleepyRabbit,
 			noToAny,
+			top,
 		}
 		dashboard.section.footer.val = myFooters[math.random(#myFooters)]
 

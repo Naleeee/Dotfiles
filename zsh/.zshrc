@@ -34,6 +34,7 @@ ssh-add ~/.ssh/NaleLinuxKey
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH=$PATH:/bin/nvim/
+export PATH=$PATH:~/.config/scripts/
 
 # -----------------
 # ---- Aliases ----
@@ -89,7 +90,18 @@ alias l="clear && ls -l"
 # ---- Doxygen ----
 alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 
+# ---- Doxygen ----
+alias t="~/.config/scripts/TmuxStartup.sh"
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 source /usr/share/nvm/init-nvm.sh
+
+# pnpm
+export PNPM_HOME="/home/nale/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

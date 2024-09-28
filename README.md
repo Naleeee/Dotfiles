@@ -54,13 +54,12 @@
 
 * [NeoVim](./nvim/README.md)
 * [Zsh](./zsh/README.md)
-* [Kitty / Tmux](./terminator/README.md)
+* [Kitty](./kitty/README.md)
+* [Tmux](./tmux/README.md)
 
 ### Preview
 
 ![Nvim Preview](./nvim/docs/assets/NvimPreview.gif)
-
-![Tmux Preview](./tmux/docs/assets/TmuxPreview.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

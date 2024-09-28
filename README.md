@@ -7,8 +7,6 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![NeoVim][NeoVim]][NeoVim-url]
 
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -21,17 +19,16 @@
   <p align="center">
     This is my personal developpment configuration environment.
     <br />
-    It contains my Zsh, Terminator and NeoVim configuration !
+    It contains my NeoVim, Zsh, Kitty and Tmux configuration !
     <br />
-    <a href="https://github.com/Naleeee/Dotfiles"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Naleeee/Dotfiles"><strong>Explore the project »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Naleeee/Dotfiles/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Naleeee/Dotfiles/issues">Request Feature</a>
+    <!-- <a href="https://github.com/Naleeee/Dotfiles/issues">Report Bug</a> -->
+    <!-- · -->
+    <!-- <a href="https://github.com/Naleeee/Dotfiles/issues">Request Feature</a> -->
   </p>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -50,90 +47,48 @@
 
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-**NeoVim**
+### Documentation
 
-![Nvim Preview](./nvim/docs/assets/CodePreview.png)
+* [NeoVim](./nvim/README.md)
+* [Zsh](./zsh/README.md)
+* [Kitty / Tmux](./terminator/README.md)
 
-**Terminator and Zsh**
+### Preview
 
-![Terminal Preview](./zsh/docs/assets/P10KPreview.png)
+![Nvim Preview](./nvim/docs/assets/NvimPreview.gif)
 
-### Built With
-
-* [![Lua][Lua]][Lua-url]
-* [![Vim Script][Vim-Script]][Vim-Script-url]
-
-
-<br />
+![Tmux Preview](./tmux/docs/assets/TmuxPreview.gif)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-**Nvim:**
+#### Version
 
-Version 0.9
-
-Otherwise some plugins might be broken.
-
-**Zsh:**
-
-Version 5.9
-
-**Terminator:**
-
-Version 2.1
-
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Hello this is a prerry texyij
+|  Nvim  | Zsh | Kitty  | Tmux |
+| ------ | --- | -----  | ---- |
+|  0.10  | 5.9 | 0.31.0 | 3.4  |
 
 ### Installation
 
-TBD
+1. Clone the repo
 
-<!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
-<!-- 2. Clone the repo -->
-<!--    ```sh -->
-<!--    git clone https://github.com/Naleeee/Dotfiles.git -->
-<!--    ``` -->
-<!-- 3. Install NPM packages -->
-<!--    ```sh -->
-<!--    npm install -->
-<!--    ``` -->
-<!-- 4. Enter your API in `config.js` -->
-<!--    ```js -->
-<!--    const API_KEY = 'ENTER YOUR API'; -->
-<!--    ``` -->
+   ```sh
+   git clone https://github.com/Naleeee/Dotfiles.git
+   ```
 
-<br />
+2. Run the auto installer script for a full setup
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-On a terminal, type `alias` to list the current aliases on zsh.
-
-Use the `v` alias to start NeoVim.
-
-_For more examples, please refer to the related documentation:_
-
-- [Zsh](./zsh/README.md)
-- [Terminator](./terminator/README.md)
-- [NeoVim](./nvim/README.md)
+   ```sh
+   ./scripts/AutoInstaller.sh
+   ```
 
 <br />
 
@@ -142,29 +97,11 @@ _For more examples, please refer to the related documentation:_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Create Documentation for the repository
-- [ ] Only use Lua
-- [ ] Create installer script
+* [x] Create Documentation for the repository
+* [x] Only use Lua
+* [ ] Setup installer with ChezMoi
 
 See the [open issues](https://github.com/Naleeee/Dotfiles/issues) for a full list of proposed features (and known issues).
-
-<br />
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "feature".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 <br />
 
@@ -173,14 +110,15 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Nathan Lemale - nthn.lemale@gmail.com
+Nathan Lemale - <nthn.lemale@gmail.com>
 
 Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/Dotfiles)
+
+Checkout my website: <https://www.nathanlemale.com/>
 
 <br />
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -194,10 +132,5 @@ Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/D
 [issues-url]: https://github.com/Naleeee/Dotfiles/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathan-lemale
-[product-screenshot]: images/screenshot.png
-[Lua]: https://img.shields.io/static/v1?style=for-the-badge&message=Lua&color=2C2D72&logo=Lua&logoColor=FFFFFF&label
-[Lua-url]: https://nextjs.org/
 [Neovim]: https://img.shields.io/static/v1?style=for-the-badge&message=Neovim&color=57A143&logo=Neovim&logoColor=FFFFFF&label
 [NeoVim-url]: https://neovim.io/
-[Vim-Script]: https://img.shields.io/static/v1?style=for-the-badge&message=Vim&color=019733&logo=Vim&logoColor=FFFFFF&label
-[Vim-Script-url]: https://devhints.io/vimscript

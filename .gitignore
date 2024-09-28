@@ -14,14 +14,10 @@
 !nvim/docs/assets/*
 !nvim/ftplugin/*
 !nvim/lua/*
-!nvim/lua/plugin_config/*
+!nvim/lua/nale/*
+!nvim/lua/nale/core/*
+!nvim/lua/nale/plugins/*
 !nvim/snippets/*
-
-# Terminator config
-!terminator
-!terminator/*
-!terminator/docs/*
-!terminator/docs/assets/*
 
 # Kitty config
 !kitty
@@ -29,13 +25,18 @@
 !kitty/docs/*
 !kitty/docs/assets/*
 
-# Zsh
+# Tmux config
+!tmux
+!tmux/*
+!tmux/docs/*
+!tmux/docs/assets/*
+
+# Zsh config
 !zsh
 !zsh/*
 !zsh/docs/*
 !zsh/docs/assets/*
 
 # Scripts
-!DiscordInstaller.sh
-!move-to-next-monitor.sh
-!AutoInstaller.sh
+!scripts
+!scripts/*

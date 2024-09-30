@@ -70,7 +70,6 @@
 
 #### Version
 
-Hello this is a prerry texyij
 |  Nvim  | Zsh | Kitty  | Tmux |
 | ------ | --- | -----  | ---- |
 |  0.10  | 5.9 | 0.31.0 | 3.4  |

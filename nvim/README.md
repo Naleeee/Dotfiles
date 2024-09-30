@@ -4,7 +4,7 @@
 
 ### Preview
 
-<img src="./docs/assets/NvimPreview.gif" alt="drawing" width="100%"/>
+![Nvim Preview](./docs/assets/NvimPreview.gif)
 
 ## Table of Contents
 

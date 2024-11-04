@@ -10,17 +10,21 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # ---- Theme ----
 ZSH_THEME="powerlevel10k/powerlevel10k"
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
 
 # ---- Plugins ----
 plugins=(
     git
+    dirhistory
+    you-should-use
     zsh-autosuggestions
     zsh-syntax-highlighting
-    dirhistory
+    zsh-bat
 )
 
 # Setup the fuck plugin
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,11 +97,6 @@ alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 # ---- Doxygen ----
 alias t="~/.config/scripts/TmuxStartup.sh"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-source /usr/share/nvm/init-nvm.sh
-
 # pnpm
 export PNPM_HOME="/home/nale/.local/share/pnpm"
 case ":$PATH:" in
@@ -105,3 +104,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

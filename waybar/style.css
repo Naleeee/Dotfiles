@@ -80,7 +80,7 @@ button:hover {
   border-bottom: 2px solid @yellow;
 }
 
-#cpu {
+#memory {
   color: @sky;
   border-bottom: 2px solid @sky;
 }

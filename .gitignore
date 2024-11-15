@@ -40,3 +40,17 @@
 # Scripts
 !scripts
 !scripts/*
+
+# Hyprland
+!hyprland
+!hyprland/*
+!backgrounds/
+!backgrounds/*
+
+# Waybar
+!waybar
+!waybar/*
+
+# Wofi
+!wofi
+!wofi/*

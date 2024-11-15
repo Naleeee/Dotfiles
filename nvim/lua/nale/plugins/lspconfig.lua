@@ -114,6 +114,19 @@ return {
 				lspconfig["volar"].setup({
 					capabilities = capabilities,
 					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+					root_dir = require("lspconfig").util.root_pattern(
+						"nuxt.config.js",
+						"nuxt.config.ts",
+						"vite.config.js",
+						"vite.config.ts",
+						"vue.config.js",
+						"vue.config.ts"
+					),
+					init_options = {
+						vue = {
+							hybridMode = false,
+						},
+					},
 				})
 			end,
 			["ts_ls"] = function()
@@ -123,7 +136,7 @@ return {
 						plugins = {
 							{
 								name = "@vue/typescript-plugin",
-								location = "/home/nale/.nvm/versions/node/v21.7.1/lib/node_modules/@vue/typescript-plugin",
+								location = "/home/nale/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
 								languages = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
 							},
 						},

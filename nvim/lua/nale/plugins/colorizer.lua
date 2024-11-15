@@ -1,3 +1,3 @@
 return {
-	"RRethy/vim-hexokinase",
+	"norcalli/nvim-colorizer.lua",
 }

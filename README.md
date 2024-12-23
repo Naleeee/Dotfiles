@@ -56,7 +56,7 @@
 * [Zsh](./zsh/README.md)
 * [Kitty](./kitty/README.md)
 * [Tmux](./tmux/README.md)
-* [Wayland](./hypr/README.md)
+* [Hyprland](./hypr/README.md)
 
 ### Preview
 

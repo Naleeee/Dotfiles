@@ -1,10 +1,10 @@
 # Hyprland
 
-![Waybar preview](./docs/assets/WaybarPreview.png)
+![Hyprland preview](./docs/assets/hyprlandPreview.png)
 
 ## Description
 
-I am currently using wayland + hyprland as my window tile manager since it is modern, good looking, easy to configure and highly customizable.
+I am currently using hyprland as my window tile manager since it is modern, good looking, easy to configure and highly customizable.
 
 It is easily configurable and offers a lot of tools using official tools or user based ones like a navbar, lockscreen and much more.
 

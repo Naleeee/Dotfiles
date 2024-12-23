@@ -42,15 +42,21 @@
 !scripts/*
 
 # Hyprland
-!hyprland
-!hyprland/*
-!backgrounds/
+!hypr
+!hypr/*
+!hypr/docs/*
+!hypr/docs/assets/*
+!backgrounds
 !backgrounds/*
 
 # Waybar
 !waybar
 !waybar/*
+!waybar/docs/*
+!waybar/docs/assets/*
 
 # Wofi
 !wofi
 !wofi/*
+!wofi/docs/*
+!wofi/docs/assets/*

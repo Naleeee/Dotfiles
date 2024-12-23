@@ -1,6 +1,6 @@
 # Hyprland
 
-![Hyprland preview](./docs/assets/hyprlandPreview.png)
+![Hyprland preview](./docs/assets/HyprlandPreview.png)
 
 ## Description
 

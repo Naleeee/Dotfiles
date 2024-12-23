@@ -21,7 +21,7 @@ By using [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/hypridle/), which d
 
 [Hyprpaper](https://wiki.hyprland.org/Hypr-Ecosystem/hyprpaper/) is my wallpaper manager. I have set it up to handle multiple wallpapers on specific screens.
 
-> Drawing by Mattea Della Favera
+> Drawing by Mattea Dalla Favera
 
 Other wayland related tools:
 

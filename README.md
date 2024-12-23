@@ -56,6 +56,7 @@
 * [Zsh](./zsh/README.md)
 * [Kitty](./kitty/README.md)
 * [Tmux](./tmux/README.md)
+* [Wayland](./hypr/README.md)
 
 ### Preview
 
@@ -70,11 +71,13 @@
 
 #### Version
 
-|  Nvim  | Zsh | Kitty  | Tmux |
-| ------ | --- | -----  | ---- |
-|  0.10  | 5.9 | 0.31.0 | 3.4  |
+|  Nvim  | Zsh | Kitty  | Tmux | Hyprland |
+| ------ | --- | -----  | ---- | -------- |
+|  0.10  | 5.9 | 0.31.0 | 3.4  |  0.45.2  |
 
 ### Installation
+
+> For wayland setup, please refer to the official doc [here](https://hyprland.org/)
 
 1. Clone the repo
 
@@ -97,7 +100,7 @@
 
 * [x] Create Documentation for the repository
 * [x] Only use Lua
-* [ ] Setup installer with ChezMoi
+* [ ] Setup a dotfiles manager
 
 See the [open issues](https://github.com/Naleeee/Dotfiles/issues) for a full list of proposed features (and known issues).
 

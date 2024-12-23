@@ -42,9 +42,9 @@
 !scripts/*
 
 # Hyprland
-!hyprland
-!hyprland/*
-!backgrounds/
+!hypr
+!hypr/*
+!backgrounds
 !backgrounds/*
 
 # Waybar

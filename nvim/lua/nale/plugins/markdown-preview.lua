@@ -2,10 +2,8 @@ return {
 	"iamcco/markdown-preview.nvim",
 	cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 	ft = { "markdown" },
-	build = function()
-		vim.fn["mkdp#util#install"]()
-	end,
-	config = function()
+	build = "cd app && npm install",
+	init = function()
 		vim.g.strip_whitespace_on_save = 1
 
 		vim.g.mkdp_auto_start = 0 -- go to browser when opening a .md
@@ -17,7 +15,6 @@ return {
 		vim.g.mkdp_page_title = "「${name}」-- Vim Markdown" -- give a name to window
 
 		vim.g.mkdp_filetypes = { "markdown", "md" }
-
 		-- set keymaps
 		local keymap = vim.keymap
 

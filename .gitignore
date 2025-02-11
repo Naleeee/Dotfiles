@@ -60,3 +60,7 @@
 !wofi/*
 !wofi/docs/*
 !wofi/docs/assets/*
+
+# Yazi
+!yazi
+!yazi/*

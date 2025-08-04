@@ -78,78 +78,58 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-			["volar"] = function()
-				-- configure volar server
-				lspconfig["volar"].setup({
-					capabilities = capabilities,
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-					root_dir = require("lspconfig").util.root_pattern(
-						"nuxt.config.js",
-						"nuxt.config.ts",
-						"vite.config.js",
-						"vite.config.ts",
-						"vue.config.js",
-						"vue.config.ts"
-					),
-					init_options = {
-						vue = {
-							hybridMode = false,
-						},
-					},
-				})
-			end,
-			["ts_ls"] = function()
-				-- configure typescript language server
-				lspconfig["ts_ls"].setup({
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = "/home/nale/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
-								languages = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
-							},
-						},
-					},
-					filetypes = {
-						"javascript",
-						"typescript",
-						"javascriptreact",
-						"typescriptreact",
-						"vue",
-					},
-				})
-			end,
-		})
+		-- mason_lspconfig.setup_handlers({
+		-- 	-- default handler for installed servers
+		-- 	function(server_name)
+		-- 		lspconfig[server_name].setup({
+		-- 			capabilities = capabilities,
+		-- 		})
+		-- 	end,
+		-- 	["graphql"] = function()
+		-- 		-- configure graphql language server
+		-- 		lspconfig["graphql"].setup({
+		-- 			capabilities = capabilities,
+		-- 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+		-- 		})
+		-- 	end,
+		-- 	["lua_ls"] = function()
+		-- 		-- configure lua server
+		-- 		lspconfig["lua_ls"].setup({
+		-- 			capabilities = capabilities,
+		-- 			settings = {
+		-- 				Lua = {
+		-- 					-- make the language server recognize "vim" global
+		-- 					diagnostics = {
+		-- 						globals = { "vim" },
+		-- 					},
+		-- 					completion = {
+		-- 						callSnippet = "Replace",
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- 	["ts_ls"] = function()
+		-- 		-- configure typescript language server
+		-- 		lspconfig["ts_ls"].setup({
+		-- 			init_options = {
+		-- 				plugins = {
+		-- 					{
+		-- 						name = "@vue/typescript-plugin",
+		-- 						location = "/home/nale/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
+		-- 						languages = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 			filetypes = {
+		-- 				"javascript",
+		-- 				"typescript",
+		-- 				"javascriptreact",
+		-- 				"typescriptreact",
+		-- 				"vue",
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- })
 	end,
 }

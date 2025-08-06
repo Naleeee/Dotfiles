@@ -15,7 +15,7 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
-    "tailwind-tools",
+		"tailwind-tools",
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 	},
 	config = function()
@@ -83,6 +83,7 @@ return {
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
+				{ name = "copilot", group_index = 2 }, -- copilot
 				{ name = "nvim_lsp" }, -- language servers
 				{ name = "luasnip", option = { show_autosnippets = true } }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
@@ -94,7 +95,7 @@ return {
 
 			formatting = {
 				format = lspkind.cmp_format({
-          before = require("tailwind-tools").lspkind_format,
+					before = require("tailwind-tools").lspkind_format,
 					mode = "symbol", -- show only symbol annotations
 					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 					-- can also be a function to dynamically calculate max width such as

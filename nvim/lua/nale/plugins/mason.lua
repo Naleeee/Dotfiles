@@ -1,14 +1,7 @@
 return {
-	"mason-org/mason.nvim",
-	dependencies = {
-		"mason-org/mason-lspconfig.nvim",
-	},
-	config = function()
-		-- import mason
-		local mason = require("mason")
-
-		-- enable mason and configure icons
-		mason.setup({
+	{
+		"mason-org/mason.nvim",
+		opts = {
 			ui = {
 				icons = {
 					package_installed = "✓",
@@ -16,26 +9,42 @@ return {
 					package_uninstalled = "✗",
 				},
 			},
-		})
-	end,
-
-	"mason-org/mason-lspconfig.nvim",
-	opts = {
-		ensure_installed = {
-			"bashls",
-			"clangd",
-			"cmake",
-			"cssls",
-			"eslint",
-			"graphql",
-			"html",
-			"lua_ls",
-			"ts_ls",
-			"vimls",
 		},
 	},
-	dependencies = {
-		{ "mason-org/mason.nvim", opts = {} },
-		"neovim/nvim-lspconfig",
+	{
+		"mason-org/mason-lspconfig.nvim",
+		dependencies = { "mason-org/mason.nvim" },
+		opts = {
+			ensure_installed = {
+				"bashls",
+				-- "clangd",
+				-- "cmake",
+				"cssls",
+				"eslint",
+				-- "graphql",
+				"html",
+				"lua_ls",
+				"ts_ls",
+				"vimls",
+				"vue_ls",
+				"vtsls",
+			},
+		},
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = "mason-org/mason.nvim",
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					-- "clang-format",
+					"stylua",
+					"prettier",
+					"prettierd",
+				},
+				run_on_start = true,
+				auto_update = true,
+			})
+		end,
 	},
 }

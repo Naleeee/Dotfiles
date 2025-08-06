@@ -78,58 +78,37 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- mason_lspconfig.setup_handlers({
-		-- 	-- default handler for installed servers
-		-- 	function(server_name)
-		-- 		lspconfig[server_name].setup({
-		-- 			capabilities = capabilities,
-		-- 		})
-		-- 	end,
-		-- 	["graphql"] = function()
-		-- 		-- configure graphql language server
-		-- 		lspconfig["graphql"].setup({
-		-- 			capabilities = capabilities,
-		-- 			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-		-- 		})
-		-- 	end,
-		-- 	["lua_ls"] = function()
-		-- 		-- configure lua server
-		-- 		lspconfig["lua_ls"].setup({
-		-- 			capabilities = capabilities,
-		-- 			settings = {
-		-- 				Lua = {
-		-- 					-- make the language server recognize "vim" global
-		-- 					diagnostics = {
-		-- 						globals = { "vim" },
-		-- 					},
-		-- 					completion = {
-		-- 						callSnippet = "Replace",
-		-- 					},
-		-- 				},
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- 	["ts_ls"] = function()
-		-- 		-- configure typescript language server
-		-- 		lspconfig["ts_ls"].setup({
-		-- 			init_options = {
-		-- 				plugins = {
-		-- 					{
-		-- 						name = "@vue/typescript-plugin",
-		-- 						location = "/home/nale/.nvm/versions/node/v22.11.0/lib/node_modules/@vue/typescript-plugin",
-		-- 						languages = { "javascript", "typescript", "typescriptreact", "javascriptreact", "vue" },
-		-- 					},
-		-- 				},
-		-- 			},
-		-- 			filetypes = {
-		-- 				"javascript",
-		-- 				"typescript",
-		-- 				"javascriptreact",
-		-- 				"typescriptreact",
-		-- 				"vue",
-		-- 			},
-		-- 		})
-		-- 	end,
-		-- })
+		-- Set up vtsls with basic config + plugins for vue
+		lspconfig.vtsls.setup({
+			capabilities = capabilities,
+			filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+			init_options = {
+				plugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vim.fn.stdpath("data")
+							.. "/mason/packages/vue-language-server/node_modules/@vue/typescript-plugin",
+						languages = { "vue" },
+					},
+				},
+			},
+		})
+
+		-- Set up vue_ls with delegation to vtsls for TS support
+		lspconfig.vue_ls.setup({
+			capabilities = capabilities,
+			on_init = function(client)
+				-- Helper to delegate TypeScript handler to vtsls client
+				client.handlers["typescript/request"] = function(_, _, context)
+					local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+					if #clients > 0 then
+						clients[1].request("typescript/request", _, context)
+					else
+						vim.notify("vtsls is not running, vue_ls will lack TS features", vim.log.levels.WARN)
+					end
+				end
+			end,
+			filetypes = { "vue" },
+		})
 	end,
 }

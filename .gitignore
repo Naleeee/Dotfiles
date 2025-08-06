@@ -1,6 +1,8 @@
 # Ignore everything by default.
 *
 
+mocha.css
+
 # Documentation
 !docs
 !docs/*
@@ -64,3 +66,7 @@
 # Yazi
 !yazi
 !yazi/*
+
+# SwayOsd
+!swayosd
+!swayosd/*

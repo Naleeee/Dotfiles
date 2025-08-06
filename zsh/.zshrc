@@ -17,7 +17,6 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 plugins=(
     git
     dirhistory
-    you-should-use
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-bat

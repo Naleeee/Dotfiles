@@ -50,6 +50,9 @@ alias cd="z"
 # ---- NeoVim ----
 alias v="nvim"
 
+# ---- Yazi ----
+alias y="yazi"
+
 # ---- Git ----
 alias gs="git switch"
 alias gb="git branch"

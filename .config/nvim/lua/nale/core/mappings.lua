@@ -45,6 +45,10 @@ keymap.set("v", "<leader>d", '"_d', { desc = "Delete to the void register" })
 -- Paste over selection and don't copy
 keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without copying" })
 
+-- Paste from system clipboard
+keymap.set("n", "p", '"+p', { desc = "Paste from system clipboard" })
+keymap.set("v", "p", '"+p', { desc = "Paste from system clipboard" })
+
 --  Better mouse scroll
 keymap.set("n", "<ScrollWheelUp>", "k", { desc = "Move up on scroll wheel up" })
 keymap.set("n", "<ScrollWheelDown>", "j", { desc = "Move down on scroll wheel down" })

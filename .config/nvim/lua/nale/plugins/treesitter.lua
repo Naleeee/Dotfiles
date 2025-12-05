@@ -5,6 +5,7 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"windwp/nvim-ts-autotag",
+		"HiPhish/rainbow-delimiters.nvim",
 	},
 	config = function()
 		-- import nvim-treesitter plugin

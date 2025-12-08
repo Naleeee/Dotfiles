@@ -5,6 +5,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"bashls",
+				"clang_format",
 				"cssls",
 				"eslint",
 				"html",
@@ -13,7 +14,6 @@ return {
 				"tailwindcss",
 				"vimls",
 				"vue_ls",
-				"vts_ls",
 			},
 		},
 		dependencies = {
@@ -37,8 +37,9 @@ return {
 		opts = {
 			ensure_installed = {
 				"eslint_d",
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
+				"prettier",
+				"stylua",
+				"markdownlint",
 			},
 		},
 		dependencies = {

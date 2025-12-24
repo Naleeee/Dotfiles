@@ -31,7 +31,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Log to git upon sourcing
 eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/NaleLinuxKey
+ssh-add ~/.ssh/NaleComptastarKey
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -86,6 +86,18 @@ alias dh="echo \"Docker aliases usage:\"
           echo \"   - de: Execute the provided container with /bin/bash\"
           echo \"   - des: Same as de but with root privileges\""
 
+# ---- Comptastar ----
+alias client="turbo web#dev"
+alias api="turbo api#dev"
+alias admin="pnpm dev:admin"
+pull() {
+    cd apps/api
+    pnpm prisma db pull
+    pnpm prisma db push
+    pnpm prisma generate
+    cd ...
+}
+
 # ---- Grep recursivly ----
 alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules --exclude-dir=.next $1"
 
@@ -100,7 +112,7 @@ alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 alias t="~/.config/scripts/TmuxStartup.sh"
 
 # pnpm
-export PNPM_HOME="/home/nale/.local/share/pnpm"
+export PNPM_HOME="/Users/nathanlemale/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -112,4 +124,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # opencode
-export PATH=/home/nale/.opencode/bin:$PATH
+export PATH=/Users/nathanlemale/.opencode/bin:$PATH
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
+
+. "$HOME/.local/bin/env"

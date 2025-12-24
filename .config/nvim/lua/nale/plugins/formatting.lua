@@ -75,7 +75,7 @@ return {
 				timeout_ms = 2000,
 			},
 
-			-- Formatter conditions
+			-- Formatter configurations
 			formatters = {
 				eslint_d = {
 					condition = function(self, ctx)
@@ -89,6 +89,10 @@ return {
 						end
 						return has_prettier(self, ctx) or has_eslint(self, ctx) or true -- fallback
 					end,
+				},
+				markdownlint = {
+					-- Disable same rules as in linting.lua
+					prepend_args = { "--disable", "MD013", "MD033", "MD041", "--" },
 				},
 			},
 		})

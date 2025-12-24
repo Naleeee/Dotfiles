@@ -91,7 +91,7 @@ return {
 			dashboard.button("e", "🌲  > Toggle file tree", "<cmd>NvimTreeToggle<CR>"),
 			dashboard.button("f", "📁  > Find File", "<cmd>Telescope find_files<CR>"),
 			dashboard.button("g", "🔎  > Find Word", "<cmd>Telescope live_grep<CR>"),
-			dashboard.button("r", "🔁  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+			dashboard.button("r", "🔁  > Restore Session For Current Directory", "<cmd>AutoSession restore<CR>"),
 			dashboard.button("q", "🏃  > Quit NVIM", "<cmd>qa<CR>"),
 		}
 

@@ -5,7 +5,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"bashls",
-				"clang_format",
+				"biome",
 				"cssls",
 				"eslint",
 				"html",
@@ -38,6 +38,7 @@ return {
 			ensure_installed = {
 				"eslint_d",
 				"prettier",
+				"biome",
 				"stylua",
 				"markdownlint",
 			},

@@ -11,11 +11,12 @@ A modern Wayland tiling compositor with smooth animations, rounded corners, and 
 - [Keybindings](#keybindings)
 - [Monitor Setup](#monitor-setup)
 - [Autostart Applications](#autostart-applications)
-- [Appearance](#appearance)
 - [Hyprlock](#hyprlock)
 - [Hypridle](#hypridle)
 - [Hyprpaper](#hyprpaper)
 - [Related Tools](#related-tools)
+- [Keyboard Input Configuration](#keyboard-input-configuration)
+- [Tips](#tips)
 
 ---
 
@@ -83,33 +84,13 @@ Catppuccin Mocha colors are used throughout, matching the terminal and Neovim se
 | `Alt + Shift + 1-9, 0` | Move window to workspace 1-10 |
 | `Alt + S` | Toggle special workspace (scratchpad) |
 | `Alt + Shift + S` | Move window to special workspace |
-| `Alt + Mouse Scroll` | Scroll through workspaces |
-
-### Mouse Controls
-
-| Action | Effect |
-|--------|--------|
-| `Alt + Left Click + Drag` | Move window |
-| `Alt + Right Click + Drag` | Resize window |
 
 ### Screenshots
 
 | Keybinding | Action |
 |------------|--------|
 | `Print` | Screenshot window (clipboard) |
-| `Shift + Print` | Screenshot region (clipboard) |
 | `Super + Shift + S` | Screenshot region with grim/slurp |
-
-### Media Keys
-
-| Key | Action |
-|-----|--------|
-| `XF86AudioRaiseVolume` | Volume up 5% |
-| `XF86AudioLowerVolume` | Volume down 5% |
-| `XF86AudioMute` | Toggle mute |
-| `XF86AudioMicMute` | Toggle mic mute |
-| `XF86AudioPlay/Pause` | Play/pause media |
-| `XF86AudioNext/Prev` | Next/previous track |
 
 ---
 
@@ -159,54 +140,6 @@ exec-once = [workspace 3 silent] vesktop
 | Brave | 2 | Browser |
 | Vesktop | 3 | Discord client |
 
----
-
-## Appearance
-
-### General Settings
-
-```conf
-general {
-    gaps_in = 5           # Gap between windows
-    gaps_out = 20         # Gap to screen edge
-    border_size = 2
-    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.inactive_border = rgba(595959aa)
-    layout = dwindle
-}
-```
-
-### Decorations
-
-```conf
-decoration {
-    rounding = 10         # Rounded corners
-    active_opacity = 1.0
-    inactive_opacity = 1.0
-    
-    blur {
-        enabled = true
-        size = 3
-        passes = 1
-        vibrancy = 0.1696
-    }
-}
-```
-
-### Animations
-
-```conf
-animations {
-    enabled = true
-    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-    
-    animation = windows, 1, 7, myBezier
-    animation = windowsOut, 1, 7, default, popin 80%
-    animation = border, 1, 10, default
-    animation = fade, 1, 7, default
-    animation = workspaces, 1, 6, default
-}
-```
 
 ---
 
@@ -214,35 +147,11 @@ animations {
 
 Lock screen with Catppuccin theme, time display, and user avatar.
 
-### Features
-
 - Blurred background wallpaper
 - Time and date display
 - User avatar
 - Password input with visual feedback
 - Caps lock indicator
-
-### Configuration Highlights
-
-```conf
-# Time display (top right)
-label {
-    text = cmd[update:30000] echo "$(date +"%R")"
-    font_size = 60
-    position = -30, -30
-    halign = right
-    valign = top
-}
-
-# Input field (center)
-input-field {
-    size = 300, 60
-    outline_thickness = 4
-    outer_color = $accent
-    inner_color = $surface0
-    placeholder_text = <i>󰌾 Logged in as $USER</i>
-}
-```
 
 ---
 
@@ -255,27 +164,7 @@ Automatic actions based on idle time:
 | 2.5 min | Start screensaver |
 | 5 min | Lock screen |
 | 5.5 min | Turn off display |
-| On resume | Turn on display, restart Waybar |
 
-### Configuration
-
-```conf
-listener {
-    timeout = 150                    # 2.5 minutes
-    on-timeout = omarchy-launch-screensaver
-}
-
-listener {
-    timeout = 300                    # 5 minutes
-    on-timeout = loginctl lock-session
-}
-
-listener {
-    timeout = 330                    # 5.5 minutes
-    on-timeout = hyprctl dispatch dpms off
-    on-resume = hyprctl dispatch dpms on && brightnessctl -r
-}
-```
 
 ---
 
@@ -293,17 +182,6 @@ wallpaper = eDP-1, ~/.config/backgrounds/paladin-strait.png
 wallpaper = HDMI-A-1, ~/.config/backgrounds/DessinTopFull.png
 ```
 
-### Available Wallpapers
-
-Located in `~/.config/backgrounds/`:
-- `paladin-strait.png`
-- `DessinTopFull.png` (artwork by Mattea Dalla Favera)
-- `midwest-indigo.jpeg`
-- `sahlo-folina.jpeg`
-- `nice-blue-background.png`
-- `car-with-full-moon-background.jpg`
-- `shaded.png`
-
 ---
 
 ## Related Tools
@@ -316,9 +194,7 @@ Located in `~/.config/backgrounds/`:
 
 ---
 
-## Input Configuration
-
-### Keyboard
+## Keyboard Input Configuration
 
 ```conf
 input {
@@ -331,29 +207,6 @@ input {
         natural_scroll = true
     }
 }
-```
-
-### Gestures
-
-```conf
-gestures {
-    workspace_swipe = false
-}
-```
-
----
-
-## Window Rules
-
-```conf
-# Suppress maximize requests
-windowrulev2 = suppressevent maximize, class:.*
-
-# Fix XWayland focus issues
-windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
-
-# Faster scrolling in terminal
-windowrule = scrolltouchpad 1.5, class:kitty
 ```
 
 ---

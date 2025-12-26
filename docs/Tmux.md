@@ -71,26 +71,24 @@ set -g pane-border-style 'fg=#313244,bg=default'          # Subtle inactive
 
 | Keybinding | Action |
 |------------|--------|
-| `Prefix + c` | Create new window |
+| `Prefix + ctrl + c` | Create new window |
 | `Prefix + n` | Next window |
 | `Prefix + p` | Previous window |
-| `Prefix + &` | Kill window |
-| `Prefix + ,` | Rename window |
+| `Prefix + r` | Rename window |
 | `Prefix + w` | List windows |
 | `Prefix + d` | Detach session |
-| `Prefix + s` | List sessions |
 
 ### Pane Management
 
 | Keybinding | Action |
 |------------|--------|
-| `Prefix + %` | Split vertically |
-| `Prefix + "` | Split horizontally |
-| `Prefix + x` | Kill pane |
-| `Prefix + z` | Toggle pane zoom |
+| `Prefix + v` | Split vertically |
+| `Prefix + s` | Split horizontally |
+| `Prefix + x` | Maximized pane |
+| `Prefix + c` | Kill pane |
 | `Prefix + {` | Move pane left |
 | `Prefix + }` | Move pane right |
-| `Prefix + Arrow` | Navigate panes |
+| `Prefix + H/J/K/L` | Navigate panes |
 
 ### Special Features
 

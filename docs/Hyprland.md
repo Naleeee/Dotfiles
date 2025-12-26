@@ -1,6 +1,6 @@
 # Hyprland Configuration
 
-A modern Wayland tiling compositor with smooth animations, rounded corners, and a cohesive Catppuccin theme. Includes Hyprlock, Hypridle, and Hyprpaper for a complete desktop experience.
+A modern Wayland tiling compositor with smooth animations, rounded corners, and a cohesive Catppuccin theme. Includes Hyprlock, Hypridle, Hyprpaper, Waybar, and Wofi for a complete desktop experience.
 
 ---
 
@@ -14,8 +14,9 @@ A modern Wayland tiling compositor with smooth animations, rounded corners, and 
 - [Hyprlock](#hyprlock)
 - [Hypridle](#hypridle)
 - [Hyprpaper](#hyprpaper)
-- [Related Tools](#related-tools)
-- [Keyboard Input Configuration](#keyboard-input-configuration)
+- [Waybar](#waybar)
+- [Wofi](#wofi)
+- [Keyboard Input](#keyboard-input)
 - [Tips](#tips)
 
 ---
@@ -39,14 +40,14 @@ Catppuccin Mocha colors are used throughout, matching the terminal and Neovim se
 
 ## Components
 
-| Component | Purpose | Config File |
-|-----------|---------|-------------|
-| **Hyprland** | Window manager | `hyprland.conf` |
-| **Hyprlock** | Lock screen | `hyprlock.conf` |
-| **Hypridle** | Idle daemon | `hypridle.conf` |
-| **Hyprpaper** | Wallpaper manager | `hyprpaper.conf` |
-| **Waybar** | Status bar | See [Waybar.md](Waybar.md) |
-| **Wofi** | App launcher | See [Wofi.md](Wofi.md) |
+| Component | Purpose | Config Location |
+|-----------|---------|-----------------|
+| **Hyprland** | Window manager | `~/.config/hypr/hyprland.conf` |
+| **Hyprlock** | Lock screen | `~/.config/hypr/hyprlock.conf` |
+| **Hypridle** | Idle daemon | `~/.config/hypr/hypridle.conf` |
+| **Hyprpaper** | Wallpaper manager | `~/.config/hypr/hyprpaper.conf` |
+| **Waybar** | Status bar | `~/.config/waybar/` |
+| **Wofi** | App launcher | `~/.config/wofi/` |
 | **SwayOSD** | On-screen display | Volume/brightness indicators |
 
 ---
@@ -96,31 +97,15 @@ Catppuccin Mocha colors are used throughout, matching the terminal and Neovim se
 
 ## Monitor Setup
 
-The configuration supports multiple monitor setups:
-
 ```conf
 # Current setup: External monitor above laptop
 monitor=eDP-1,preferred,0x1080,1      # Laptop display (below)
 monitor=HDMI-A-1,preferred,0x0,1      # External monitor (above)
 ```
 
-### Alternative Configurations
-
-```conf
-# Side by side
-monitor=eDP-1,preferred,auto,1
-monitor=HDMI-A-1,preferred,auto,auto
-
-# Widescreen above
-monitor=eDP-1,preferred,0x1440,1
-monitor=HDMI-A-1,preferred,0x0,1
-```
-
 ---
 
 ## Autostart Applications
-
-On startup, the following are launched:
 
 ```conf
 exec-once = waybar & swaync & hypridle & hyprpaper & swayosd-server
@@ -129,23 +114,11 @@ exec-once = [workspace 2 silent] brave
 exec-once = [workspace 3 silent] vesktop
 ```
 
-| Application | Workspace | Purpose |
-|-------------|-----------|---------|
-| Waybar | - | Status bar |
-| Swaync | - | Notification center |
-| Hypridle | - | Idle management |
-| Hyprpaper | - | Wallpaper |
-| SwayOSD | - | On-screen display |
-| Kitty | 1 | Terminal |
-| Brave | 2 | Browser |
-| Vesktop | 3 | Discord client |
-
-
 ---
 
 ## Hyprlock
 
-Lock screen with Catppuccin theme, time display, and user avatar.
+Lock screen with Catppuccin theme featuring:
 
 - Blurred background wallpaper
 - Time and date display
@@ -165,43 +138,75 @@ Automatic actions based on idle time:
 | 5 min | Lock screen |
 | 5.5 min | Turn off display |
 
-
 ---
 
 ## Hyprpaper
 
-Wallpaper manager with per-monitor support.
-
-### Configuration
+Wallpaper manager with per-monitor support:
 
 ```conf
 preload = ~/.config/backgrounds/paladin-strait.png
-preload = ~/.config/backgrounds/DessinTopFull.png
-
 wallpaper = eDP-1, ~/.config/backgrounds/paladin-strait.png
 wallpaper = HDMI-A-1, ~/.config/backgrounds/DessinTopFull.png
 ```
 
 ---
 
-## Related Tools
+## Waybar
 
-- [Waybar](Waybar.md) - Status bar
-- [Wofi](Wofi.md) - Application launcher
-- [SwayOSD](https://github.com/ErikReider/SwayOSD) - On-screen display
-- [Swaync](https://github.com/ErikReider/SwayNotificationCenter) - Notification center
-- [Hyprshot](https://github.com/Gustash/Hyprshot) - Screenshot tool
+[Waybar](https://github.com/Alexays/Waybar) status bar positioned at the top with Catppuccin Mocha theme.
+
+### Layout
+
+```
+[Workspaces] ─── [Clock | Window Title] ─── [Network | Bluetooth | Audio | CPU | Battery]
+```
+
+### Modules
+
+| Module | Icon | Click Action |
+|--------|------|--------------|
+| Workspaces | 1-5 | Switch workspace |
+| Clock | - | Calendar tooltip |
+| Network | 󰤨 | Open network manager |
+| Bluetooth |  | Open Blueberry |
+| Audio |  | Open mixer / Toggle mute |
+| CPU | 󰍛 | Open btop |
+| Battery | 󰁹 | - |
+
+### Files
+
+- `~/.config/waybar/config.jsonc` - Module configuration
+- `~/.config/waybar/style.css` - Visual styling
 
 ---
 
-## Keyboard Input Configuration
+## Wofi
+
+[Wofi](https://hg.sr.ht/~scoopta/wofi) application launcher with Catppuccin Mocha theme.
+
+### Usage
+
+| Key | Action |
+|-----|--------|
+| `Alt + Space` | Open launcher |
+| Type | Filter applications |
+| `Enter` | Launch selected |
+| `Escape` | Close |
+
+### Files
+
+- `~/.config/wofi/style.css` - Visual styling
+
+---
+
+## Keyboard Input
 
 ```conf
 input {
     kb_layout = us,fr                    # US and French layouts
     kb_options = grp:win_space_toggle    # Win+Space to switch layout
     follow_mouse = 1
-    sensitivity = 0
     
     touchpad {
         natural_scroll = true
@@ -213,29 +218,24 @@ input {
 
 ## Tips
 
-### Debugging
-
-```bash
-# Check Hyprland logs
-cat /tmp/hypr/$(ls -t /tmp/hypr/ | head -1)/hyprland.log
-
-# List monitors
-hyprctl monitors
-
-# List windows
-hyprctl clients
-```
-
 ### Useful Commands
 
 ```bash
 # Reload config (automatic on save)
 hyprctl reload
 
-# Toggle window floating
-hyprctl dispatch togglefloating
+# List monitors
+hyprctl monitors
 
-# Move to workspace
-hyprctl dispatch workspace 1
+# List windows
+hyprctl clients
+
+# Restart Waybar
+killall waybar && waybar &
 ```
 
+### Related Tools
+
+- [SwayOSD](https://github.com/ErikReider/SwayOSD) - On-screen display
+- [Swaync](https://github.com/ErikReider/SwayNotificationCenter) - Notification center
+- [Hyprshot](https://github.com/Gustash/Hyprshot) - Screenshot tool

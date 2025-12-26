@@ -86,7 +86,7 @@ brew install --cask font-caskaydia-cove-nerd-font
 | Keybinding | Action |
 |------------|--------|
 | `Ctrl+C` | Copy or interrupt |
-| `Ctrl+Shift+V` | Paste from clipboard |
+| `Ctrl+Shift+V` | Paste from clipboard (keep v-block NeoVim mode) |
 
 ### Window Management
 
@@ -99,12 +99,6 @@ brew install --cask font-caskaydia-cove-nerd-font
 ---
 
 ## Settings
-
-### Audio
-
-```conf
-enable_audio_bell no    # Disable bell sound
-```
 
 ### Window Appearance
 
@@ -134,9 +128,6 @@ background_opacity 1          # Opaque background
 ```bash
 # Arch/Manjaro
 sudo pacman -S kitty
-
-# Ubuntu/Debian
-sudo apt install kitty
 
 # macOS
 brew install --cask kitty
@@ -193,47 +184,3 @@ kitty --debug-config
 kitty +edit-config
 ```
 
-### Performance
-
-Kitty uses GPU acceleration for rendering, making it efficient for:
-
-- Large scrollback buffers
-- Complex Unicode rendering
-- Smooth scrolling
-- Fast text output
-
-### Customization
-
-Edit `~/.config/kitty/kitty.conf` to customize:
-
-- Font size and family
-- Color scheme
-- Keybindings
-- Window appearance
-- Tab behavior
-
----
-
-## Troubleshooting
-
-### Font Issues
-
-If icons don't display:
-
-1. Ensure Nerd Font is installed
-2. Verify font name in config
-3. Restart Kitty
-
-### Color Issues
-
-If colors look wrong:
-
-1. Check `TERM` environment variable
-2. Ensure `termguicolors` is set in Neovim
-3. Verify theme file exists
-
-```bash
-# Check terminal type
-echo $TERM
-# Should be: xterm-kitty
-```

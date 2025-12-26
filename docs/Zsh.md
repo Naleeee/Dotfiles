@@ -123,16 +123,6 @@ Active plugins in `.zshrc`:
 | `des` | `docker exec -it -u root /bin/bash` | Exec as root |
 | `dh` | Help text | Show Docker aliases help |
 
-### Development
-
-| Alias | Command | Description |
-|-------|---------|-------------|
-| `client` | `pnpm dev:web` | Start web client |
-| `admin` | `pnpm dev:admin` | Start admin panel |
-| `api` | `pnpm dev:api` | Start API server |
-| `t` | Script | Tmux startup script |
-| `web` | `doxygen && open docs` | Generate and open docs |
-
 ### Search
 
 | Alias | Command | Description |
@@ -142,24 +132,6 @@ Active plugins in `.zshrc`:
 ---
 
 ## Environment Setup
-
-### PATH Additions
-
-```bash
-export PATH=$PATH:/bin/nvim/
-export PATH=$PATH:~/.config/scripts/
-export PATH="$PNPM_HOME:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
-```
-
-### Node Version Manager
-
-```bash
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-```
 
 ### SSH Agent
 
@@ -191,20 +163,6 @@ Usage:
 gnb feature/new-feature
 ```
 
-### pull - Prisma Database Sync
-
-Syncs Prisma schema with database:
-
-```bash
-pull() {
-    cd apps/api
-    pnpm prisma db pull
-    pnpm prisma db push
-    pnpm prisma generate
-    cd ...
-}
-```
-
 ---
 
 ## Installation
@@ -214,7 +172,6 @@ pull() {
 ```bash
 # Install Zsh
 sudo pacman -S zsh  # Arch
-sudo apt install zsh  # Debian/Ubuntu
 
 # Set as default shell
 chsh -s $(which zsh)
@@ -253,7 +210,6 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 
 # Eza (better ls)
 sudo pacman -S eza  # Arch
-cargo install eza   # Via Cargo
 
 # Fzf (fuzzy finder)
 sudo pacman -S fzf
@@ -288,9 +244,3 @@ history
 Ctrl+R
 ```
 
-### Customization
-
-1. **Add aliases**: Edit `~/.zshrc` in the aliases section
-2. **Change theme**: Modify `ZSH_THEME` in `~/.zshrc`
-3. **Add plugins**: Add to `plugins=()` array in `~/.zshrc`
-4. **Customize prompt**: Run `p10k configure` or edit `~/.p10k.zsh`

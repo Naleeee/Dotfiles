@@ -1,4 +1,37 @@
 local keymap = vim.keymap -- for conciseness
+
+-- Config file patterns for linter detection
+local biome_configs = { "biome.json", "biome.jsonc" }
+local eslint_configs = { ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".eslintrc.cjs", "eslint.config.js", "eslint.config.mjs" }
+
+-- Helper: check if config files exist upward from buffer
+local function has_config(patterns, bufnr)
+	local bufname = vim.api.nvim_buf_get_name(bufnr or 0)
+	return vim.fs.find(patterns, { path = bufname, upward = true })[1] ~= nil
+end
+
+-- Configure Biome: only attach if biome config exists
+vim.lsp.config("biome", {
+	root_markers = biome_configs,
+	on_attach = function(client, bufnr)
+		if not has_config(biome_configs, bufnr) then
+			vim.lsp.stop_client(client.id, true)
+		end
+	end,
+})
+
+-- Configure ESLint: only attach if eslint config exists AND biome config does NOT exist
+vim.lsp.config("eslint", {
+	root_markers = eslint_configs,
+	on_attach = function(client, bufnr)
+		local has_eslint = has_config(eslint_configs, bufnr)
+		local has_biome = has_config(biome_configs, bufnr)
+		if not has_eslint or has_biome then
+			vim.lsp.stop_client(client.id, true)
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)

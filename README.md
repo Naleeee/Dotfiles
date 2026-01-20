@@ -5,121 +5,280 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![NeoVim][NeoVim]][NeoVim-url]
 
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <a href="https://github.com/Naleeee/Dotfiles">
     <img src="docs/assets/Logo.jpg" alt="Logo" width="300" height="231">
   </a>
 
-<h3 align="center">Nale's Dotfiles</h3>
+<h1>Nale's Dotfiles</h1>
 
-  <p align="center">
-    This is my personal developpment configuration environment.
+  <p>
+    A complete development environment configuration featuring <strong>Neovim</strong>, <strong>Hyprland</strong>, <strong>Zsh</strong>, <strong>Tmux</strong>, and more.
     <br />
-    It contains my NeoVim, Zsh, Kitty and Tmux configuration !
-    <br />
+    Unified with the <strong>Catppuccin Mocha</strong> color scheme for a cohesive aesthetic.
+  </p>
+
+  <p>
     <a href="https://github.com/Naleeee/Dotfiles"><strong>Explore the project »</strong></a>
-    <br />
-    <br />
-    <!-- <a href="https://github.com/Naleeee/Dotfiles/issues">Report Bug</a> -->
-    <!-- · -->
-    <!-- <a href="https://github.com/Naleeee/Dotfiles/issues">Request Feature</a> -->
   </p>
 </div>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  
-<!-- vim-markdown-toc Marked -->
-* [About The Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Usage](#usage)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [Contact](#contact)
+---
 
-</details>
+## Table of Contents
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Using GNU Stow](#using-gnu-stow)
+  - [Manual Installation](#manual-installation)
+- [Documentation](#documentation)
+- [Version Requirements](#version-requirements)
+- [Roadmap](#roadmap)
+- [Contact](#contact)
 
-### Documentation
+---
 
-* [NeoVim](./nvim/README.md)
-* [Zsh](./zsh/README.md)
-* [Kitty](./kitty/README.md)
-* [Tmux](./tmux/README.md)
+## Overview
 
-### Preview
+This repository contains my personal dotfiles for a complete Linux development environment. Every component is configured with the **Catppuccin Mocha** theme for visual consistency across the entire workflow.
 
-![Nvim Preview](./nvim/docs/assets/NvimPreview.gif)
+### Key Features
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- **Modern Neovim Setup** - Fully Lua-based configuration with LSP, autocompletion, and 40+ plugins managed by Lazy.nvim
+- **Hyprland Window Manager** - Tiling Wayland compositor with animations and custom keybindings
+- **Enhanced Terminal** - Kitty terminal with Zsh, Oh My Zsh, and Powerlevel10k
+- **Tmux Integration** - Session management with custom theme and plugins
+- **Additional Tools** - Waybar, Wofi, Yazi file manager, and more
 
-<!-- GETTING STARTED -->
-## Getting Started
+---
+
+## Features
+
+| Component | Description | Documentation |
+|-----------|-------------|---------------|
+| **Neovim** | Text editor with LSP, completion, and modern plugins | [docs/Neovim.md](docs/Neovim.md) |
+| **Hyprland** | Wayland tiling compositor | [docs/Hyprland.md](docs/Hyprland.md) |
+| **Zsh** | Shell with Oh My Zsh and Powerlevel10k | [docs/Zsh.md](docs/Zsh.md) |
+| **Tmux** | Terminal multiplexer | [docs/Tmux.md](docs/Tmux.md) |
+| **Kitty** | GPU-accelerated terminal | [docs/Kitty.md](docs/Kitty.md) |
+| **Waybar** | Status bar for Wayland | [docs/Waybar.md](docs/Waybar.md) |
+| **Wofi** | Application launcher | [docs/Wofi.md](docs/Wofi.md) |
+| **Yazi** | Terminal file manager | [docs/Yazi.md](docs/Yazi.md) |
+
+---
+
+## Installation
 
 ### Prerequisites
 
-#### Version
+Before installing, ensure you have the following tools available:
 
-|  Nvim  | Zsh | Kitty  | Tmux |
-| ------ | --- | -----  | ---- |
-|  0.10  | 5.9 | 0.31.0 | 3.4  |
+```bash
+# Required
+git
+stow        # GNU Stow for symlink management
 
-### Installation
+# For Neovim
+neovim >= 0.11
+ripgrep     # For Telescope live grep
+fzf         # Fuzzy finder
+node        # For LSP servers and plugins
+npm/pnpm    # Package manager
 
-1. Clone the repo
+# For Hyprland
+hyprland
+waybar
+wofi
+hyprlock
+hypridle
+hyprpaper
 
-   ```sh
-   git clone https://github.com/Naleeee/Dotfiles.git
-   ```
+# For Terminal
+kitty
+zsh
+tmux
+```
 
-2. Run the auto installer script for a full setup
+### Using GNU Stow
 
-   ```sh
-   ./scripts/AutoInstaller.sh
-   ```
+[GNU Stow](https://www.gnu.org/software/stow/) is used to manage symlinks from this repository to your home directory. This keeps your dotfiles organized and version-controlled.
 
-<br />
+#### Quick Start
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```bash
+# 1. Clone the repository to your home directory
+cd ~
+git clone https://github.com/Naleeee/Dotfiles.git
+cd Dotfiles
 
-<!-- ROADMAP -->
+# 2. Install GNU Stow on
+# Arch/Manjaro
+sudo pacman -S stow
+
+# macOS
+brew install stow
+
+# 3. Stow all configurations (creates symlinks)
+stow .
+
+# Or stow specific components
+stow .config/nvim      # Neovim only
+stow .config/kitty     # Kitty only
+stow .config/tmux      # Tmux only
+```
+
+#### How Stow Works
+
+When you run `stow .` from the Dotfiles directory, it creates symlinks in your home directory that point to the files in this repository:
+
+```
+~/Dotfiles/.config/nvim  →  ~/.config/nvim
+~/Dotfiles/.config/kitty →  ~/.config/kitty
+~/Dotfiles/.zshrc        →  ~/.zshrc
+...
+```
+
+#### Managing Stow
+
+```bash
+# Add new symlinks (stow)
+stow .
+
+# Remove symlinks (unstow)
+stow -D .
+
+# Re-stow (unstow then stow - useful after adding new files)
+stow -R .
+
+# Simulate what would happen (dry run)
+stow -n -v .
+
+# Ignore specific patterns
+stow --ignore='README.*' --ignore='*.md' .
+```
+
+#### Handling Conflicts
+
+If you have existing config files, stow will refuse to overwrite them. To resolve:
+
+```bash
+# Option 1: Backup and remove existing configs
+mv ~/.config/nvim ~/.config/nvim.backup
+mv ~/.zshrc ~/.zshrc.backup
+
+# Option 2: Adopt existing files into the repository
+stow --adopt .
+# Warning: This moves your existing files INTO the Dotfiles repo
+```
+
+
+### Post-Installation
+
+After stowing the configurations:
+
+```bash
+# 1. Install Neovim plugins (automatic on first launch)
+nvim
+# Lazy.nvim will auto-install plugins
+
+# 2. Install Tmux plugins
+tmux
+# Press prefix + I (Ctrl-A + I) to install plugins
+
+# 3. Configure Zsh
+# Oh My Zsh and Powerlevel10k will prompt for configuration
+zsh
+
+# 4. Install required fonts
+# The config uses Caskaydia Cove Nerd Font
+# Download from: https://www.nerdfonts.com/
+```
+
+---
+
+## Documentation
+
+Detailed documentation for each component:
+
+| Document | Description |
+|----------|-------------|
+| [Neovim](docs/Neovim.md) | Complete editor setup, plugins, keybindings, LSP configuration |
+| [Hyprland](docs/Hyprland.md) | Window manager config, keybindings, autostart, Hyprlock/Hyprpaper |
+| [Zsh](docs/Zsh.md) | Shell configuration, aliases, plugins, Powerlevel10k theme |
+| [Tmux](docs/Tmux.md) | Session management, plugins, keybindings, Catppuccin theme |
+| [Kitty](docs/Kitty.md) | Terminal configuration, fonts, keybindings |
+| [Waybar](docs/Waybar.md) | Status bar modules and styling |
+| [Wofi](docs/Wofi.md) | Application launcher configuration |
+| [Yazi](docs/Yazi.md) | File manager configuration |
+
+---
+
+## Version Requirements
+
+| Tool | Minimum Version |
+|------|-----------------|
+| Neovim | 0.11+ |
+| Zsh | 5.9+ |
+| Kitty | 0.31.0+ |
+| Tmux | 3.4+ |
+| Hyprland | 0.45.2+ |
+
+---
+
+## Repository Structure
+
+```
+~/Dotfiles/
+├── .config/
+│   ├── backgrounds/       # Wallpapers
+│   ├── btop/              # System monitor config
+│   ├── eza/               # Better ls config
+│   ├── hypr/              # Hyprland, Hyprlock, Hypridle, Hyprpaper
+│   ├── kitty/             # Terminal emulator
+│   ├── nvim/              # Neovim configuration
+│   ├── scripts/           # Utility scripts
+│   ├── swayosd/           # OSD for volume/brightness
+│   ├── tmux/              # Tmux configuration
+│   ├── waybar/            # Status bar
+│   ├── wofi/              # App launcher
+│   └── yazi/              # File manager
+├── docs/                  # Documentation
+├── .zshrc                 # Zsh configuration
+├── .p10k.zsh              # Powerlevel10k theme
+└── README.md              # This file
+```
+
+---
+
 ## Roadmap
 
-* [x] Create Documentation for the repository
-* [x] Only use Lua
-* [ ] Setup installer with ChezMoi
+- [x] Full Lua Neovim configuration
+- [x] Hyprland Wayland setup
+- [x] Comprehensive documentation
+- [x] GNU Stow installation method
+- [ ] Automated installation script improvements (binaries, ssh-key, p10k configuration...)
 
-See the [open issues](https://github.com/Naleeee/Dotfiles/issues) for a full list of proposed features (and known issues).
+---
 
-<br />
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
 ## Contact
 
-Nathan Lemale - <nthn.lemale@gmail.com>
+**Nathan Lemale**
 
-Project Link: [https://github.com/Naleeee/Dotfiles](https://github.com/Naleeee/Dotfiles)
+- Email: nthn.lemale@gmail.com
+- Website: [nathanlemale.com](https://www.nathanlemale.com/)
+- LinkedIn: [nathan-lemale](https://linkedin.com/in/nathan-lemale)
+- GitHub: [Naleeee](https://github.com/Naleeee)
 
-Checkout my website: <https://www.nathanlemale.com/>
-
-<br />
+Project Link: [github.com/Naleeee/Dotfiles](https://github.com/Naleeee/Dotfiles)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+---
+
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/Naleeee/Dotfiles.svg?style=for-the-badge
 [contributors-url]: https://github.com/Naleeee/Dotfiles/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Naleeee/Dotfiles.svg?style=for-the-badge
@@ -130,5 +289,3 @@ Checkout my website: <https://www.nathanlemale.com/>
 [issues-url]: https://github.com/Naleeee/Dotfiles/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/nathan-lemale
-[Neovim]: https://img.shields.io/static/v1?style=for-the-badge&message=Neovim&color=57A143&logo=Neovim&logoColor=FFFFFF&label
-[NeoVim-url]: https://neovim.io/

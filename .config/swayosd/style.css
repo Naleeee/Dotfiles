@@ -1,0 +1,28 @@
+@import "../mocha.css";
+
+window {
+  border-radius: 0;
+  opacity: 0.97;
+  border: 2px solid @blue;
+
+  background-color: @crust;
+}
+
+label {
+  font-family: 'CaskaydiaMono Nerd Font', monospace;
+  font-size: 11pt;
+
+  color: @sapphire;
+}
+
+image {
+  color: @blue;
+}
+
+progressbar {
+  border-radius: 0;
+}
+
+progress {
+  background-color: @blue;
+}

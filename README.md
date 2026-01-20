@@ -29,7 +29,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [Components](#components)
+- [Features](#features)
 - [Installation](#installation)
   - [Prerequisites](#prerequisites)
   - [Using GNU Stow](#using-gnu-stow)
@@ -47,7 +47,7 @@ This repository contains my personal dotfiles for a complete Linux development e
 
 ### Key Features
 
-- **Modern Neovim Setup** - Fully Lua-based configuration with LSP, autocompletion, and 40+ plugins
+- **Modern Neovim Setup** - Fully Lua-based configuration with LSP, autocompletion, and 40+ plugins managed by Lazy.nvim
 - **Hyprland Window Manager** - Tiling Wayland compositor with animations and custom keybindings
 - **Enhanced Terminal** - Kitty terminal with Zsh, Oh My Zsh, and Powerlevel10k
 - **Tmux Integration** - Session management with custom theme and plugins
@@ -55,7 +55,7 @@ This repository contains my personal dotfiles for a complete Linux development e
 
 ---
 
-## Components
+## Features
 
 | Component | Description | Documentation |
 |-----------|-------------|---------------|
@@ -82,13 +82,13 @@ git
 stow        # GNU Stow for symlink management
 
 # For Neovim
-neovim >= 0.10
+neovim >= 0.11
 ripgrep     # For Telescope live grep
 fzf         # Fuzzy finder
 node        # For LSP servers and plugins
 npm/pnpm    # Package manager
 
-# For Hyprland (Wayland)
+# For Hyprland
 hyprland
 waybar
 wofi
@@ -220,7 +220,7 @@ Detailed documentation for each component:
 
 | Tool | Minimum Version |
 |------|-----------------|
-| Neovim | 0.10+ |
+| Neovim | 0.11+ |
 | Zsh | 5.9+ |
 | Kitty | 0.31.0+ |
 | Tmux | 3.4+ |
@@ -233,18 +233,12 @@ Detailed documentation for each component:
 ```
 ~/Dotfiles/
 ├── .config/
-│   ├── backgrounds/        # Wallpapers
+│   ├── backgrounds/       # Wallpapers
 │   ├── btop/              # System monitor config
 │   ├── eza/               # Better ls config
 │   ├── hypr/              # Hyprland, Hyprlock, Hypridle, Hyprpaper
 │   ├── kitty/             # Terminal emulator
 │   ├── nvim/              # Neovim configuration
-│   │   ├── ftplugin/      # Filetype-specific settings
-│   │   ├── lua/nale/      # Main Lua configuration
-│   │   │   ├── core/      # Settings, mappings
-│   │   │   ├── plugins/   # Plugin configurations
-│   │   │   └── lsp/       # LSP configuration
-│   │   └── snippets/      # Custom LuaSnip snippets
 │   ├── scripts/           # Utility scripts
 │   ├── swayosd/           # OSD for volume/brightness
 │   ├── tmux/              # Tmux configuration
@@ -252,7 +246,6 @@ Detailed documentation for each component:
 │   ├── wofi/              # App launcher
 │   └── yazi/              # File manager
 ├── docs/                  # Documentation
-│   └── assets/            # Screenshots and images
 ├── .zshrc                 # Zsh configuration
 ├── .p10k.zsh              # Powerlevel10k theme
 └── README.md              # This file
@@ -266,7 +259,7 @@ Detailed documentation for each component:
 - [x] Hyprland Wayland setup
 - [x] Comprehensive documentation
 - [x] GNU Stow installation method
-- [ ] Automated installation script improvements
+- [ ] Automated installation script improvements (binaries, ssh-key, p10k configuration...)
 
 ---
 

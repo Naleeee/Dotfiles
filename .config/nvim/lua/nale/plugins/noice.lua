@@ -5,50 +5,26 @@ return {
 		local noice = require("noice")
 
 		noice.setup({
-			cmdline = {
-				view = "cmdline_popup",
-				format = {
-					cmdline = { icon = ">" },
-					search_down = { icon = "/" },
-					search_up = { icon = "?" },
-				},
+			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+			override = {
+				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+				["vim.lsp.util.stylize_markdown"] = true,
+				["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 			},
 			messages = {
-				enabled = true,
-				view = "mini",
-			},
-			popupmenu = {
-				enabled = true,
-				backend = "nui",
-			},
-			lsp = {
-				progress = { enabled = false }, -- Use fidget instead
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-				hover = { enabled = false }, -- Use lspsaga instead
-				signature = { enabled = true },
+				enabled = false, -- disable the Noice messages UI
 			},
 			presets = {
-				bottom_search = false,
-				command_palette = true,
-				long_message_to_split = true,
-				lsp_doc_border = true,
-			},
-			views = {
-				mini = {
-					win_options = {
-						winblend = 0,
-					},
-				},
+				bottom_search = false, -- use a top cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
 			},
 		})
 
+		-- set keymaps
 		local keymap = vim.keymap
-		keymap.set("n", "<leader>nc", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss notifications" })
-		keymap.set("n", "<leader>nh", "<cmd>Noice history<cr>", { desc = "Notification history" })
+
+		keymap.set("n", "<leader>nc", "<cmd>NoiceDismiss<cr>", { desc = "Clear current noice notifications" })
 	end,
 	dependencies = {
 		"MunifTanjim/nui.nvim",

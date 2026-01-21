@@ -63,8 +63,8 @@ keymap.set("i", "ㅓㅏ", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("i", "ㅏㅓ", "<ESC>", { desc = "Exit insert mode" })
 
 -- Cycle through errors
--- keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
--- keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
+keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
+keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
 
 -- Display mappings in telescope
 keymap.set("n", "<leader>mt", "<Cmd>Telescope keymaps<CR>", { desc = "Open mappins in telescope" })

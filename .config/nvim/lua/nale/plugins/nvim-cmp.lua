@@ -36,6 +36,11 @@ return {
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
+			experimental = {
+				ghost_text = {
+					hl_group = "Comment",
+				},
+			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body)

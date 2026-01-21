@@ -1,7 +1,7 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
+		event = "InsertEnter",
 		build = ":Copilot auth",
 		config = function()
 			require("copilot").setup({
@@ -9,7 +9,10 @@ return {
 					enabled = true,
 					auto_trigger = true,
 					keymap = {
-						accept = "<Tab>",
+						accept = "<C-l>",
+						next = "<C-]>",
+						prev = "<C-[>",
+						dismiss = "<C-h>",
 					},
 				},
 				panel = { enabled = false },

@@ -106,34 +106,120 @@ return {
 			})
 		end, { desc = "Format file or range (in visual mode)" })
 
-		-- Keymap to show active formatters for current buffer
-		vim.keymap.set("n", "<leader>ti", function()
-			local formatters = conform.list_formatters_for_buffer()
-			if #formatters > 0 then
-				local names = {}
-				for _, f in ipairs(formatters) do
-					table.insert(names, f.name or f)
-				end
-				vim.notify("Formatters: " .. table.concat(names, ", "), vim.log.levels.INFO)
-			else
-				vim.notify("No formatters configured for this filetype", vim.log.levels.WARN)
-			end
-		end, { desc = "Show active formatters for buffer" })
+		-- Keymap to format file (LSP group)
+		vim.keymap.set("n", "<leader>mf", function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 2000,
+			})
+		end, { desc = "Format buffer" })
 
-		-- Keymap to show active linters for current buffer
-		vim.keymap.set("n", "<leader>tI", function()
+		-- Helper: create floating window
+		local function create_float(content, title)
+			local buf = vim.api.nvim_create_buf(false, true)
+			vim.api.nvim_buf_set_lines(buf, 0, -1, false, content)
+
+			local width = 50
+			local height = math.min(#content + 2, 20)
+
+			for _, line in ipairs(content) do
+				if #line + 4 > width then
+					width = #line + 4
+				end
+			end
+			width = math.min(width, 70)
+
+			local win_opts = {
+				relative = "editor",
+				width = width,
+				height = height,
+				col = math.floor((vim.o.columns - width) / 2),
+				row = math.floor((vim.o.lines - height) / 2),
+				style = "minimal",
+				border = "rounded",
+				title = title,
+				title_pos = "center",
+			}
+
+			local win = vim.api.nvim_open_win(buf, true, win_opts)
+
+			vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
+			vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+
+			vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true })
+			vim.keymap.set("n", "<Esc>", "<cmd>close<cr>", { buffer = buf, silent = true })
+
+			return buf
+		end
+
+		-- Keymap to show active formatters for current buffer (floating window)
+		vim.keymap.set("n", "<leader>if", function()
+			local formatters = conform.list_formatters_for_buffer()
+			local content = {}
+
+			table.insert(content, "")
+			if #formatters > 0 then
+				for _, f in ipairs(formatters) do
+					local name = f.name or f
+					local available = f.available ~= false
+					local icon = available and "●" or "○"
+					local status = available and "available" or "not found"
+					table.insert(content, string.format("  %s  %s (%s)", icon, name, status))
+				end
+			else
+				table.insert(content, "  󰅚  No formatters configured for this filetype")
+			end
+			table.insert(content, "")
+			table.insert(content, "  Press 'q' or <Esc> to close")
+			table.insert(content, "")
+
+			local buf = create_float(content, "  Formatters ")
+
+			vim.api.nvim_buf_call(buf, function()
+				vim.fn.matchadd("DiagnosticOk", "●")
+				vim.fn.matchadd("DiagnosticError", "○")
+				vim.fn.matchadd("Comment", "available")
+				vim.fn.matchadd("Comment", "not found")
+				vim.fn.matchadd("Comment", "Press 'q' or <Esc> to close")
+			end)
+		end, { desc = "Show formatters (floating)" })
+
+		-- Keymap to show active linters for current buffer (floating window)
+		vim.keymap.set("n", "<leader>il", function()
 			local clients = vim.lsp.get_clients({ bufnr = 0 })
+			local content = {}
 			local linters = {}
+
 			for _, client in ipairs(clients) do
 				if client.name == "biome" or client.name == "eslint" then
-					table.insert(linters, client.name)
+					table.insert(linters, client)
 				end
 			end
+
+			table.insert(content, "")
 			if #linters > 0 then
-				vim.notify("Linters (LSP): " .. table.concat(linters, ", "), vim.log.levels.INFO)
+				for _, client in ipairs(linters) do
+					local icon = client.initialized and "●" or "○"
+					local status = client.initialized and "running" or "starting"
+					table.insert(content, string.format("  %s  %s (%s)", icon, client.name, status))
+				end
 			else
-				vim.notify("No JS/TS linters active for this buffer", vim.log.levels.WARN)
+				table.insert(content, "  󰅚  No JS/TS linters active for this buffer")
 			end
-		end, { desc = "Show active linters for buffer" })
+			table.insert(content, "")
+			table.insert(content, "  Press 'q' or <Esc> to close")
+			table.insert(content, "")
+
+			local buf = create_float(content, "  Linters ")
+
+			vim.api.nvim_buf_call(buf, function()
+				vim.fn.matchadd("DiagnosticOk", "●")
+				vim.fn.matchadd("DiagnosticWarn", "○")
+				vim.fn.matchadd("Comment", "running")
+				vim.fn.matchadd("Comment", "starting")
+				vim.fn.matchadd("Comment", "Press 'q' or <Esc> to close")
+			end)
+		end, { desc = "Show linters (floating)" })
 	end,
 }

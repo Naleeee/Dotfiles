@@ -14,7 +14,7 @@ keymap.set("i", "JK", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("i", "KJ", "<ESC>", { desc = "Exit insert mode" })
 
 -- Clear current search highlight
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>h", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Increment / decrement number
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
@@ -67,8 +67,7 @@ keymap.set("i", "ㅏㅓ", "<ESC>", { desc = "Exit insert mode" })
 -- keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
 
 -- Display mappings in telescope
-keymap.set("n", "<leader>mt", "<Cmd>Telescope keymaps<CR>", { desc = "Open mappins in telescope" })
-keymap.set("n", "<leader>f", "<cmd><cr>", { desc = "Fuzzy find files in cwd" })
+keymap.set("n", "<leader>tk", "<Cmd>Telescope keymaps<CR>", { desc = "Search keymaps" })
 
 -- Konami code
 keymap.set(

@@ -23,4 +23,22 @@ require("lazy").setup({
 	change_detection = {
 		notify = false,
 	},
+	ui = {
+		border = "rounded",
+		title = "  Lazy ",
+		icons = {
+			cmd = " ",
+			config = " ",
+			event = " ",
+			ft = " ",
+			init = " ",
+			keys = " ",
+			plugin = " ",
+			runtime = " ",
+			source = " ",
+			start = " ",
+			task = " ",
+			lazy = "󰒲 ",
+		},
+	},
 })

@@ -40,48 +40,51 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { buffer = ev.buf, silent = true }
 
-		-- Lspsaga keymaps (prettier UI)
-		opts.desc = "Show LSP references"
-		keymap.set("n", "gR", "<cmd>Lspsaga finder<CR>", opts)
+		-- Go to keymaps (no prefix)
+		opts.desc = "Go to definition"
+		keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
 
 		opts.desc = "Peek definition"
 		keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)
 
-		opts.desc = "Go to definition"
-		keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+		opts.desc = "Find references"
+		keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>", opts)
 
-		opts.desc = "Show LSP implementations"
+		opts.desc = "Go to implementation"
 		keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
-		opts.desc = "Show LSP type definitions"
+		opts.desc = "Go to type definition"
 		keymap.set("n", "gt", "<cmd>Lspsaga goto_type_definition<CR>", opts)
-
-		opts.desc = "Code actions"
-		keymap.set({ "n", "v" }, "<leader>qf", "<cmd>Lspsaga code_action<CR>", opts)
-
-		opts.desc = "Smart rename"
-		keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-
-		opts.desc = "Show buffer diagnostics"
-		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-		opts.desc = "Show line diagnostics"
-		keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-
-		opts.desc = "Go to previous diagnostic"
-		keymap.set("n", "<leader>n", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-
-		opts.desc = "Go to next diagnostic"
-		keymap.set("n", "<leader>N", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 		opts.desc = "Show documentation"
 		keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 
+		-- Standalone keymaps
+		opts.desc = "Code actions"
+		keymap.set({ "n", "v" }, "<leader>qf", "<cmd>Lspsaga code_action<CR>", opts)
+
+		opts.desc = "Previous diagnostic"
+		keymap.set("n", "<leader>n", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+
+		opts.desc = "Next diagnostic"
+		keymap.set("n", "<leader>N", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+
+		-- LSP group (<leader>m)
+		opts.desc = "Rename symbol"
+		keymap.set("n", "<leader>mn", "<cmd>Lspsaga rename<CR>", opts)
+
 		opts.desc = "Toggle outline"
-		keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", opts)
+		keymap.set("n", "<leader>mo", "<cmd>Lspsaga outline<CR>", opts)
 
 		opts.desc = "Restart LSP"
-		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+		keymap.set("n", "<leader>mr", ":LspRestart<CR>", opts)
+
+		-- Diagnostics group (<leader>x)
+		opts.desc = "Line diagnostics"
+		keymap.set("n", "<leader>xi", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+
+		opts.desc = "Buffer diagnostics (Telescope)"
+		keymap.set("n", "<leader>xt", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 	end,
 })
 

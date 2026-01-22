@@ -7,11 +7,6 @@ return {
 		noice.setup({
 			cmdline = {
 				view = "cmdline_popup",
-				format = {
-					cmdline = { icon = ">" },
-					search_down = { icon = "/" },
-					search_up = { icon = "?" },
-				},
 			},
 			messages = {
 				enabled = true,

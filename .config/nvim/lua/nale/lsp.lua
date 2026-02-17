@@ -2,7 +2,8 @@ local keymap = vim.keymap -- for conciseness
 
 -- Config file patterns for linter detection
 local biome_configs = { "biome.json", "biome.jsonc" }
-local eslint_configs = { ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".eslintrc.cjs", "eslint.config.js", "eslint.config.mjs" }
+local eslint_configs =
+	{ ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".eslintrc.cjs", "eslint.config.js", "eslint.config.mjs" }
 
 -- Helper: check if config files exist upward from buffer
 local function has_config(patterns, bufnr)
@@ -43,8 +44,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Go to definition"
 		keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
 
-		opts.desc = "Go to declaration"
-		keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+		opts.desc = "Peek definition"
+		keymap.set("n", "gD", "<cmd>Lspsaga peek_definition<CR>", opts)
 
 		opts.desc = "Find references"
 		keymap.set("n", "gr", "<cmd>Lspsaga finder<CR>", opts)

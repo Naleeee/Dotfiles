@@ -50,3 +50,6 @@ end
 opt.undodir = "/tmp/undodir"
 
 vim.cmd("filetype plugin indent on") -- enable filetype detection, plugins, and indent
+
+-- Set default border for all floating windows
+vim.o.winborder = "rounded"

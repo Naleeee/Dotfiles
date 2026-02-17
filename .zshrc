@@ -111,6 +111,20 @@ alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 # ---- Doxygen ----
 alias t="~/.config/scripts/TmuxStartup.sh"
 
+# ---- HyprSpace (Window Manager) ----
+alias hse="hyprspace enable on"              # Enable HyprSpace
+alias hsd="hyprspace enable off"             # Disable HyprSpace
+alias hst="hyprspace enable toggle"          # Toggle HyprSpace
+alias hsr="hyprspace reload-config"          # Reload config
+alias hsl="hyprspace list-windows"           # List all windows
+alias hsa="hyprspace list-apps"              # List all apps (for app-id)
+alias hsw="hyprspace list-workspaces"        # List workspaces
+
+# ---- AutoRaise (Focus follows mouse) ----
+alias are="open -a AutoRaise"                                    # Enable AutoRaise
+alias ard="pkill -f 'AutoRaise'"                                 # Disable AutoRaise
+alias ars="pgrep -f 'AutoRaise' > /dev/null && echo 'AutoRaise: running' || echo 'AutoRaise: stopped'"  # Status
+
 # pnpm
 export PNPM_HOME="/Users/nathanlemale/Library/pnpm"
 case ":$PATH:" in
@@ -129,3 +143,10 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/node@24/bin:$PATH"
 
 . "$HOME/.local/bin/env"
+
+# bun completions
+[ -s "/Users/nathanlemale/.bun/_bun" ] && source "/Users/nathanlemale/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

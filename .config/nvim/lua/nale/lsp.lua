@@ -64,10 +64,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set({ "n", "v" }, "<leader>qf", "<cmd>Lspsaga code_action<CR>", opts)
 
 		opts.desc = "Previous diagnostic"
-		keymap.set("n", "<leader>n", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+		keymap.set("n", "<leader>N", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 
 		opts.desc = "Next diagnostic"
-		keymap.set("n", "<leader>N", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+		keymap.set("n", "<leader>n", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 
 		-- LSP group (<leader>m)
 		opts.desc = "Rename symbol"
@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.lsp.inlay_hint.enable(true)
+-- vim.lsp.inlay_hint.enable(true)
 
 local severity = vim.diagnostic.severity
 

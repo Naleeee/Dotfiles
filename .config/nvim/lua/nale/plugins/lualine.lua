@@ -87,6 +87,20 @@ return {
 
 				lualine_x = {
 					{
+						function()
+							local ok, opencode = pcall(require, "opencode")
+							if ok then
+								return opencode.statusline()
+							end
+							return ""
+						end,
+						cond = function()
+							local ok, opencode = pcall(require, "opencode")
+							return ok and opencode.statusline() ~= ""
+						end,
+						color = { fg = colors.green },
+					},
+					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = colors.sub_fg },

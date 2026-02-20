@@ -1,6 +1,24 @@
 return {
 	"folke/snacks.nvim",
 	opts = {
+		input = {},
+		picker = {
+			actions = {
+				opencode_send = function(...)
+					return require("opencode").snacks_picker_send(...)
+				end,
+			},
+			win = {
+				input = {
+					keys = {
+						["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+					},
+				},
+			},
+		},
+		terminal = {
+			auto_insert = true,
+		},
 		lazygit = {
 			-- automatically configure lazygit to use the current colorscheme
 			-- and integrate edit with the current neovim instance

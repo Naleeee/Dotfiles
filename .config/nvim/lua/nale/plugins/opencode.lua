@@ -45,7 +45,7 @@ return {
 			focus_panel()
 		end, { desc = "Select opencode action" })
 
-		vim.keymap.set({ "n", "t" }, "<leader>ot", function()
+		vim.keymap.set("n", "<leader>ot", function()
 			require("opencode").toggle()
 			-- toggle() calls start() which respects focus=true on creation;
 			-- also focus explicitly so re-toggling an existing pane also focuses

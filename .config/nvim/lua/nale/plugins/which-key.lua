@@ -18,6 +18,7 @@ return {
 			{ "<leader>r", group = "Rename/Restart", icon = "" },
 			{ "<leader>g", group = "Git/Grep", icon = "" },
 			{ "<leader>n", group = "Notifications", icon = "" },
+			{ "<leader>o", group = "Opencode", icon = "󰚩" },
 		},
 	},
 }

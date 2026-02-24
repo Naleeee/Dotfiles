@@ -60,7 +60,7 @@ return {
 			-- Bullet points with nice icons
 			bullet = {
 				enabled = true,
-				icons = { "●", "○", "◆", "◇" },
+				icons = { "⦿", "◇", "◆", "⦾" },
 				highlight = "RenderMarkdownBullet",
 			},
 

@@ -14,7 +14,7 @@ keymap.set("i", "JK", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("i", "KJ", "<ESC>", { desc = "Exit insert mode" })
 
 -- Clear current search highlight
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader>h", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Increment / decrement number
 keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })

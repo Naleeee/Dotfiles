@@ -4,14 +4,12 @@ local function opencode_win()
 		return {
 			position = "right",
 			width = 0.25,
-			enter = true,
 		}
 	end
 	return {
 		position = "float",
 		width = 0.9,
 		height = 0.9,
-		enter = true,
 	}
 end
 

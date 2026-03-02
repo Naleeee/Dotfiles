@@ -1,69 +1,105 @@
+local function opencode_win()
+	local min_columns = 160
+	if vim.o.columns >= min_columns then
+		return {
+			position = "right",
+			width = 0.25,
+		}
+	end
+	return {
+		position = "float",
+		width = 0.9,
+		height = 0.9,
+	}
+end
+
 return {
 	"nickjvandyke/opencode.nvim",
-	version = "*",
 	dependencies = {
 		{
 			"folke/snacks.nvim",
 			optional = true,
+			opts = {
+				input = {},
+				picker = {
+					actions = {
+						opencode_send = function(...)
+							return require("opencode").snacks_picker_send(...)
+						end,
+					},
+					win = {
+						input = {
+							keys = {
+								["<a-a>"] = { "opencode_send", mode = { "n", "i" } },
+							},
+						},
+					},
+				},
+				terminal = {},
+			},
 		},
 	},
 	config = function()
-		---@type opencode.Opts
-		vim.g.opencode_opts = {
-			provider = {
-				enabled = "tmux",
-				tmux = {
-					options = "-h",
-					focus = true, -- Auto-focus the opencode pane when it is created
-				},
-			},
-		}
-
+		vim.g.opencode_opts = {}
 		vim.o.autoread = true
 
-		-- Focus the opencode tmux pane after dispatching a prompt.
-		-- The pane_id is stored on the provider instance after start().
-		local function focus_panel()
-			local ok, config = pcall(require, "opencode.config")
-			if not ok then
-				return
-			end
-			local provider = config.provider
-			if provider and provider.pane_id then
-				vim.fn.system("tmux select-pane -t " .. provider.pane_id)
+		local function apply_layout()
+			local provider = require("opencode.config").provider
+			if provider and provider.name == "snacks" then
+				provider.opts.win = vim.tbl_deep_extend("force", provider.opts.win or {}, opencode_win())
 			end
 		end
 
-		-- Keymaps using <leader>o prefix to avoid conflicts with copilot and built-in mappings
+		local function toggle()
+			apply_layout()
+			require("opencode").toggle()
+		end
+
+		-- Toggle: normal mode uses leader, terminal mode uses a non-leader key
+		-- to avoid intercepting <Space> inside the terminal
+		vim.keymap.set("n", "<leader>ot", toggle, { desc = "Toggle opencode" })
+		vim.keymap.set("t", "<C-\\><C-o>", toggle, { desc = "Toggle opencode" })
+
+		-- Ask: submit immediately with context
 		vim.keymap.set({ "n", "x" }, "<leader>oa", function()
 			require("opencode").ask("@this: ", { submit = true })
-			focus_panel()
 		end, { desc = "Ask opencode" })
 
+		-- Select prompt / command palette
 		vim.keymap.set({ "n", "x" }, "<leader>os", function()
 			require("opencode").select()
-			focus_panel()
 		end, { desc = "Select opencode action" })
 
-		vim.keymap.set("n", "<leader>ot", function()
-			require("opencode").toggle()
-			-- toggle() calls start() which respects focus=true on creation;
-			-- also focus explicitly so re-toggling an existing pane also focuses
-			focus_panel()
-		end, { desc = "Toggle opencode" })
-
+		-- Operator: supports ranges and dot-repeat (e.g. goip, go3j)
 		vim.keymap.set({ "n", "x" }, "go", function()
 			return require("opencode").operator("@this ")
 		end, { desc = "Add range to opencode", expr = true })
-
 		vim.keymap.set("n", "goo", function()
 			return require("opencode").operator("@this ") .. "_"
 		end, { desc = "Add line to opencode", expr = true })
 
+		-- Context: append buffer or selection to prompt
+		vim.keymap.set("n", "<leader>o+", function()
+			require("opencode").prompt("@buffer", { append = true })
+		end, { desc = "Add buffer to prompt" })
+		vim.keymap.set("x", "<leader>o+", function()
+			require("opencode").prompt("@this", { append = true })
+		end, { desc = "Add selection to prompt" })
+
+		-- Explain
+		vim.keymap.set({ "n", "x" }, "<leader>oe", function()
+			require("opencode").prompt("Explain @this and its context")
+		end, { desc = "Explain this code" })
+
+		-- Session
+		vim.keymap.set("n", "<leader>on", function()
+			require("opencode").command("session.new")
+		end, { desc = "New session" })
+
+		-- Scroll opencode messages
 		vim.keymap.set("n", "<S-C-u>", function()
 			require("opencode").command("session.half.page.up")
 		end, { desc = "Scroll opencode up" })
-
 		vim.keymap.set("n", "<S-C-d>", function()
 			require("opencode").command("session.half.page.down")
 		end, { desc = "Scroll opencode down" })

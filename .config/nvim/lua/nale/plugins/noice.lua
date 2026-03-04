@@ -46,8 +46,8 @@ return {
 		})
 
 		local keymap = vim.keymap
-		keymap.set("n", "<leader>nc", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss notifications" })
-		keymap.set("n", "<leader>nh", "<cmd>Noice history<cr>", { desc = "Notification history" })
+		keymap.set("n", "<leader>xc", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss notifications" })
+		keymap.set("n", "<leader>xh", "<cmd>Noice history<cr>", { desc = "Notification history" })
 	end,
 	dependencies = {
 		"MunifTanjim/nui.nvim",

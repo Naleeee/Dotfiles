@@ -263,3 +263,5 @@ unset -f _mc
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export NOTES_DIR="$HOME/Documents/Notes"
+export EDITOR="${EDITOR:-nvim}"

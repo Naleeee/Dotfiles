@@ -39,6 +39,9 @@ return {
 			},
 		}
 
+		vim.opt.showcmd = true
+		vim.opt.showcmdloc = "statusline"
+
 		lualine.setup({
 			options = {
 				theme = theme,
@@ -122,6 +125,10 @@ return {
 					},
 					{
 						"searchcount",
+					},
+					{
+						"%S",
+						color = { fg = colors.yellow },
 					},
 				},
 

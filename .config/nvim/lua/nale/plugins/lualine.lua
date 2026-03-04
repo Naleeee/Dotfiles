@@ -39,6 +39,9 @@ return {
 			},
 		}
 
+		vim.opt.showcmd = true
+		vim.opt.showcmdloc = "statusline"
+
 		lualine.setup({
 			options = {
 				theme = theme,
@@ -88,20 +91,12 @@ return {
 				lualine_x = {
 					{
 						function()
-							local ok, opencode = pcall(require, "opencode")
-							if ok then
-								return opencode.statusline()
+							local updates = lazy_status.updates()
+							if updates then
+								return "" .. updates:gsub("(%S)(%d)", "%1 %2")
 							end
 							return ""
 						end,
-						cond = function()
-							local ok, opencode = pcall(require, "opencode")
-							return ok and opencode.statusline() ~= ""
-						end,
-						color = { fg = colors.green },
-					},
-					{
-						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = colors.sub_fg },
 					},
@@ -130,6 +125,10 @@ return {
 					},
 					{
 						"searchcount",
+					},
+					{
+						"%S",
+						color = { fg = colors.yellow },
 					},
 				},
 

@@ -103,5 +103,13 @@ return {
 		vim.keymap.set("n", "<S-C-d>", function()
 			require("opencode").command("session.half.page.down")
 		end, { desc = "Scroll opencode down" })
+
+		-- Allow pane navigation from terminal mode (C-h/j/k/l)
+		-- Uses TmuxNavigate commands so vim-tmux-navigator handles both
+		-- vim splits and tmux panes correctly
+		vim.keymap.set("t", "<C-h>", "<C-\\><C-n>:TmuxNavigateLeft<CR>", { silent = true, desc = "Navigate left from terminal" })
+		vim.keymap.set("t", "<C-j>", "<C-\\><C-n>:TmuxNavigateDown<CR>", { silent = true, desc = "Navigate down from terminal" })
+		vim.keymap.set("t", "<C-k>", "<C-\\><C-n>:TmuxNavigateUp<CR>", { silent = true, desc = "Navigate up from terminal" })
+		vim.keymap.set("t", "<C-l>", "<C-\\><C-n>:TmuxNavigateRight<CR>", { silent = true, desc = "Navigate right from terminal" })
 	end,
 }

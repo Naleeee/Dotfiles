@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "catppuccin",
+  "diff_style": "stacked",
+  "scroll_acceleration": {
+    "enabled": true
+  },
+  "keybinds": {
+    "input_paste": "ctrl+v"
+  }
+}

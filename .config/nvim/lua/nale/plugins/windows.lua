@@ -10,6 +10,10 @@ return {
 		vim.o.winwidth = 10
 		vim.o.winminwidth = 10
 		vim.o.equalalways = false
-		windows.setup()
+		windows.setup({
+			ignore = {
+				buftype = { "quickfix", "terminal" },
+			},
+		})
 	end,
 }

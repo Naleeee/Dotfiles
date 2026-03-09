@@ -92,14 +92,7 @@ alias dh="echo \"Docker aliases usage:\"
 # ---- Comptastar ----
 alias client="turbo web#dev"
 alias api="turbo api#dev"
-alias admin="pnpm dev:admin"
-pull() {
-    cd apps/api
-    pnpm prisma db pull
-    pnpm prisma db push
-    pnpm prisma generate
-    cd ...
-}
+alias admin="turbo admin#dev"
 
 # ---- Grep recursivly ----
 alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules --exclude-dir=.next $1"

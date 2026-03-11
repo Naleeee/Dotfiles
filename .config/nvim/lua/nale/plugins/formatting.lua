@@ -53,8 +53,8 @@ return {
 				-- Lua always uses stylua
 				lua = { "stylua" },
 
-				-- Markdown uses markdownlint
-				markdown = { "markdownlint" },
+			-- Markdown: prettier formats structure, markdownlint applies lint fixes
+			markdown = { "prettier", "markdownlint" },
 
 				-- Web languages: biome-check → eslint_d + prettier → prettier
 				css = { "biome-check", "prettier" }, -- eslint doesn't handle CSS

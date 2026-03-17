@@ -19,6 +19,7 @@ return {
 			{ "<leader>g", group = "Git/Grep", icon = "" },
 			{ "<leader>n", group = "Notifications", icon = "" },
 			{ "<leader>o", group = "Opencode", icon = "󰚩" },
+			{ "<leader>a", group = "Claude", icon = "" },
 		},
 	},
 }

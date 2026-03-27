@@ -1,3 +1,4 @@
 .config/tmux/plugins/*
+.config/.env
 
 AGENTS.md

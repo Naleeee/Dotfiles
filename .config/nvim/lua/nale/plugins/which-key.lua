@@ -15,11 +15,12 @@ return {
 		spec = {
 			{ "<leader>x", group = "Trouble/Diagnostics", icon = "" },
 			{ "<leader>q", group = "Quickfix", icon = "" },
-			{ "<leader>r", group = "Rename/Restart", icon = "" },
+			{ "<leader>r", group = "Rename/Restart", icon = "󰑕" },
 			{ "<leader>g", group = "Git/Grep", icon = "" },
-			{ "<leader>n", group = "Notifications", icon = "" },
-			{ "<leader>o", group = "Opencode", icon = "󰚩" },
-			{ "<leader>a", group = "Claude", icon = "" },
+			{ "<leader>n", group = "Notifications", icon = "󰂚" },
+			{ "<leader>o", group = "Opencode", icon = "" },
+			{ "<leader>a", group = "Claude", icon = "󰧑" },
+			{ "<leader>c", group = "CodeCompanion", icon = "󰭻" },
 		},
 	},
 }

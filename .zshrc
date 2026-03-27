@@ -27,6 +27,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+[ -f ~/.config/.env ] && source ~/.config/.env
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Log to git upon sourcing

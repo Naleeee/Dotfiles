@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "<leader>mo", "<cmd>Lspsaga outline<CR>", opts)
 
 		opts.desc = "Restart LSP"
-		keymap.set("n", "<leader>mr", ":LspRestart<CR>", opts)
+		keymap.set("n", "<leader>mr", "<cmd>lsp restart<CR>", opts)
 
 		-- Diagnostics group (<leader>x)
 		opts.desc = "Line diagnostics"
@@ -89,6 +89,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- vim.lsp.inlay_hint.enable(true)
+
+vim.lsp.enable({
+	"bashls",
+	"biome",
+	"cssls",
+	"eslint",
+	"html",
+	"lua_ls",
+	"tailwindcss",
+	"ts_ls",
+	"vimls",
+	"vue_ls",
+})
 
 local severity = vim.diagnostic.severity
 

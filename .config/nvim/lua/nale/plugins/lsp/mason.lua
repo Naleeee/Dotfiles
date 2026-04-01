@@ -30,7 +30,6 @@ return {
 				},
 			},
 		},
-			"neovim/nvim-lspconfig",
 		},
 	},
 	{

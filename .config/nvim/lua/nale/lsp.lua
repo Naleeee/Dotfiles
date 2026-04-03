@@ -33,6 +33,16 @@ vim.lsp.config("eslint", {
 	end,
 })
 
+-- Configure JSON-LS with SchemaStore schemas
+vim.lsp.config("jsonls", {
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
@@ -96,6 +106,7 @@ vim.lsp.enable({
 	"cssls",
 	"eslint",
 	"html",
+	"jsonls",
 	"lua_ls",
 	"tailwindcss",
 	"ts_ls",

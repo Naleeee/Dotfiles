@@ -42,10 +42,11 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- Keep undo history across sessions, by storing in file
 opt.undofile = true
-if fn.isdirectory("/tmp/undodir") == 0 then
-	fn.mkdir("/tmp/undodir")
+local undodir = fn.stdpath("state") .. "/undodir"
+if fn.isdirectory(undodir) == 0 then
+	fn.mkdir(undodir, "p")
 end
-opt.undodir = "/tmp/undodir"
+opt.undodir = undodir
 
 vim.cmd("filetype plugin indent on") -- enable filetype detection, plugins, and indent
 

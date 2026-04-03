@@ -1,6 +1,6 @@
 return {
 	"folke/todo-comments.nvim",
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim", "ibhagwan/fzf-lua" },
+	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
 	config = function()
 		local todo_comments = require("todo-comments")
 

@@ -1,23 +1,21 @@
 return {
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
 		lazy = false,
-		dependencies = {
-			{
-				"williamboman/mason.nvim",
-				opts = {
-					ui = {
-						border = "rounded",
-						icons = {
-							package_installed = "✓",
-							package_pending = "➜",
-							package_uninstalled = "✗",
-						},
-					},
+	},
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		opts = {
+			ui = {
+				border = "rounded",
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
 				},
 			},
 		},
-		opts = {},
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

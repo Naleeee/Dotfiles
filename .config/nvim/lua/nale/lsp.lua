@@ -90,6 +90,48 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- vim.lsp.inlay_hint.enable(true)
 
+-- Configure JSON-LS with SchemaStore schemas
+vim.lsp.config("jsonls", {
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
+-- Configure Lua LS for Neovim development
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			workspace = {
+				checkThirdParty = false,
+				library = { vim.env.VIMRUNTIME },
+			},
+		},
+	},
+})
+
+-- Configure TypeScript inlay hints
+local ts_inlay_hints = {
+	includeInlayParameterNameHints = "all",
+	includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+	includeInlayFunctionParameterTypeHints = true,
+	includeInlayVariableTypeHints = true,
+	includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+	includeInlayPropertyDeclarationTypeHints = true,
+	includeInlayFunctionLikeReturnTypeHints = true,
+	includeInlayEnumMemberValueHints = true,
+}
+vim.lsp.config("ts_ls", {
+	settings = {
+		typescript = { inlayHints = ts_inlay_hints },
+		javascript = { inlayHints = ts_inlay_hints },
+	},
+})
+
+-- nvim-lspconfig provides cmd/filetypes for all servers
 vim.lsp.enable({
 	"bashls",
 	"biome",

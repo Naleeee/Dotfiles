@@ -1,5 +1,3 @@
-vim.cmd("let g:netrw_liststyle = 3")
-
 local opt = vim.opt
 local fn = vim.fn
 
@@ -44,12 +42,39 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- Keep undo history across sessions, by storing in file
 opt.undofile = true
-if fn.isdirectory("/tmp/undodir") == 0 then
-	fn.mkdir("/tmp/undodir")
+local undodir = fn.stdpath("state") .. "/undodir"
+if fn.isdirectory(undodir) == 0 then
+	fn.mkdir(undodir, "p")
 end
-opt.undodir = "/tmp/undodir"
+opt.undodir = undodir
 
 vim.cmd("filetype plugin indent on") -- enable filetype detection, plugins, and indent
+
+-- Highlight yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ timeout = 200 })
+	end,
+})
+
+-- Restore cursor position on file open
+vim.api.nvim_create_autocmd("BufReadPost", {
+	group = vim.api.nvim_create_augroup("restore_cursor", { clear = true }),
+	callback = function(args)
+		local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+		local line_count = vim.api.nvim_buf_line_count(args.buf)
+		if mark[1] > 0 and mark[1] <= line_count then
+			vim.api.nvim_win_set_cursor(0, mark)
+		end
+	end,
+})
+
+-- Auto-resize splits when terminal is resized
+vim.api.nvim_create_autocmd("VimResized", {
+	group = vim.api.nvim_create_augroup("auto_resize", { clear = true }),
+	command = "wincmd =",
+})
 
 -- Set default border for all floating windows
 vim.o.winborder = "rounded"

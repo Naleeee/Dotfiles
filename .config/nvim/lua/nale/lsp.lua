@@ -77,7 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "<leader>mo", "<cmd>Lspsaga outline<CR>", opts)
 
 		opts.desc = "Restart LSP"
-		keymap.set("n", "<leader>mr", ":LspRestart<CR>", opts)
+		keymap.set("n", "<leader>mr", "<cmd>lsp restart<CR>", opts)
 
 		-- Diagnostics group (<leader>x)
 		opts.desc = "Line diagnostics"
@@ -90,9 +90,66 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- vim.lsp.inlay_hint.enable(true)
 
+-- Configure JSON-LS with SchemaStore schemas
+vim.lsp.config("jsonls", {
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+})
+
+-- Configure Lua LS for Neovim development
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			runtime = { version = "LuaJIT" },
+			workspace = {
+				checkThirdParty = false,
+				library = { vim.env.VIMRUNTIME },
+			},
+		},
+	},
+})
+
+-- Configure TypeScript inlay hints
+local ts_inlay_hints = {
+	includeInlayParameterNameHints = "all",
+	includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+	includeInlayFunctionParameterTypeHints = true,
+	includeInlayVariableTypeHints = true,
+	includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+	includeInlayPropertyDeclarationTypeHints = true,
+	includeInlayFunctionLikeReturnTypeHints = true,
+	includeInlayEnumMemberValueHints = true,
+}
+vim.lsp.config("ts_ls", {
+	settings = {
+		typescript = { inlayHints = ts_inlay_hints },
+		javascript = { inlayHints = ts_inlay_hints },
+	},
+})
+
+-- nvim-lspconfig provides cmd/filetypes for all servers
+vim.lsp.enable({
+	"bashls",
+	"biome",
+	"cssls",
+	"eslint",
+	"html",
+	"jsonls",
+	"lua_ls",
+	"tailwindcss",
+	"ts_ls",
+	"vimls",
+	"vue_ls",
+})
+
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
+	virtual_text = true,
 	signs = {
 		text = {
 			[severity.ERROR] = " ",

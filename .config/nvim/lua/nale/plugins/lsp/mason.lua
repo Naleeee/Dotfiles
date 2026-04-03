@@ -1,45 +1,41 @@
 return {
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		lazy = false,
+	},
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
 		opts = {
-			-- list of servers for mason to install
-			ensure_installed = {
-				"bashls",
-				"biome",
-				"cssls",
-				"eslint",
-				"html",
-				"lua_ls",
-				"ts_ls",
-				"tailwindcss",
-				"vimls",
-				"vue_ls",
-			},
-		},
-		dependencies = {
-		{
-			"williamboman/mason.nvim",
-			opts = {
-				ui = {
-					border = "rounded",
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
-					},
+			ui = {
+				border = "rounded",
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
 				},
 			},
-		},
-			"neovim/nvim-lspconfig",
 		},
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
+				-- LSP servers
+				"bash-language-server",
+				"biome",
+				"css-lsp",
+				"eslint-lsp",
+				"html-lsp",
+				"json-lsp",
+				"lua-language-server",
+				"typescript-language-server",
+				"tailwindcss-language-server",
+				"vim-language-server",
+				"vue-language-server",
+				-- Formatters & linters
 				"eslint_d",
 				"prettier",
-				"biome",
 				"stylua",
 				"markdownlint",
 			},

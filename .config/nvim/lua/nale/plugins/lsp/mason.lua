@@ -1,16 +1,23 @@
 return {
 	{
-		"williamboman/mason.nvim",
-		opts = {
-			ui = {
-				border = "rounded",
-				icons = {
-					package_installed = "✓",
-					package_pending = "➜",
-					package_uninstalled = "✗",
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		dependencies = {
+			{
+				"williamboman/mason.nvim",
+				opts = {
+					ui = {
+						border = "rounded",
+						icons = {
+							package_installed = "✓",
+							package_pending = "➜",
+							package_uninstalled = "✗",
+						},
+					},
 				},
 			},
 		},
+		opts = {},
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",

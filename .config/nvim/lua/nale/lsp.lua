@@ -33,16 +33,6 @@ vim.lsp.config("eslint", {
 	end,
 })
 
--- Configure JSON-LS with SchemaStore schemas
-vim.lsp.config("jsonls", {
-	settings = {
-		json = {
-			schemas = require("schemastore").json.schemas(),
-			validate = { enable = true },
-		},
-	},
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
@@ -117,7 +107,7 @@ vim.lsp.enable({
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
-	virtual_lines = true,
+	virtual_text = true,
 	signs = {
 		text = {
 			[severity.ERROR] = " ",

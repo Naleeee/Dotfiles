@@ -106,6 +106,7 @@ vim.lsp.enable({
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
+	virtual_lines = true,
 	signs = {
 		text = {
 			[severity.ERROR] = " ",

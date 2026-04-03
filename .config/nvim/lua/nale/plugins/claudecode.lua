@@ -82,6 +82,11 @@ return {
 			require("claudecode.terminal").simple_toggle({ flags = "--resume" })
 		end, { desc = "Resume Claude session" })
 
+		-- Continue most recent session
+		vim.keymap.set("n", "<leader>al", function()
+			require("claudecode.terminal").simple_toggle({ flags = "--continue" })
+		end, { desc = "Continue last Claude session" })
+
 		-- Accept / deny diffs proposed by Claude
 		vim.keymap.set("n", "<leader>aya", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept Claude diff" })
 		vim.keymap.set("n", "<leader>ayd", "<cmd>ClaudeCodeDiffDeny<cr>", { desc = "Deny Claude diff" })

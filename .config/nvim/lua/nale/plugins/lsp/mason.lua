@@ -22,6 +22,7 @@ return {
 				"css-lsp",
 				"eslint-lsp",
 				"html-lsp",
+				"json-lsp",
 				"lua-language-server",
 				"typescript-language-server",
 				"tailwindcss-language-server",

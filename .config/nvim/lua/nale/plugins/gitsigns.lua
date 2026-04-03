@@ -3,6 +3,8 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local gitsigns = require("gitsigns")
-		gitsigns.setup()
+		gitsigns.setup({
+			current_line_blame = true,
+		})
 	end,
 }

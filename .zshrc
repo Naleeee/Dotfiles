@@ -17,6 +17,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 plugins=(
     git
     dirhistory
+    fzf-tab
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-bat
@@ -131,9 +132,8 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# ---- fnm (fast node manager, replaces nvm) ----
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # opencode
 export PATH=/Users/nathanlemale/.opencode/bin:$PATH

@@ -29,9 +29,11 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Log to git upon sourcing
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/NaleComptastarKey
+# SSH agent: reuse existing or start one, use macOS Keychain
+if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
+  eval "$(ssh-agent -s)" > /dev/null
+fi
+ssh-add -l 2>/dev/null | grep -q NaleComptastarKey || ssh-add --apple-use-keychain ~/.ssh/NaleComptastarKey 2>/dev/null
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -68,7 +70,7 @@ gnb() {
     git switch "$1"
     git push --set-upstream origin "$1"
 }
-alias glog="eval $(ssh-agent -s) ssh-add ~/.ssh/NaleLinuxKey"
+alias glog='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/NaleLinuxKey'
 alias fsb="~/.config/scripts/FuzzySearchBranch.sh"
 alias fsc="~/.config/scripts/FuzzySearchCommits.sh"
 

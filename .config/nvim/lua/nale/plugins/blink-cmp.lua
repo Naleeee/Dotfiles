@@ -41,7 +41,7 @@ return {
 				},
 			},
 			completion = {
-				ghost_text = { enabled = true },
+				ghost_text = { enabled = false },
 				documentation = { auto_show = true },
 				menu = {
 					draw = {

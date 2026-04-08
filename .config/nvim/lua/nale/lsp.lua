@@ -131,6 +131,9 @@ vim.lsp.config("ts_ls", {
 	},
 })
 
+-- Disable nvim-lspconfig's copilot config (copilot.lua plugin manages its own server)
+vim.lsp.config("copilot", { cmd = false })
+
 -- nvim-lspconfig provides cmd/filetypes for all servers
 vim.lsp.enable({
 	"bashls",

@@ -1,0 +1,27 @@
+[default_session]
+startup_command = "nvim"
+
+[[session]]
+name = "Work2"
+
+[[session.windows]]
+name = "Config"
+path = "~/Dotfiles"
+command = "nvim"
+
+[[session.windows]]
+name = "App"
+path = "~/Documents/Comptastar/App"
+command = "nvim"
+
+[[session.windows]]
+name = "Servers"
+panes = [
+  { path = "~/Documents/Comptastar/App", command = "client" },
+  { path = "~/Documents/Comptastar/App", command = "admin" },
+  { path = "~/Documents/Comptastar/App/apps-v2/api", command = "api" },
+]
+
+[[session.windows]]
+name = "Database"
+command = "lazysql"

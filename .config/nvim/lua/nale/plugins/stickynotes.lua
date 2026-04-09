@@ -8,7 +8,7 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>mn", "<cmd>StickyNote<cr>", desc = "Open Sticky Note" },
-		{ "<leader>ms", "<cmd>StickyNotePicker<cr>", desc = "Browse Sticky Notes" },
+		{ "<leader>sn", "<cmd>StickyNote<cr>", desc = "Open Sticky Note" },
+		{ "<leader>sb", "<cmd>StickyNotePicker<cr>", desc = "Browse Sticky Notes" },
 	},
 }

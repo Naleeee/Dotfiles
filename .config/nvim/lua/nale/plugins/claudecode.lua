@@ -18,42 +18,7 @@ return {
 	opts = {
 		terminal = {
 			provider = "snacks",
-			snacks_win_opts = vim.tbl_deep_extend("force", claude_win(), {
-				keys = {
-					nav_left = {
-						"<C-h>",
-						function()
-							vim.cmd("TmuxNavigateLeft")
-						end,
-						mode = "t",
-						desc = "Navigate left from terminal",
-					},
-					nav_down = {
-						"<C-j>",
-						function()
-							vim.cmd("TmuxNavigateDown")
-						end,
-						mode = "t",
-						desc = "Navigate down from terminal",
-					},
-					nav_up = {
-						"<C-k>",
-						function()
-							vim.cmd("TmuxNavigateUp")
-						end,
-						mode = "t",
-						desc = "Navigate up from terminal",
-					},
-					nav_right = {
-						"<C-l>",
-						function()
-							vim.cmd("TmuxNavigateRight")
-						end,
-						mode = "t",
-						desc = "Navigate right from terminal",
-					},
-				},
-			}),
+			snacks_win_opts = claude_win(),
 		},
 	},
 	config = function(_, opts)
@@ -67,6 +32,30 @@ return {
 		end
 
 		require("claudecode").setup(opts)
+
+		-- Buffer-local terminal-mode pane navigation for Claude windows.
+		-- Snacks `keys` config wasn't translating <C-\><C-n> termcodes, so
+		-- bind directly on TermOpen for any claudecode terminal buffer.
+		vim.api.nvim_create_autocmd("TermOpen", {
+			group = vim.api.nvim_create_augroup("ClaudeCodeTermNav", { clear = true }),
+			callback = function(ev)
+				local name = vim.api.nvim_buf_get_name(ev.buf)
+				if not name:match("claude") then
+					return
+				end
+				local map = function(lhs, cmd)
+					vim.keymap.set("t", lhs, "<C-\\><C-n>:" .. cmd .. "<CR>", {
+						buffer = ev.buf,
+						silent = true,
+						desc = "Navigate from Claude terminal",
+					})
+				end
+				map("<C-h>", "TmuxNavigateLeft")
+				map("<C-j>", "TmuxNavigateDown")
+				map("<C-k>", "TmuxNavigateUp")
+				map("<C-l>", "TmuxNavigateRight")
+			end,
+		})
 
 		-- Toggle: normal mode on leader, terminal mode without leader
 		vim.keymap.set("n", "<leader>ac", toggle, { desc = "Toggle Claude Code" })

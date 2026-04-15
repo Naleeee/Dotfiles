@@ -83,8 +83,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Line diagnostics"
 		keymap.set("n", "<leader>xi", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 
-		opts.desc = "Buffer diagnostics (Telescope)"
-		keymap.set("n", "<leader>xt", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 	end,
 })
 

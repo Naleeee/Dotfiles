@@ -36,11 +36,15 @@ return {
 		-- Buffer-local terminal-mode pane navigation for Claude windows.
 		-- Snacks `keys` config wasn't translating <C-\><C-n> termcodes, so
 		-- bind directly on TermOpen for any claudecode terminal buffer.
+		local group = vim.api.nvim_create_augroup("ClaudeCodeTermNav", { clear = true })
+		local function is_claude_buf(bufnr)
+			return vim.api.nvim_buf_get_name(bufnr):match("claude") ~= nil
+		end
+
 		vim.api.nvim_create_autocmd("TermOpen", {
-			group = vim.api.nvim_create_augroup("ClaudeCodeTermNav", { clear = true }),
+			group = group,
 			callback = function(ev)
-				local name = vim.api.nvim_buf_get_name(ev.buf)
-				if not name:match("claude") then
+				if not is_claude_buf(ev.buf) then
 					return
 				end
 				local map = function(lhs, cmd)
@@ -54,6 +58,17 @@ return {
 				map("<C-j>", "TmuxNavigateDown")
 				map("<C-k>", "TmuxNavigateUp")
 				map("<C-l>", "TmuxNavigateRight")
+			end,
+		})
+
+		-- Auto-enter terminal mode when focusing a Claude window so typing
+		-- (including keys like `f`) goes to the terminal, not vim normal mode.
+		vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
+			group = group,
+			callback = function(ev)
+				if is_claude_buf(ev.buf) and vim.bo[ev.buf].buftype == "terminal" then
+					vim.cmd.startinsert()
+				end
 			end,
 		})
 

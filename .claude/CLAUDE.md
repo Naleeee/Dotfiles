@@ -61,6 +61,19 @@ For multi-step tasks, state a brief plan:
 Strong success criteria let you loop independently. Weak criteria ("make it
 work") require constant clarification.
 
+# 5. React
+
+**Minimize `useEffect`. Most effects are avoidable.**
+
+- Derive state during render instead of syncing with `useEffect`.
+- Use event handlers for side effects triggered by user actions.
+- Use `useMemo`/`useCallback` for derived computations, not `useEffect` +
+  `setState`.
+- Only reach for `useEffect` when synchronizing with something external
+  (subscriptions, DOM APIs, third-party libraries).
+- If you write a `useEffect`, justify why it can't be an event handler or
+  derived value.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer

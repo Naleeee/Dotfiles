@@ -20,6 +20,7 @@ return {
 			provider = "snacks",
 			snacks_win_opts = claude_win(),
 		},
+		focus_after_send = true,
 	},
 	config = function(_, opts)
 		vim.o.autoread = true

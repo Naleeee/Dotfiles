@@ -31,6 +31,7 @@ return {
 				"markdown_inline",
 				"prisma",
 				"scss",
+				"sql",
 				"typescript",
 				"tsx",
 				"vim",

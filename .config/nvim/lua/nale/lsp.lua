@@ -122,11 +122,56 @@ local ts_inlay_hints = {
 	includeInlayFunctionLikeReturnTypeHints = true,
 	includeInlayEnumMemberValueHints = true,
 }
-vim.lsp.config("ts_ls", {
+
+-- Vue hybrid mode: load @vue/typescript-plugin into vtsls so it understands .vue files
+local vue_ts_plugin_path = vim.fn.stdpath("data")
+	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+
+vim.lsp.config("vtsls", {
+	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
 	settings = {
+		vtsls = {
+			tsserver = {
+				globalPlugins = {
+					{
+						name = "@vue/typescript-plugin",
+						location = vue_ts_plugin_path,
+						languages = { "vue" },
+						configNamespace = "typescript",
+						enableForWorkspaceTypeScriptVersions = true,
+					},
+				},
+			},
+		},
 		typescript = { inlayHints = ts_inlay_hints },
 		javascript = { inlayHints = ts_inlay_hints },
 	},
+})
+
+-- vue_ls dispatches type queries to vtsls via this client-side command
+vim.lsp.config("vue_ls", {
+	on_init = function(client)
+		client.handlers["tsserver/request"] = function(_, result, context)
+			local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
+			if #clients == 0 then
+				vim.notify("vtsls client not found, vue_ls TypeScript features will be limited", vim.log.levels.WARN)
+				return
+			end
+			local ts_client = clients[1]
+			local param = unpack(result)
+			local id, command, payload = unpack(param)
+			ts_client:exec_cmd({
+				title = "vue_request_forward",
+				command = "typescript.tsserverRequest",
+				arguments = { command, payload },
+			}, { bufnr = context.bufnr }, function(_, r)
+				local body = r and r.body or vim.NIL
+				local response_data = { { id, body } }
+				---@diagnostic disable-next-line: param-type-mismatch
+				client:notify("tsserver/response", response_data)
+			end)
+		end
+	end,
 })
 
 -- Disable nvim-lspconfig's copilot config (copilot.lua plugin manages its own server)
@@ -142,8 +187,8 @@ vim.lsp.enable({
 	"jsonls",
 	"lua_ls",
 	"tailwindcss",
-	"ts_ls",
 	"vimls",
+	"vtsls",
 	"vue_ls",
 })
 

@@ -25,22 +25,25 @@ return {
 	config = function(_, opts)
 		vim.o.autoread = true
 
+		local function is_claude_buf(bufnr)
+			return vim.api.nvim_buf_get_name(bufnr):match("claude") ~= nil
+		end
+
 		-- Recompute layout at toggle time so it responds to window resizes
 		local function toggle()
+			suppress_auto_insert = true
 			require("claudecode.terminal").simple_toggle({
 				snacks_win_opts = vim.tbl_deep_extend("force", opts.terminal.snacks_win_opts, claude_win()),
 			})
+			vim.defer_fn(function()
+				suppress_auto_insert = false
+			end, 200)
 		end
 
 		require("claudecode").setup(opts)
 
 		-- Buffer-local terminal-mode pane navigation for Claude windows.
-		-- Snacks `keys` config wasn't translating <C-\><C-n> termcodes, so
-		-- bind directly on TermOpen for any claudecode terminal buffer.
 		local group = vim.api.nvim_create_augroup("ClaudeCodeTermNav", { clear = true })
-		local function is_claude_buf(bufnr)
-			return vim.api.nvim_buf_get_name(bufnr):match("claude") ~= nil
-		end
 
 		vim.api.nvim_create_autocmd("TermOpen", {
 			group = group,
@@ -62,13 +65,22 @@ return {
 			end,
 		})
 
-		-- Auto-enter terminal mode when focusing a Claude window so typing
-		-- (including keys like `f`) goes to the terminal, not vim normal mode.
+		-- Auto-enter terminal mode when navigating into a Claude window.
+		-- Skipped during toggle (suppress flag) so snacks keeps its own focus behavior.
+		local suppress_auto_insert = false
+
 		vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 			group = group,
 			callback = function(ev)
+				if suppress_auto_insert then
+					return
+				end
 				if is_claude_buf(ev.buf) and vim.bo[ev.buf].buftype == "terminal" then
-					vim.cmd.startinsert()
+					vim.defer_fn(function()
+						if vim.bo.buftype == "terminal" and is_claude_buf(vim.api.nvim_get_current_buf()) then
+							vim.api.nvim_input("a")
+						end
+					end, 10)
 				end
 			end,
 		})
@@ -84,12 +96,20 @@ return {
 
 		-- Resume last session via picker
 		vim.keymap.set("n", "<leader>an", function()
+			suppress_auto_insert = true
 			require("claudecode.terminal").simple_toggle({ flags = "--resume" })
+			vim.defer_fn(function()
+				suppress_auto_insert = false
+			end, 200)
 		end, { desc = "Resume Claude session" })
 
 		-- Continue most recent session
 		vim.keymap.set("n", "<leader>al", function()
+			suppress_auto_insert = true
 			require("claudecode.terminal").simple_toggle({ flags = "--continue" })
+			vim.defer_fn(function()
+				suppress_auto_insert = false
+			end, 200)
 		end, { desc = "Continue last Claude session" })
 
 		-- Accept / deny diffs proposed by Claude

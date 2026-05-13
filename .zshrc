@@ -47,6 +47,7 @@ export PATH=$PATH:~/.config/scripts/
 # -----------------
 
 # ---- Zoxide (better cd) ----
+export _ZO_DOCTOR=0
 eval "$(zoxide init zsh)"
 alias cd="z"
 

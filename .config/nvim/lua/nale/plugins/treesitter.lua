@@ -11,6 +11,8 @@ return {
 		config = function()
 			require("nvim-treesitter").setup()
 
+			vim.treesitter.language.register("glimmer", "handlebars")
+
 			-- Install parsers if missing
 			local ensure_installed = {
 				"bash",
@@ -22,6 +24,7 @@ return {
 				"dockerfile",
 				"gitcommit",
 				"gitignore",
+				"glimmer",
 				"graphql",
 				"html",
 				"javascript",

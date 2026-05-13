@@ -29,9 +29,9 @@ return {
 				"html-lsp",
 				"json-lsp",
 				"lua-language-server",
-				"typescript-language-server",
 				"tailwindcss-language-server",
 				"vim-language-server",
+				"vtsls",
 				"vue-language-server",
 				-- Formatters & linters
 				"eslint_d",

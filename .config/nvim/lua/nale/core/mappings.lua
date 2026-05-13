@@ -16,10 +16,6 @@ keymap.set("i", "KJ", "<ESC>", { desc = "Exit insert mode" })
 -- Clear current search highlight
 keymap.set("n", "<leader>h", ":nohl<CR>", { desc = "Clear search highlights" })
 
--- Increment / decrement number
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" })
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
-
 -- Window management
 keymap.set("n", "vv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "ss", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
@@ -62,13 +58,8 @@ keymap.set("n", "ㅑ", "a", { desc = "Switch to insert mode" })
 keymap.set("i", "ㅓㅏ", "<ESC>", { desc = "Exit insert mode" })
 keymap.set("i", "ㅏㅓ", "<ESC>", { desc = "Exit insert mode" })
 
--- Cycle through errors
--- keymap.set("n", "<leader>N", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", { desc = "Go to previous diagnostic" })
--- keymap.set("n", "<leader>n", "<Cmd>lua vim.diagnostic.goto_next()<CR>", { desc = "Go to next diagnostic" })
-
 -- Display mappings in telescope
-keymap.set("n", "<leader>mt", "<Cmd>Telescope keymaps<CR>", { desc = "Open mappins in telescope" })
-keymap.set("n", "<leader>f", "<cmd><cr>", { desc = "Fuzzy find files in cwd" })
+keymap.set("n", "<leader>ik", "<Cmd>Telescope keymaps<CR>", { desc = "Open mappins in telescope" })
 
 -- Konami code
 keymap.set(

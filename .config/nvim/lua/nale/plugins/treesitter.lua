@@ -11,6 +11,8 @@ return {
 		config = function()
 			require("nvim-treesitter").setup()
 
+			vim.treesitter.language.register("glimmer", "handlebars")
+
 			-- Install parsers if missing
 			local ensure_installed = {
 				"bash",
@@ -22,6 +24,7 @@ return {
 				"dockerfile",
 				"gitcommit",
 				"gitignore",
+				"glimmer",
 				"graphql",
 				"html",
 				"javascript",
@@ -31,6 +34,7 @@ return {
 				"markdown_inline",
 				"prisma",
 				"scss",
+				"sql",
 				"typescript",
 				"tsx",
 				"vim",
@@ -64,7 +68,6 @@ return {
 		config = function()
 			local ts_select = require("nvim-treesitter-textobjects.select")
 			local ts_move = require("nvim-treesitter-textobjects.move")
-			local ts_swap = require("nvim-treesitter-textobjects.swap")
 
 			require("nvim-treesitter-textobjects").setup({
 				select = { lookahead = true },
@@ -102,14 +105,6 @@ return {
 					mapping.fn(mapping.query)
 				end)
 			end
-
-			-- Swap parameters
-			vim.keymap.set("n", "<leader>p", function()
-				ts_swap.swap_next("@parameter.inner")
-			end)
-			vim.keymap.set("n", "<leader>ps", function()
-				ts_swap.swap_previous("@parameter.inner")
-			end)
 		end,
 	},
 }

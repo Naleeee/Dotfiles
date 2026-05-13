@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
+export XDG_CONFIG_HOME="$HOME/.config"
 export ZSH="$HOME/.oh-my-zsh"
 
 # ---- Theme ----
@@ -47,6 +48,7 @@ export PATH=$PATH:~/.config/scripts/
 # -----------------
 
 # ---- Zoxide (better cd) ----
+export _ZO_DOCTOR=0
 eval "$(zoxide init zsh)"
 alias cd="z"
 

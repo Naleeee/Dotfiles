@@ -35,7 +35,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>li",
+			"<leader>l",
 			function()
 				Snacks.lazygit()
 			end,

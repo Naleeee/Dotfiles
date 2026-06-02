@@ -67,12 +67,23 @@ work") require constant clarification.
 
 - Derive state during render instead of syncing with `useEffect`.
 - Use event handlers for side effects triggered by user actions.
-- Use `useMemo`/`useCallback` for derived computations, not `useEffect` +
+- Compute derived values inline during render — don't reach for `useEffect` +
   `setState`.
 - Only reach for `useEffect` when synchronizing with something external
   (subscriptions, DOM APIs, third-party libraries).
 - If you write a `useEffect`, justify why it can't be an event handler or
   derived value.
+
+**Trust the React Compiler. Avoid manual memoization.**
+
+- The React Compiler is enabled on these projects — it memoizes components,
+  values, and callbacks automatically.
+- Do not reach for `React.memo`, `useMemo`, or `useCallback` by default. Write
+  plain components, plain values, plain functions.
+- Don't wrap handlers in `useCallback` for "stable references" or wrap
+  computations in `useMemo` "just in case" — the compiler handles it.
+- Only add manual memoization when profiling shows a real, measurable problem
+  the compiler isn't solving. Justify it explicitly when you do.
 
 # 6. Comments — MANDATORY
 

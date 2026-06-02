@@ -93,11 +93,6 @@ alias dh="echo \"Docker aliases usage:\"
           echo \"   - de: Execute the provided container with /bin/bash\"
           echo \"   - des: Same as de but with root privileges\""
 
-# ---- Comptastar ----
-alias client="turbo web#dev"
-alias api="turbo api#dev"
-alias admin="turbo admin#dev"
-
 # ---- Grep recursivly ----
 alias trouve="grep -rn --exclude-dir=deps --exclude-dir=build --exclude-dir=doxygen --exclude-dir=node_modules --exclude-dir=.next $1"
 
@@ -262,3 +257,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 export NOTES_DIR="$HOME/Documents/Notes"
 export EDITOR="${EDITOR:-nvim}"
+
+# GitHub MCP server token (Claude Code github plugin) — reuse gh CLI auth
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"

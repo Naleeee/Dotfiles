@@ -2,6 +2,10 @@
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/nathanlemale/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "lua-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
@@ -9,5 +13,6 @@
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true
   },
-  "theme": "dark"
+  "theme": "dark",
+  "tui": "fullscreen"
 }

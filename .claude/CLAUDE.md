@@ -90,7 +90,7 @@ work") require constant clarification.
 **Stop writing long, useless comments. Comment only when it adds value.**
 
 - Default to NO comment. Well-named code explains itself.
-- Only comment when the *why* is non-obvious: a hidden constraint, a subtle
+- Only comment when the _why_ is non-obvious: a hidden constraint, a subtle
   invariant, a workaround for a specific bug, behavior that would surprise a
   reader.
 - **Hard limit: 1–2 lines max per comment.** No multi-line blocks, no
@@ -113,10 +113,16 @@ work") require constant clarification.
 - Do not run `git commit` (or any equivalent) unless the user's prompt
   explicitly asks for it ("commit this", "make a commit", etc.).
 - Finishing a task, passing tests, or reaching a "good stopping point" is not
-  permission to commit. Stage nothing, commit nothing — just report what
-  changed and wait.
+  permission to commit. Stage nothing, commit nothing — just report what changed
+  and wait.
 - "Save this", "wrap up", or "we're done" is not a commit instruction. If
   unclear, ask.
+
+# 8. Address Me By Name
+
+**Start every response with my name.**
+
+- Begin each reply with "Plop" before anything else.
 
 ---
 

@@ -15,6 +15,7 @@ return {
 
 			-- Install parsers if missing
 			local ensure_installed = {
+				"arduino",
 				"bash",
 				"c",
 				"cmake",

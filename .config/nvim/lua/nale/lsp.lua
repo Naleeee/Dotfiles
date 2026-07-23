@@ -174,11 +174,29 @@ vim.lsp.config("vue_ls", {
 	end,
 })
 
+local arduino_cli_config = vim.fn.expand(
+	vim.uv.os_uname().sysname == "Darwin" and "~/Library/Arduino15/arduino-cli.yaml" or "~/.arduino15/arduino-cli.yaml"
+)
+vim.lsp.config("arduino_language_server", {
+	cmd = {
+		"arduino-language-server",
+		"-cli",
+		"arduino-cli",
+		"-cli-config",
+		arduino_cli_config,
+		"-clangd",
+		"clangd",
+		"-fqbn",
+		"arduino:avr:uno",
+	},
+})
+
 -- Disable nvim-lspconfig's copilot config (copilot.lua plugin manages its own server)
 vim.lsp.config("copilot", { cmd = false })
 
 -- nvim-lspconfig provides cmd/filetypes for all servers
 vim.lsp.enable({
+	"arduino_language_server",
 	"bashls",
 	"biome",
 	"cssls",

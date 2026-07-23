@@ -260,3 +260,4 @@ export EDITOR="${EDITOR:-nvim}"
 
 # GitHub MCP server token (Claude Code github plugin) — reuse gh CLI auth
 export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
+export PATH="$HOME/go/bin:$PATH"

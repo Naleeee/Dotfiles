@@ -189,6 +189,20 @@ vim.lsp.config("arduino_language_server", {
 		"-fqbn",
 		"arduino:avr:uno",
 	},
+	-- arduino-cli can only build sketches laid out as Folder/Folder.ino;
+	-- anything else makes the server exit, so skip it with a hint instead
+	root_dir = function(bufnr, on_dir)
+		local sketch = vim.api.nvim_buf_get_name(bufnr)
+		local dir = vim.fs.dirname(sketch)
+		if vim.fs.basename(dir) == vim.fn.fnamemodify(sketch, ":t:r") then
+			on_dir(dir)
+		else
+			vim.notify_once(
+				"arduino LSP skipped: a sketch must live in a folder named after it (e.g. toto/toto.ino)",
+				vim.log.levels.WARN
+			)
+		end
+	end,
 })
 
 -- Disable nvim-lspconfig's copilot config (copilot.lua plugin manages its own server)

@@ -1,17 +1,13 @@
 theme = "catppuccin-mocha"
-diff_view = "side-by-side"   # or "unified"
-ignore_whitespace = false    # ignore all whitespace in local VCS diffs
-appearance = "system"        # or "dark" / "light"
-mouse = true
-leader = ";"                  # configurable prefix for leader shortcuts
-comment_vim = false           # vim modal editing in the review comment box
-review_watch_interval_ms = 1000 # set to 0 to disable persisted-review polling
+diff_view = "side-by-side"
+comment_vim = true
+scroll_offset = 10
 
 comment_types = [
-  { id = "note",       label = "question",   definition = "ask for clarification",  color = "#FDE68A" },
-  { id = "suggestion", label = "suggestion", definition = "possible improvements",  color = "#C4B5FD" },
-  { id = "issue",      label = "issue",      definition = "problems to fix",        color = "#FCA5A5" },
-  { id = "praise",     label = "praise",     definition = "positive feedback",      color = "#86EFAC" },
+  { id = "question",   label = "question",   definition = "ask for clarification",  color = "#F9E2AF" },
+  { id = "suggestion", label = "suggestion", definition = "possible improvements",  color = "#CBA6F7" },
+  { id = "issue",      label = "issue",      definition = "problems to fix",        color = "#F38BA8" },
+  { id = "praise",     label = "praise",     definition = "positive feedback",      color = "#A6E3A1" },
 ]
 
 [forge]

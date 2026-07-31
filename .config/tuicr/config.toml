@@ -1,7 +1,7 @@
 theme = "catppuccin-mocha"
 diff_view = "side-by-side"
 comment_vim = true
-scroll_offset = 10
+scroll_offset = 20
 
 comment_types = [
   { id = "question",   label = "question",   definition = "ask for clarification",  color = "#F9E2AF" },

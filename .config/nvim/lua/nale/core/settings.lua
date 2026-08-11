@@ -25,7 +25,7 @@ opt.smartcase = true -- if mixed case in search, switch to case sensitive
 opt.cursorline = true
 
 opt.termguicolors = true
-opt.background = "dark" -- prefer dark theme is available
+-- opt.background = "dark" -- prefer dark theme is available
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 opt.fixendofline = false
 opt.autowriteall = true -- autowrite on quit

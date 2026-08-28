@@ -26,6 +26,6 @@ if [ -n "$five_h" ]; then
 fi
 
 # session cost segment
-if [ -n "$cost" ] && [ "$(printf '%.2f' "$cost")" != "0.00" ]; then
-  printf "  \033[0;33m\$$(printf '%.2f' "$cost")\033[0m"
-fi
+# if [ -n "$cost" ] && [ "$(printf '%.2f' "$cost")" != "0.00" ]; then
+#   printf "  \033[0;33m\$$(printf '%.2f' "$cost")\033[0m"
+# fi

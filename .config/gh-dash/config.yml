@@ -92,8 +92,7 @@ keybindings:
       name: code review
       command: >
         tmux new-window -n "PR-{{.PrNumber}}" -c {{.RepoPath}} 'tuicr pr
-        {{.PrNumber}}' \; split-window -h -c {{.RepoPath}} 'claude "/review
-        {{.PrNumber}}"'
+        {{.PrNumber}}'
 
 theme:
   colors:

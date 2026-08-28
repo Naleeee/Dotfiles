@@ -25,6 +25,7 @@ return {
 			{ "<leader>q", group = "Quickfix", icon = "󰁨" },
 			{ "<leader>s", group = "Sticky Notes", icon = "󰍔" },
 			{ "<leader>t", group = "Tooling", icon = "󰔨" },
+			{ "<leader>u", group = "Arduino", icon = "" },
 			{ "<leader>x", group = "Trouble", icon = "󰚑" },
 
 			-- Standalone keys

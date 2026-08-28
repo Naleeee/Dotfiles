@@ -22,6 +22,7 @@ return {
 		opts = {
 			ensure_installed = {
 				-- LSP servers
+				"arduino-language-server",
 				"bash-language-server",
 				"biome",
 				"css-lsp",
@@ -34,6 +35,8 @@ return {
 				"vtsls",
 				"vue-language-server",
 				-- Formatters & linters
+				"clang-format",
+				"clangd",
 				"eslint_d",
 				"prettier",
 				"stylua",

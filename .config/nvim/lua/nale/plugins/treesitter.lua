@@ -15,6 +15,7 @@ return {
 
 			-- Install parsers if missing
 			local ensure_installed = {
+				"arduino",
 				"bash",
 				"c",
 				"cmake",
@@ -32,6 +33,7 @@ return {
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
 				"prisma",
 				"scss",
 				"sql",

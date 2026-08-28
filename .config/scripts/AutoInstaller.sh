@@ -372,6 +372,15 @@ if prompt_yes_no "Install modern CLI tools?"; then
     install_pkg "$(get_pkg btop)"
 fi
 
+print_section "Arduino Development"
+print_dep "arduino-cli, tio (serial monitor)"
+
+if prompt_yes_no "Install Arduino development tools?"; then
+    install_pkg arduino-cli
+    install_pkg tio
+    arduino-cli config init &>/dev/null || true
+fi
+
 #==============================================================================
 # SECTION 3: SSH Key
 #==============================================================================

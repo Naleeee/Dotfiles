@@ -1,0 +1,8 @@
+# Defaults for all connections (command-line flags override these)
+
+# Prefix every device line with a wall-clock timestamp
+timestamp = true
+timestamp-format = 24hour
+
+# Color for tio's own status messages (tio --color list to preview codes)
+color = 14

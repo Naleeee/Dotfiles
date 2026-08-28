@@ -174,11 +174,43 @@ vim.lsp.config("vue_ls", {
 	end,
 })
 
+local arduino_cli_config = vim.fn.expand(
+	vim.uv.os_uname().sysname == "Darwin" and "~/Library/Arduino15/arduino-cli.yaml" or "~/.arduino15/arduino-cli.yaml"
+)
+vim.lsp.config("arduino_language_server", {
+	cmd = {
+		"arduino-language-server",
+		"-cli",
+		"arduino-cli",
+		"-cli-config",
+		arduino_cli_config,
+		"-clangd",
+		"clangd",
+		"-fqbn",
+		"arduino:avr:uno",
+	},
+	-- arduino-cli can only build sketches laid out as Folder/Folder.ino;
+	-- anything else makes the server exit, so skip it with a hint instead
+	root_dir = function(bufnr, on_dir)
+		local sketch = vim.api.nvim_buf_get_name(bufnr)
+		local dir = vim.fs.dirname(sketch)
+		if vim.fs.basename(dir) == vim.fn.fnamemodify(sketch, ":t:r") then
+			on_dir(dir)
+		else
+			vim.notify_once(
+				"arduino LSP skipped: a sketch must live in a folder named after it (e.g. toto/toto.ino)",
+				vim.log.levels.WARN
+			)
+		end
+	end,
+})
+
 -- Disable nvim-lspconfig's copilot config (copilot.lua plugin manages its own server)
 vim.lsp.config("copilot", { cmd = false })
 
 -- nvim-lspconfig provides cmd/filetypes for all servers
 vim.lsp.enable({
+	"arduino_language_server",
 	"bashls",
 	"biome",
 	"cssls",

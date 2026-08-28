@@ -40,6 +40,23 @@ return {
 			condition = has_biome,
 		}
 
+		local arduino_style = vim.fn.stdpath("config") .. "/styles/arduino.clang-format"
+		conform.formatters["clang-format-ino"] = {
+			meta = {
+				url = "https://github.com/arduino/tooling-project-assets",
+				description = "clang-format with the Arduino IDE style for sketches",
+			},
+			command = "clang-format",
+			stdin = true,
+			args = function(_, ctx)
+				local args = { "--assume-filename", ctx.filename .. ".cpp" }
+				if not vim.fs.find(".clang-format", { path = ctx.filename, upward = true })[1] then
+					table.insert(args, "--style=file:" .. arduino_style)
+				end
+				return args
+			end,
+		}
+
 		-- Web languages: biome-check OR (eslint_d + prettier) OR prettier fallback
 		-- Order matters: first available wins due to stop_after_first
 		local web_formatters = { "biome-check", "eslint_d", "prettier" }
@@ -47,6 +64,7 @@ return {
 		conform.setup({
 			formatters_by_ft = {
 				-- C/C++ always use clang-format
+				arduino = { "clang-format-ino" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 

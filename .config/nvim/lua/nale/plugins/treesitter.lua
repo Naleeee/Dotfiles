@@ -33,6 +33,7 @@ return {
 				"lua",
 				"markdown",
 				"markdown_inline",
+				"python",
 				"prisma",
 				"scss",
 				"sql",

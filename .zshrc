@@ -261,3 +261,8 @@ export EDITOR="${EDITOR:-nvim}"
 # GitHub MCP server token (Claude Code github plugin) — reuse gh CLI auth
 export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token)"
 export PATH="$HOME/go/bin:$PATH"
+
+# Android Studio
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"

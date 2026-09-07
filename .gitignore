@@ -1,3 +1,5 @@
 .config/tmux/plugins/*
 
 AGENTS.md
+
+.claude/CODE_REVIEW_STANRDARDS.md

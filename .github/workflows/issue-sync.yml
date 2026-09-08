@@ -1,0 +1,56 @@
+name: Issue sync
+
+on:
+  push:
+    branches: ["DOT-*"]
+  pull_request:
+    types: [opened, closed]
+
+jobs:
+  in-progress:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set issue to In Progress
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+        run: |
+          [[ "$GITHUB_REF_NAME" =~ ^DOT-([0-9]+) ]] || exit 0
+          bash .github/scripts/set-project-status.sh "${BASH_REMATCH[1]}" "In Progress" "Todo"
+
+  link-pr:
+    if:
+      github.event_name == 'pull_request' && github.event.action == 'opened' &&
+      startsWith(github.head_ref, 'DOT-')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Add closing keyword to PR body
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_REF: ${{ github.head_ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          [[ "$HEAD_REF" =~ ^DOT-([0-9]+) ]] || exit 0
+          ISSUE="${BASH_REMATCH[1]}"
+          grep -qiE "(close[sd]?|fix(e[sd])?|resolv(e[sd])?)[: ]+#$ISSUE\\b" <<<"$PR_BODY" && exit 0
+          printf 'Closes #%s\n\n%s' "$ISSUE" "$PR_BODY" | gh pr edit "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
+
+  done:
+    if:
+      github.event_name == 'pull_request' && github.event.action == 'closed' &&
+      github.event.pull_request.merged == true && startsWith(github.head_ref,
+      'DOT-')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set issue to Done
+        env:
+          GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          [[ "$HEAD_REF" =~ ^DOT-([0-9]+) ]] || exit 0
+          bash .github/scripts/set-project-status.sh "${BASH_REMATCH[1]}" "Done"

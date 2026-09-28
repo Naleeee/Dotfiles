@@ -91,8 +91,10 @@ keybindings:
     - key: D
       name: code review
       command: >
-        tmux new-window -n "PR-{{.PrNumber}}" -c {{.RepoPath}} 'tuicr pr
-        {{.PrNumber}}'
+        tmux new-window -n "PR-{{.PrNumber}}" -c {{.RepoPath}} '$HOME/.config/scripts/TuicrPrSince.sh
+        {{.PrNumber}}' \; split-window -h -c {{.RepoPath}} 'claude
+        "/code-review-and-quality PR#{{.PrNumber}}. Ensure the review standards
+        match @$HOME/.claude/CODE_REVIEW_STANDARDS.md"'
 
 theme:
   colors:

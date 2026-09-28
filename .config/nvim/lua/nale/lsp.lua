@@ -82,7 +82,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Diagnostics group (<leader>x)
 		opts.desc = "Line diagnostics"
 		keymap.set("n", "<leader>xi", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-
 	end,
 })
 
@@ -129,6 +128,12 @@ local vue_ts_plugin_path = vim.fn.stdpath("data")
 
 vim.lsp.config("vtsls", {
 	filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
+	-- One tsserver per tsconfig instead of one per monorepo: keeps each heap small and isolates crashes
+	root_dir = function(bufnr, on_dir)
+		on_dir(
+			vim.fs.root(bufnr, { "tsconfig.json", "jsconfig.json" }) or vim.fs.root(bufnr, { "package.json", ".git" })
+		)
+	end,
 	settings = {
 		vtsls = {
 			tsserver = {
@@ -143,7 +148,10 @@ vim.lsp.config("vtsls", {
 				},
 			},
 		},
-		typescript = { inlayHints = ts_inlay_hints },
+		typescript = {
+			inlayHints = ts_inlay_hints,
+			tsserver = { maxTsServerMemory = 8192 },
+		},
 		javascript = { inlayHints = ts_inlay_hints },
 	},
 })

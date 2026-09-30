@@ -14,6 +14,8 @@ return {
 			ignore = {
 				buftype = { "quickfix", "terminal" },
 			},
+			-- Animated resizes feed Normal-mode keys while a terminal is in Terminal mode, which desyncs the Claude split
+			animation = { enable = false },
 		})
 	end,
 }

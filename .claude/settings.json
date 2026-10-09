@@ -2,7 +2,7 @@
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
-  "model": "fable[1m]",
+  "model": "fable",
   "statusLine": {
     "type": "command",
     "command": "bash /Users/nathanlemale/.claude/statusline-command.sh"
@@ -14,9 +14,6 @@
     "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
-  "tui": "fullscreen",
-  "theme": "dark",
   "extraKnownMarketplaces": {
     "addy-agent-skills": {
       "source": {
@@ -24,5 +21,8 @@
         "repo": "addyosmani/agent-skills"
       }
     }
-  }
+  },
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "theme": "dark"
 }

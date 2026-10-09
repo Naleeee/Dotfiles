@@ -91,10 +91,14 @@ keybindings:
     - key: D
       name: code review
       command: >
-        tmux new-window -n "PR-{{.PrNumber}}" -c {{.RepoPath}} '$HOME/.config/scripts/TuicrPrSince.sh
-        {{.PrNumber}}' \; split-window -h -c {{.RepoPath}} 'claude
-        "/code-review-and-quality PR#{{.PrNumber}}. Ensure the review standards
-        match @$HOME/.claude/CODE_REVIEW_STANDARDS.md"'
+        tmux new-window -n "PR-{{.PrNumber}}" -c {{.RepoPath}}
+        '$HOME/.config/scripts/TuicrPrSince.sh {{.PrNumber}}' \; split-window -h
+        -c {{.RepoPath}} 'claude "/code-review-and-quality PR#{{.PrNumber}}.
+        Ensure the review standards match
+        @$HOME/.claude/CODE_REVIEW_STANDARDS.md. Post recommended changed as 1
+        line for the file that need edition with its full path, and another line
+        with the line(s) where to post the comment follow by a short 1 line
+        comment to post for the change always in english"'
 
 theme:
   colors:

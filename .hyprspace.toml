@@ -170,6 +170,12 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 on-mode-changed = []
 
+# Keep the SketchyBar workspace indicators in sync
+exec-on-workspace-change = ['/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+on-focus-changed = 'exec-and-forget sketchybar --trigger aerospace_workspace_change'
+
 # ╔═══════════════════════════════════════════════════════════════════════════════╗
 # ║                            GAPS CONFIGURATION                                 ║
 # ╚═══════════════════════════════════════════════════════════════════════════════╝
@@ -191,7 +197,7 @@ inner.vertical = 20
 #   ]
 outer.left = 10
 outer.bottom = 10
-outer.top = 10
+outer.top = 42                          # 32px SketchyBar + 10
 outer.right = 10
 
 # Example: Different gaps for different monitors (uncomment to use)

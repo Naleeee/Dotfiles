@@ -4,12 +4,13 @@ export PATH="/opt/homebrew/bin:$PATH"
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 source "$CONFIG_DIR/colors.sh"
 
-# Compiled once; CoreBluetooth is the only way to read a BLE keyboard's battery
-BLE_BIN="$HOME/.cache/sketchybar/blebattery"
-if [ ! "$BLE_BIN" -nt "$PLUGIN_DIR/blebattery.swift" ]; then
-  mkdir -p "$(dirname "$BLE_BIN")"
-  swiftc -O -o "$BLE_BIN" "$PLUGIN_DIR/blebattery.swift"
-fi
+# Compiled once; BLE battery and input sources are only reachable from native APIs
+BIN_DIR="$HOME/.cache/sketchybar"
+mkdir -p "$BIN_DIR"
+for src in "$PLUGIN_DIR"/*.swift; do
+  bin="$BIN_DIR/$(basename "${src%.swift}")"
+  [ "$bin" -nt "$src" ] || swiftc -O -o "$bin" "$src"
+done
 
 FONT="CaskaydiaCove Nerd Font"
 APP_FONT="sketchybar-app-font:Regular:15.0"
@@ -112,7 +113,14 @@ sketchybar --add item wifi right \
     script="$PLUGIN_DIR/wifi.sh" \
     click_script="open x-apple.systempreferences:com.apple.wifi-settings-extension" \
   --subscribe wifi system_woke
-sketchybar --add bracket pill.controls volume bluetooth wifi --set pill.controls "${PILL[@]}"
+sketchybar --add event keyboard_change
+sketchybar --add item keyboard right \
+  --set keyboard icon=󰌗 icon.color=$PEACH script="$PLUGIN_DIR/keyboard.sh" \
+  --subscribe keyboard keyboard_change
+# The watcher fires keyboard_change on every input source switch
+pkill -f "^$BIN_DIR/kbdlayout --watch$"
+"$BIN_DIR/kbdlayout" --watch &
+sketchybar --add bracket pill.controls volume bluetooth wifi keyboard --set pill.controls "${PILL[@]}"
 
 gap gap.4 right
 

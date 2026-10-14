@@ -1,0 +1,4 @@
+#!/bin/bash
+# Catppuccin Mocha: mauve on the focused window, surface1 elsewhere
+borders style=round width=5.0 hidpi=on \
+  active_color=0xffcba6f7 inactive_color=0xff45475a

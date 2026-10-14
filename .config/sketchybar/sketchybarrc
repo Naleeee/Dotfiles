@@ -1,0 +1,136 @@
+#!/bin/bash
+# Launched by launchd, which does not load the shell profile
+export PATH="/opt/homebrew/bin:$PATH"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+source "$CONFIG_DIR/colors.sh"
+
+# Compiled once; BLE battery and input sources are only reachable from native APIs
+BIN_DIR="$HOME/.cache/sketchybar"
+mkdir -p "$BIN_DIR"
+for src in "$PLUGIN_DIR"/*.swift; do
+  bin="$BIN_DIR/$(basename "${src%.swift}")"
+  [ "$bin" -nt "$src" ] || swiftc -O -o "$bin" "$src"
+done
+
+FONT="CaskaydiaCove Nerd Font"
+APP_FONT="sketchybar-app-font:Regular:15.0"
+
+sketchybar --bar position=top height=32 color=$TRANSPARENT padding_left=8 padding_right=8
+
+sketchybar --default \
+  padding_left=2 padding_right=2 \
+  icon.font="$FONT:Bold:14.0" label.font="$FONT:Bold:13.0" \
+  icon.color=$TEXT label.color=$TEXT \
+  icon.padding_left=6 icon.padding_right=6 \
+  label.padding_left=0 label.padding_right=6 \
+  popup.background.color=$MANTLE popup.background.corner_radius=10 \
+  popup.background.border_width=1 popup.background.border_color=$SURFACE1 \
+  popup.blur_radius=20 popup.y_offset=4
+
+# Each group of items sits in its own pill
+PILL=(
+  background.color=$MANTLE
+  background.corner_radius=10
+  background.height=26
+  background.border_width=1
+  background.border_color=$SURFACE1
+)
+gap() { sketchybar --add item "$1" "$2" --set "$1" width=8; }
+
+# ───────────────────────────── left ─────────────────────────────
+
+sketchybar --add item apple left \
+  --set apple icon= icon.font="$FONT:Bold:17.0" icon.color=$MAUVE \
+    icon.padding_left=9 icon.padding_right=9 label.drawing=off \
+    click_script="sketchybar --set apple popup.drawing=toggle" \
+  --add item apple.settings popup.apple \
+  --set apple.settings icon= icon.color=$BLUE label="System Settings" \
+    click_script="sketchybar --set apple popup.drawing=off; open -b com.apple.systempreferences" \
+  --add item apple.lock popup.apple \
+  --set apple.lock icon= icon.color=$YELLOW label="Lock Screen" \
+    click_script="sketchybar --set apple popup.drawing=off; pmset displaysleepnow" \
+  --add item apple.sleep popup.apple \
+  --set apple.sleep icon=󰒲 icon.color=$LAVENDER label="Sleep" \
+    click_script="sketchybar --set apple popup.drawing=off; pmset sleepnow" \
+  --add item apple.reload popup.apple \
+  --set apple.reload icon= icon.color=$GREEN label="Reload SketchyBar" \
+    click_script="sketchybar --reload"
+sketchybar --add bracket pill.apple apple --set pill.apple "${PILL[@]}"
+
+gap gap.1 left
+
+sketchybar --add event aerospace_workspace_change
+for sid in $(hyprspace list-workspaces --all); do
+  sketchybar --add item space."$sid" left \
+    --subscribe space."$sid" aerospace_workspace_change \
+    --set space."$sid" \
+      icon="$sid" icon.color=$SUBTEXT icon.padding_left=8 icon.padding_right=4 \
+      label.font="$APP_FONT" label.padding_right=8 \
+      background.corner_radius=7 background.height=20 background.drawing=off \
+      click_script="hyprspace workspace $sid" \
+      script="$PLUGIN_DIR/hyprspace.sh $sid"
+done
+sketchybar --add bracket pill.workspaces '/space\..*/' --set pill.workspaces "${PILL[@]}"
+
+gap gap.2 left
+
+sketchybar --add item chevron left \
+  --set chevron icon= icon.font="$FONT:Bold:11.0" icon.color=$OVERLAY
+sketchybar --add item front_app left \
+  --set front_app icon.font="$APP_FONT" icon.color=$LAVENDER \
+    script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
+sketchybar --add bracket pill.app chevron front_app --set pill.app "${PILL[@]}"
+
+# ───────────────────────────── right ────────────────────────────
+# Right items are added rightmost first
+
+sketchybar --add item clock right \
+  --set clock update_freq=10 icon= icon.color=$BLUE script="$PLUGIN_DIR/clock.sh"
+sketchybar --add bracket pill.time clock --set pill.time "${PILL[@]}"
+
+gap gap.3 right
+
+sketchybar --add item volume right \
+  --set volume icon.color=$TEAL script="$PLUGIN_DIR/volume.sh" \
+    click_script="sketchybar --set volume popup.drawing=toggle" \
+  --subscribe volume volume_change mouse.exited.global \
+  --add slider volume.slider popup.volume 120 \
+  --set volume.slider \
+    slider.highlight_color=$TEAL slider.background.color=$SURFACE1 \
+    slider.background.height=6 slider.background.corner_radius=3 \
+    slider.knob= slider.knob.color=$TEXT slider.knob.font="$FONT:Bold:12.0" \
+    script="$PLUGIN_DIR/volume.sh" \
+  --subscribe volume.slider mouse.clicked
+
+sketchybar --add item bluetooth right \
+  --set bluetooth update_freq=30 icon= icon.color=$BLUE label.drawing=off \
+    script="$PLUGIN_DIR/bluetooth.sh" \
+    click_script="open x-apple.systempreferences:com.apple.BluetoothSettings" \
+  --subscribe bluetooth system_woke
+sketchybar --add item wifi right \
+  --set wifi update_freq=10 icon= icon.color=$SAPPHIRE label.drawing=off \
+    script="$PLUGIN_DIR/wifi.sh" \
+    click_script="open x-apple.systempreferences:com.apple.wifi-settings-extension" \
+  --subscribe wifi system_woke
+sketchybar --add event keyboard_change
+sketchybar --add item keyboard right \
+  --set keyboard icon=󰌗 icon.color=$PEACH script="$PLUGIN_DIR/keyboard.sh" \
+  --subscribe keyboard keyboard_change
+# The watcher fires keyboard_change on every input source switch
+pkill -f "^$BIN_DIR/kbdlayout --watch$"
+"$BIN_DIR/kbdlayout" --watch &
+sketchybar --add bracket pill.controls volume bluetooth wifi keyboard --set pill.controls "${PILL[@]}"
+
+gap gap.4 right
+
+sketchybar --add item battery right \
+  --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+  --subscribe battery system_woke power_source_change
+sketchybar --add item ram right \
+  --set ram update_freq=5 icon=󰍛 icon.color=$MAUVE script="$PLUGIN_DIR/ram.sh"
+sketchybar --add item kbd_battery right \
+  --set kbd_battery update_freq=120 icon=󰌌 icon.color=$YELLOW script="$PLUGIN_DIR/kbd_battery.sh"
+sketchybar --add bracket pill.stats kbd_battery ram battery --set pill.stats "${PILL[@]}"
+
+sketchybar --update

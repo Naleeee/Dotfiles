@@ -26,7 +26,7 @@ startup_command = "tmux rename-window Config && nvim"
 [[window]]
 name = "Servers"
 path = "~/Documents/LandCapital/App"
-startup_script = 'p=$(tmux split-window -h -d -P -F "#{pane_id}" -t "$TMUX_PANE" -c ~/Documents/LandCapital/App); tmux send-keys -t "$p" "ngrok start api" Enter; turbo dev'
+startup_script = 'p=$(tmux split-window -h -d -P -F "#{pane_id}" -t "$TMUX_PANE" -c ~/Documents/LandCapital/App); tmux send-keys -t "$p" "ngrok start api" Enter; turbo dev --filter=api --filter=web'
 
 [[window]]
 name = "Database"

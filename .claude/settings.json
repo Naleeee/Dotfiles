@@ -25,5 +25,78 @@
   },
   "effortLevel": "xhigh",
   "tui": "fullscreen",
-  "theme": "dark"
+  "theme": "dark",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "AskUserQuestion|ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh waiting"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh waiting"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear-waiting"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh done"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh done"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear"
+          }
+        ]
+      }
+    ]
+  }
 }

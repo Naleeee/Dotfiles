@@ -103,8 +103,13 @@ alias l="clear && ls -l"
 # ---- Doxygen ----
 alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 
-# ---- Doxygen ----
-alias t="~/.config/scripts/TmuxStartup.sh"
+# ---- Tmux ----
+alias t="sesh connect App"
+
+# ---- Worktrees ----
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+alias wtn="~/.config/scripts/WtTicket.sh"
+alias wtdb="~/.config/scripts/WtDb.sh"
 
 # ---- HyprSpace (Window Manager) ----
 alias hse="hyprspace enable on"              # Enable HyprSpace

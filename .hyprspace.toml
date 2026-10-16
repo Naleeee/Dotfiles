@@ -34,7 +34,9 @@ start-at-login = true
 #   after-startup-command = ['exec-and-forget open -a Safari', 'exec-and-forget open -a Slack']
 after-startup-command = [
 'workspace 1',
-'layout dwindle'
+'layout dwindle',
+# SketchyBar may start first and find no workspaces to list
+'exec-and-forget sketchybar --reload'
 ]
 
 # ╔═══════════════════════════════════════════════════════════════════════════════╗

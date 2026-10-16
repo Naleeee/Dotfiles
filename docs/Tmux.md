@@ -77,6 +77,7 @@ set -g pane-border-style 'fg=#313244,bg=default'          # Subtle inactive
 | `Prefix + r` | Rename window |
 | `Prefix + w` | List windows |
 | `Prefix + d` | Detach session |
+| `Prefix + T` | Session picker (sesh) |
 
 ### Pane Management
 
@@ -251,9 +252,9 @@ tmux ls
 tmux kill-session -t mysession
 ```
 
-### Startup Script
+### Sessions
 
-The alias `t` runs a custom tmux startup script at `~/.config/scripts/TmuxStartup.sh`.
+Sessions are defined in `~/.config/sesh/sesh.toml` and managed with [sesh](https://github.com/joshmedeski/sesh). The alias `t` runs `sesh connect App`, and `Prefix + T` opens the session picker. See [Worktrees.md](Worktrees.md) for the ticket and review workflow.
 
 ### Troubleshooting
 

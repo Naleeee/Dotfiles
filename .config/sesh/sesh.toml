@@ -1,0 +1,34 @@
+[[session]]
+name = "App"
+path = "~/Documents/LandCapital/App"
+startup_command = "tmux rename-window Develop"
+windows = ["Servers", "Database"]
+
+[[session]]
+name = "Dash"
+path = "~"
+startup_command = "tmux rename-window Dash && gh dash"
+
+[[session]]
+name = "Mobile"
+path = "~/Documents/LandCapital/Mobile"
+
+[[session]]
+name = "Starity"
+path = "~/Documents/LandCapital/Starity"
+
+[[session]]
+name = "Dotfiles"
+path = "~/Dotfiles"
+startup_command = "tmux rename-window Config && nvim"
+
+# Untargeted tmux commands go to the session's current window, hence -t "$TMUX_PANE".
+[[window]]
+name = "Servers"
+path = "~/Documents/LandCapital/App"
+startup_script = 'p=$(tmux split-window -h -d -P -F "#{pane_id}" -t "$TMUX_PANE" -c ~/Documents/LandCapital/App); tmux send-keys -t "$p" "ngrok start api" Enter; turbo dev'
+
+[[window]]
+name = "Database"
+path = "~/Documents/LandCapital/App"
+startup_script = "lazysql"

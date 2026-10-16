@@ -34,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
   eval "$(ssh-agent -s)" > /dev/null
 fi
-ssh-add -l 2>/dev/null | grep -q NaleComptastarKey || ssh-add --apple-use-keychain ~/.ssh/NaleComptastarKey 2>/dev/null
+ssh-add -l 2>/dev/null | grep -q NaleShellKey || ssh-add --apple-use-keychain ~/.ssh/NaleShellKey 2>/dev/null
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -103,8 +103,13 @@ alias l="clear && ls -l"
 # ---- Doxygen ----
 alias web="doxygen Doxyfile && brave docs/doxygen/html/index.html"
 
-# ---- Doxygen ----
-alias t="~/.config/scripts/TmuxStartup.sh"
+# ---- Tmux ----
+alias t="sesh connect App"
+
+# ---- Worktrees ----
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+alias wtn="~/.config/scripts/WtTicket.sh"
+alias wtdb="~/.config/scripts/WtDb.sh"
 
 # ---- HyprSpace (Window Manager) ----
 alias hse="hyprspace enable on"              # Enable HyprSpace

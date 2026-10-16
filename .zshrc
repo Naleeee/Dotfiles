@@ -34,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
   eval "$(ssh-agent -s)" > /dev/null
 fi
-ssh-add -l 2>/dev/null | grep -q NaleComptastarKey || ssh-add --apple-use-keychain ~/.ssh/NaleComptastarKey 2>/dev/null
+ssh-add -l 2>/dev/null | grep -q NaleShellKey || ssh-add --apple-use-keychain ~/.ssh/NaleShellKey 2>/dev/null
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

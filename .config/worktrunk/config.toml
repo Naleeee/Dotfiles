@@ -1,0 +1,18 @@
+# Template values are shell-quoted by worktrunk, so they stay unquoted here.
+
+[aliases]
+# Servers.0 is the turbo pane of the shared Servers window; ngrok in pane 1 is untouched.
+srv = 'tmux respawn-pane -k -t "=App:=Servers.0" -c {{ worktree_path }} && tmux send-keys -t "=App:=Servers.0" "turbo dev" Enter'
+
+# WtTicket.sh and WtReview.sh store the tmux window id of each worktree in a branch var.
+[post-remove]
+window = 'w={{ vars.window | default("") }}; [ -n "$w" ] || exit 0; wt config state vars clear window --branch {{ branch }}; tmux kill-window -t "$w" || true'
+
+[projects."github.com/LandCapital/app"]
+pre-remove.db = "$HOME/.config/scripts/WtDb.sh --drop"
+
+[[projects."github.com/LandCapital/app".pre-start]]
+copy = "wt step copy-ignored"
+
+[[projects."github.com/LandCapital/app".pre-start]]
+install = "bun install"

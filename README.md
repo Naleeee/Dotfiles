@@ -34,6 +34,9 @@
   - [Prerequisites](#prerequisites)
   - [Using GNU Stow](#using-gnu-stow)
   - [Manual Installation](#manual-installation)
+- [Worktree Workflow](#worktree-workflow)
+  - [How It Works](#how-it-works)
+  - [Daily Workflow](#daily-workflow)
 - [Documentation](#documentation)
 - [Version Requirements](#version-requirements)
 - [Roadmap](#roadmap)
@@ -63,6 +66,7 @@ This repository contains my personal dotfiles for a complete Linux development e
 | **Hyprland** | Wayland tiling compositor | [docs/Hyprland.md](docs/Hyprland.md) |
 | **Zsh** | Shell with Oh My Zsh and Powerlevel10k | [docs/Zsh.md](docs/Zsh.md) |
 | **Tmux** | Terminal multiplexer | [docs/Tmux.md](docs/Tmux.md) |
+| **Worktrees** | Ticket and review workflow with Worktrunk and sesh | [docs/Worktrees.md](docs/Worktrees.md) |
 | **Kitty** | GPU-accelerated terminal | [docs/Kitty.md](docs/Kitty.md) |
 | **Waybar** | Status bar for Wayland | [docs/Waybar.md](docs/Waybar.md) |
 | **Wofi** | Application launcher | [docs/Wofi.md](docs/Wofi.md) |
@@ -199,6 +203,28 @@ zsh
 
 ---
 
+## Worktree Workflow
+
+Project work runs on git worktrees instead of branch switching: one tmux session per project, one worktree and one tmux window per ticket or PR review. Full reference in [docs/Worktrees.md](docs/Worktrees.md).
+
+### How It Works
+
+- [sesh](https://github.com/joshmedeski/sesh) creates tmux sessions from `.config/sesh/sesh.toml`. The `App` session opens with a Develop shell on the primary checkout, which stays on `develop`, a Servers window (`turbo dev` and ngrok) and a Database window (lazysql). The `Dotfiles` session opens Neovim on this repo.
+- [Worktrunk](https://worktrunk.dev/) creates worktrees next to the repo, named `<repo>.<branch>`. Hooks in `.config/worktrunk/config.toml` copy the gitignored env files and `node_modules`, run `bun install`, and on removal drop the ticket database and close its tmux window.
+- Three scripts in `.config/scripts/` glue them together: `wtn` opens a ticket worktree in a new window, `wtdb` gives it its own database, and the gh-dash `D` key opens a PR worktree for review.
+- The servers run once, in the Servers window. `wt srv` points them at whichever worktree you run it from.
+
+### Daily Workflow
+
+1. **Open the workspace**: `t` connects to the App session, creating it on first run. `Prefix + T` switches to any other session.
+2. **Start a ticket**: from the Develop window, `wtn feature/abc-123-foo`. Worktrunk branches from `develop`, creates the worktree, copies the env files and `node_modules`, runs `bun install`, and an `ABC-123` window opens with Neovim. The same command reopens an existing branch.
+3. **Run it**: `wt srv` from the ticket window restarts `turbo dev` in that worktree. ngrok keeps forwarding to the API port.
+4. **Migrations**: if the ticket changes the Prisma schema, `wtdb` clones the main database as `<db>_abc_123`, rewrites `DATABASE_URL` in the worktree and adds a lazysql connection. Other tickets share the main database.
+5. **Review a PR**: `Prefix + T` to Dash, then `D` on the pull request. A `PR-N` window opens with tuicr and Claude in a PR worktree. `wt remove` in that window cleans it up (`-D` also deletes an unmerged local branch).
+6. **Finish**: `wt srv` from the Develop window points the servers back at the primary checkout, then `wt remove feature/abc-123-foo` drops the database, deletes the worktree and branch, and closes the window.
+
+---
+
 ## Documentation
 
 Detailed documentation for each component:
@@ -209,6 +235,7 @@ Detailed documentation for each component:
 | [Hyprland](docs/Hyprland.md) | Window manager config, keybindings, autostart, Hyprlock/Hyprpaper |
 | [Zsh](docs/Zsh.md) | Shell configuration, aliases, plugins, Powerlevel10k theme |
 | [Tmux](docs/Tmux.md) | Session management, plugins, keybindings, Catppuccin theme |
+| [Worktrees](docs/Worktrees.md) | Worktrunk hooks, sesh sessions, ticket and review scripts |
 | [Kitty](docs/Kitty.md) | Terminal configuration, fonts, keybindings |
 | [Waybar](docs/Waybar.md) | Status bar modules and styling |
 | [Wofi](docs/Wofi.md) | Application launcher configuration |

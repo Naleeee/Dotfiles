@@ -52,7 +52,7 @@ This repository contains my personal dotfiles for a complete Linux development e
 
 - **Modern Neovim Setup** - Fully Lua-based configuration with LSP, autocompletion, and 40+ plugins managed by Lazy.nvim
 - **Hyprland Window Manager** - Tiling Wayland compositor with animations and custom keybindings
-- **Enhanced Terminal** - Kitty terminal with Zsh, Oh My Zsh, and Powerlevel10k
+- **Enhanced Terminal** - Kitty terminal with Zsh, Oh My Zsh, and Starship
 - **Tmux Integration** - Session management with custom theme and plugins
 - **Additional Tools** - Waybar, Wofi, Yazi file manager, and more
 
@@ -64,7 +64,7 @@ This repository contains my personal dotfiles for a complete Linux development e
 |-----------|-------------|---------------|
 | **Neovim** | Text editor with LSP, completion, and modern plugins | [docs/Neovim.md](docs/Neovim.md) |
 | **Hyprland** | Wayland tiling compositor | [docs/Hyprland.md](docs/Hyprland.md) |
-| **Zsh** | Shell with Oh My Zsh and Powerlevel10k | [docs/Zsh.md](docs/Zsh.md) |
+| **Zsh** | Shell with Oh My Zsh and Starship | [docs/Zsh.md](docs/Zsh.md) |
 | **Tmux** | Terminal multiplexer | [docs/Tmux.md](docs/Tmux.md) |
 | **Worktrees** | Ticket and review workflow with Worktrunk and sesh | [docs/Worktrees.md](docs/Worktrees.md) |
 | **Kitty** | GPU-accelerated terminal | [docs/Kitty.md](docs/Kitty.md) |
@@ -193,7 +193,7 @@ tmux
 # Press prefix + I (Ctrl-A + I) to install plugins
 
 # 3. Configure Zsh
-# Oh My Zsh and Powerlevel10k will prompt for configuration
+# Oh My Zsh will prompt for configuration
 zsh
 
 # 4. Install required fonts
@@ -233,7 +233,7 @@ Detailed documentation for each component:
 |----------|-------------|
 | [Neovim](docs/Neovim.md) | Complete editor setup, plugins, keybindings, LSP configuration |
 | [Hyprland](docs/Hyprland.md) | Window manager config, keybindings, autostart, Hyprlock/Hyprpaper |
-| [Zsh](docs/Zsh.md) | Shell configuration, aliases, plugins, Powerlevel10k theme |
+| [Zsh](docs/Zsh.md) | Shell configuration, aliases, plugins, Starship prompt |
 | [Tmux](docs/Tmux.md) | Session management, plugins, keybindings, Catppuccin theme |
 | [Worktrees](docs/Worktrees.md) | Worktrunk hooks, sesh sessions, ticket and review scripts |
 | [Kitty](docs/Kitty.md) | Terminal configuration, fonts, keybindings |
@@ -274,7 +274,6 @@ Detailed documentation for each component:
 │   └── yazi/              # File manager
 ├── docs/                  # Documentation
 ├── .zshrc                 # Zsh configuration
-├── .p10k.zsh              # Powerlevel10k theme
 └── README.md              # This file
 ```
 
@@ -286,7 +285,7 @@ Detailed documentation for each component:
 - [x] Hyprland Wayland setup
 - [x] Comprehensive documentation
 - [x] GNU Stow installation method
-- [ ] Automated installation script improvements (binaries, ssh-key, p10k configuration...)
+- [ ] Automated installation script improvements (binaries, ssh-key...)
 
 ---
 

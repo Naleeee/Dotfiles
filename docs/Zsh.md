@@ -37,12 +37,15 @@ This configuration uses:
 
 ### Starship
 
-A cross-shell prompt written in Rust, configured in `~/.config/starship.toml`:
+A cross-shell prompt written in Rust, configured in `~/.config/starship.toml`
+from the Catppuccin Powerline preset:
 
-- Two-line powerline prompt in Catppuccin Mocha
-- OS icon, directory, git branch and git status on the first line
-- On the right: exit code on failure, command duration over 3s, background
-  jobs, Node and Python versions, and the time
+- One powerline line: OS icon and user, directory, git branch and status,
+  language versions (Node, Bun, Python, Go, Rust...), time and command duration,
+  then the `❯` prompt character, red after a failed command
+- Catppuccin Mocha palette, with the other Catppuccin flavours and Ayu palettes
+  included for switching
+- Desktop notification when a command runs longer than 45 seconds
 
 Modules only render when relevant, so the prompt stays short outside projects.
 

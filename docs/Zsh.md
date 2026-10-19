@@ -1,6 +1,6 @@
 # Zsh Configuration
 
-A powerful Zsh setup with Oh My Zsh, Powerlevel10k theme, and
+A powerful Zsh setup with Oh My Zsh, Starship prompt, and
 productivity-focused aliases for development workflows.
 
 ---
@@ -28,31 +28,23 @@ This configuration uses:
 
 - **[Zsh](https://www.zsh.org/)** - Feature-rich shell
 - **[Oh My Zsh](https://ohmyz.sh/)** - Framework for managing Zsh configuration
-- **[Powerlevel10k](https://github.com/romkatv/powerlevel10k)** - Fast and
-  customizable prompt theme
+- **[Starship](https://starship.rs/)** - Fast, cross-shell prompt
 - **[Zoxide](https://github.com/ajeetdsouza/zoxide)** - Smarter cd command
 
 ---
 
 ## Theme
 
-### Powerlevel10k
+### Starship
 
-A highly customizable prompt theme with:
+A cross-shell prompt written in Rust, configured in `~/.config/starship.toml`:
 
-- Git status indicators
-- Command execution time
-- Directory path with truncation
-- Status indicators for background jobs
-- Fast rendering with instant prompt
+- Two-line powerline prompt in Catppuccin Mocha
+- OS icon, directory, git branch and git status on the first line
+- On the right: exit code on failure, command duration over 3s, background
+  jobs, Node and Python versions, and the time
 
-Configure by running:
-
-```bash
-p10k configure
-```
-
-Or edit `~/.p10k.zsh` directly.
+Modules only render when relevant, so the prompt stays short outside projects.
 
 ---
 
@@ -200,11 +192,11 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
-### Powerlevel10k
+### Starship
 
 ```bash
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-    ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+brew install starship    # macOS
+sudo pacman -S starship  # Arch
 ```
 
 ### Additional Tools
@@ -224,10 +216,10 @@ sudo pacman -S fzf
 
 ## Configuration Files
 
-| File          | Purpose                      |
-| ------------- | ---------------------------- |
-| `~/.zshrc`    | Main Zsh configuration       |
-| `~/.p10k.zsh` | Powerlevel10k theme settings |
+| File                      | Purpose                |
+| ------------------------- | ---------------------- |
+| `~/.zshrc`                | Main Zsh configuration |
+| `~/.config/starship.toml` | Starship prompt config |
 
 ---
 
@@ -239,8 +231,8 @@ sudo pacman -S fzf
 # Reload configuration
 source ~/.zshrc
 
-# Reconfigure Powerlevel10k
-p10k configure
+# Explain the modules shown in the current prompt
+starship explain
 
 # View command history
 history

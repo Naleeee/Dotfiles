@@ -102,6 +102,7 @@ alias t="sesh connect App"
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 alias wtn="~/.config/scripts/WtTicket.sh"
 alias wtdb="~/.config/scripts/WtDb.sh"
+alias wts="wt switch"
 
 # ---- HyprSpace (Window Manager) ----
 alias hse="hyprspace enable on"              # Enable HyprSpace

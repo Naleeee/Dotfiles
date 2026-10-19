@@ -565,6 +565,7 @@ print_section "Terminal Multiplexer"
 print_dep "tmux - Session manager"
 print_dep "sesh - Session switcher"
 print_dep "worktrunk - Git worktree manager"
+print_dep "workmux - Agent dashboard"
 print_dep "tpm - Plugin manager"
 print_dep "Plugins: catppuccin, sensible, yank, floax, fzf"
 
@@ -572,6 +573,7 @@ if prompt_yes_no "Install Tmux?"; then
     install_pkg "$(get_pkg tmux)"
     install_aur "sesh-bin" "sesh"
     install_pkg worktrunk
+    install_aur "workmux-bin" "raine/workmux/workmux"
     
     # TPM
     TPM_DIR="$HOME/.tmux/plugins/tpm"

@@ -42,6 +42,7 @@ config).
 | Review a PR         | `D` in gh dash                        | PR worktree, window PR-N in Dash with tuicr and Claude                                        |
 | Finish a review     | `wt remove` in the PR window          | Worktree and window gone; add `-D` to drop the local branch of an unmerged PR                 |
 | Switch project      | `Prefix + T` or `sesh connect <name>` | Session created from `sesh.toml` if missing                                                   |
+| Agent dashboard     | `Prefix + Ctrl + s`                   | Workmux popup listing running Claude sessions with live output and diffs                      |
 
 ## Files
 
@@ -52,11 +53,15 @@ config).
 | `~/.config/scripts/WtTicket.sh`   | `wtn`                          |
 | `~/.config/scripts/WtReview.sh`   | gh-dash `D` key                |
 | `~/.config/scripts/WtDb.sh`       | `wtdb` and the pre-remove drop |
+| `~/.config/workmux/config.yaml`   | Dashboard only, window format left to catppuccin |
 
 ## Notes
 
 - Only tickets that carry Prisma migrations need `wtdb`. The others share the
   main database.
 - `wtdb` copies the database with `pg_dump`, so the dev server can stay up.
+- [Workmux](https://github.com/raine/workmux) is used for its dashboard only. Its
+  Claude hooks in `~/.claude/settings.json` track agent status next to the
+  `claude-state.sh` badges; worktrees stay managed by Worktrunk.
 - Window ids are stored per branch with `wt config state vars`. A tmux restart
   invalidates them, and the window then has to be closed by hand.

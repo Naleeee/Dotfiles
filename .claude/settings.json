@@ -35,6 +35,14 @@
             "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -66,6 +74,14 @@
             "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear-waiting"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -74,6 +90,14 @@
           {
             "type": "command",
             "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh done"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status done"
           }
         ]
       }
@@ -94,6 +118,28 @@
           {
             "type": "command",
             "command": "bash /Users/nathanlemale/.config/tmux/claude-state.sh clear"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status waiting"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|fork",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux register-agent"
           }
         ]
       }

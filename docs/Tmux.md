@@ -98,6 +98,7 @@ set -g pane-border-style 'fg=#313244,bg=default'          # Subtle inactive
 |------------|--------|
 | `Alt + P` | Toggle floating terminal (floax) |
 | `Prefix + u` | Open FZF link picker |
+| `Prefix + Ctrl + s` | Workmux agent dashboard |
 | `Prefix + I` | Install plugins (TPM) |
 | `Prefix + U` | Update plugins (TPM) |
 

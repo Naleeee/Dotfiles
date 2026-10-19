@@ -213,6 +213,7 @@ Project work runs on git worktrees instead of branch switching: one tmux session
 - [Worktrunk](https://worktrunk.dev/) creates worktrees next to the repo, named `<repo>.<branch>`. Hooks in `.config/worktrunk/config.toml` copy the gitignored env files and `node_modules`, run `bun install`, and on removal drop the ticket database and close its tmux window.
 - Three scripts in `.config/scripts/` glue them together: `wtn` opens a ticket worktree in a new window, `wtdb` gives it its own database, and the gh-dash `D` key opens a PR worktree for review.
 - The servers run once, in the Servers window. `wt srv` points them at whichever worktree you run it from.
+- [Workmux](https://github.com/raine/workmux) is only used for its agent dashboard (`Prefix + Ctrl + s`), fed by Claude Code hooks in `.claude/settings.json`. Worktrees stay with Worktrunk.
 
 ### Daily Workflow
 

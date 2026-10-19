@@ -78,6 +78,7 @@ set -g pane-border-style 'fg=#313244,bg=default'          # Subtle inactive
 | `Prefix + w` | List windows |
 | `Prefix + d` | Detach session |
 | `Prefix + T` | Session picker (sesh) |
+| `Prefix + O` | Session picker (sessionx) |
 
 ### Pane Management
 
@@ -122,6 +123,7 @@ Managed with [TPM (Tmux Plugin Manager)](https://github.com/tmux-plugins/tpm):
 | [tmux-battery](https://github.com/tmux-plugins/tmux-battery) | Battery status display |
 | [catppuccin-tmux](https://github.com/catppuccin/tmux) | Catppuccin theme |
 | [tmux-floax](https://github.com/omerxx/tmux-floax) | Floating terminal windows |
+| [tmux-sessionx](https://github.com/omerxx/tmux-sessionx) | Fuzzy session picker with preview, rename and zoxide paths |
 | [tmux-fzf](https://github.com/sainnhe/tmux-fzf) | FZF integration |
 | [tmux-fzf-links](https://github.com/alberti42/tmux-fzf-links) | FZF URL/file picker |
 | [tmux-thumbs](https://github.com/fcsonline/tmux-thumbs) | Quick text selection |
@@ -138,6 +140,27 @@ Press `Alt + P` to toggle a floating terminal window:
 set -g @floax-bind '-n M-p'
 set -g @floax-width '90%'
 set -g @floax-height '90%'
+```
+
+### Session Picker (Sessionx)
+
+Press `Prefix + O` to open a fuzzy list of sessions with a preview. Typing a
+path that matches no session falls back to zoxide and starts a session there.
+
+| Key | Action |
+|-----|--------|
+| `Enter` | Switch to the session, or create it from the typed name |
+| `Ctrl + r` | Rename session |
+| `Alt + Backspace` | Kill session |
+| `Ctrl + w` | Window mode |
+| `Ctrl + t` | Tree mode |
+| `Ctrl + x` | Browse `~/.config` |
+| `?` | Toggle preview |
+
+```conf
+set -g @sessionx-bind 'O'
+set -g @sessionx-zoxide-mode 'on'
+set -g @sessionx-git-branch 'on'
 ```
 
 ### FZF Link Picker
@@ -227,6 +250,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     ├── tmux-yank/
     ├── tmux-battery/
     ├── tmux-floax/
+    ├── tmux-sessionx/
     ├── tmux-fzf/
     ├── tmux-fzf-links/
     └── tmux-thumbs/
@@ -254,7 +278,7 @@ tmux kill-session -t mysession
 
 ### Sessions
 
-Sessions are defined in `~/.config/sesh/sesh.toml` and managed with [sesh](https://github.com/joshmedeski/sesh). The alias `t` runs `sesh connect App`, and `Prefix + T` opens the session picker. See [Worktrees.md](Worktrees.md) for the ticket and review workflow.
+Sessions are defined in `~/.config/sesh/sesh.toml` and managed with [sesh](https://github.com/joshmedeski/sesh). The alias `t` runs `sesh connect App`, `Prefix + T` opens the sesh picker and `Prefix + O` the sessionx one. See [Worktrees.md](Worktrees.md) for the ticket and review workflow.
 
 ### Troubleshooting
 

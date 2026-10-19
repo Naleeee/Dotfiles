@@ -30,6 +30,7 @@ return {
 				"html",
 				"javascript",
 				"json",
+				"kitty",
 				"lua",
 				"markdown",
 				"markdown_inline",
@@ -57,8 +58,11 @@ return {
 
 			-- Enable treesitter highlighting and indentation
 			vim.api.nvim_create_autocmd("FileType", {
-				callback = function()
-					pcall(vim.treesitter.start)
+				callback = function(args)
+					local lang = vim.treesitter.language.get_lang(args.match)
+					if lang and vim.treesitter.query.get(lang, "highlights") then
+						pcall(vim.treesitter.start, args.buf, lang)
+					end
 					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 				end,
 			})

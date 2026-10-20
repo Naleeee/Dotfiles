@@ -464,7 +464,7 @@ print_header "Nerd Fonts"
 
 print_section "Required Fonts"
 print_dep "CaskaydiaCove Nerd Font - Used by Kitty, Waybar, Neovim"
-print_dep "MesloLGS Nerd Font - Used by Waybar"
+print_dep "MesloLGS Nerd Font - Used by Powerlevel10k"
 
 if prompt_yes_no "Install Nerd Fonts?"; then
     case "$PKG_MANAGER" in
@@ -494,10 +494,10 @@ fi
 
 print_header "Zsh Shell"
 
-print_section "Zsh + Oh My Zsh + Starship"
+print_section "Zsh + Oh My Zsh + Powerlevel10k"
 print_dep "zsh - Shell"
 print_dep "oh-my-zsh - Framework"
-print_dep "starship - Prompt"
+print_dep "powerlevel10k - Theme"
 print_dep "zsh-autosuggestions - Fish-like suggestions"
 print_dep "zsh-syntax-highlighting - Command highlighting"
 
@@ -511,8 +511,13 @@ if prompt_yes_no "Install Zsh environment?"; then
         print_success "Oh My Zsh installed"
     fi
     
-    # Starship
-    install_pkg "starship"
+    # Powerlevel10k
+    P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+    if [ ! -d "$P10K_DIR" ]; then
+        print_info "Installing Powerlevel10k..."
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
+        print_success "Powerlevel10k installed"
+    fi
     
     # Plugins
     ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
@@ -809,7 +814,7 @@ if [ -d "$DOTFILES_DIR" ]; then
         print_info "Stowing configurations..."
         
         # Backup existing configs
-        for config in .zshrc; do
+        for config in .zshrc .p10k.zsh; do
             [ -f "$HOME/$config" ] && [ ! -L "$HOME/$config" ] && mv "$HOME/$config" "$HOME/$config.backup"
         done
         
@@ -836,9 +841,10 @@ print_header "Installation Complete!"
 
 printf "%s%sNext Steps:%s\n\n" "$GREEN" "$BOLD" "$NC"
 printf "  1. %sRestart your terminal%s or run: %ssource ~/.zshrc%s\n" "$CYAN" "$NC" "$DIM" "$NC"
-printf "  2. %sInstall Tmux plugins%s: Open tmux, press %sCtrl+A, I%s\n" "$CYAN" "$NC" "$DIM" "$NC"
-printf "  3. %sLaunch Neovim%s: Mason will install LSP servers automatically\n" "$CYAN" "$NC"
-printf "  4. %sCheck Neovim health%s: %s:checkhealth%s\n" "$CYAN" "$NC" "$DIM" "$NC"
+printf "  2. %sConfigure Powerlevel10k%s: %sp10k configure%s\n" "$CYAN" "$NC" "$DIM" "$NC"
+printf "  3. %sInstall Tmux plugins%s: Open tmux, press %sCtrl+A, I%s\n" "$CYAN" "$NC" "$DIM" "$NC"
+printf "  4. %sLaunch Neovim%s: Mason will install LSP servers automatically\n" "$CYAN" "$NC"
+printf "  5. %sCheck Neovim health%s: %s:checkhealth%s\n" "$CYAN" "$NC" "$DIM" "$NC"
 
 if [ "$DISTRO" = "arch" ]; then
     printf "\n"
